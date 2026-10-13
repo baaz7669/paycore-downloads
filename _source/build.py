@@ -39,8 +39,8 @@ page = re.sub(r'^<meta name="description"[^>]*>\s*', "", page, count=1)
 head_part, body_part = page.split("</style>", 1)
 
 TITLE = "PayCore – Offline Payroll Software for Windows | One-Time License"
-DESC = ("PayCore is payroll software for Windows with a one-time license. Calculate salaries, loans "
-        "and payslips for unlimited employees. Works offline, with full Arabic support.")
+DESC = ("Offline payroll software for Windows with a one-time license. Salaries, loans and payslips "
+        "for unlimited employees, with full Arabic support.")
 OG_TITLE = "PayCore: payroll software without the monthly bill"
 
 # FAQ schema built from the page's own FAQ, so the two never disagree
