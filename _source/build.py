@@ -38,9 +38,9 @@ page = re.sub(r"^<title>.*?</title>\s*", "", page, count=1, flags=re.S)
 page = re.sub(r'^<meta name="description"[^>]*>\s*', "", page, count=1)
 head_part, body_part = page.split("</style>", 1)
 
-TITLE = "PayCore – Offline Payroll Software for Windows | One-Time License"
-DESC = ("Offline payroll software for Windows with a one-time license. Salaries, loans and payslips "
-        "for unlimited employees, with full Arabic support.")
+TITLE = "Offline Payroll Software for Windows – One-Time Purchase | PayCore"
+DESC = ("Offline payroll software for Windows. One-time purchase, no subscription, unlimited employees. "
+        "Payslips, loans and gratuity for small businesses.")
 OG_TITLE = "PayCore: payroll software without the monthly bill"
 
 # FAQ schema built from the page's own FAQ, so the two never disagree
@@ -98,6 +98,9 @@ seo_head = f"""<!doctype html>
 <meta name="description" content="{html.escape(DESC)}">
 <meta name="robots" content="index, follow, max-image-preview:large">
 <link rel="canonical" href="{SITE_URL}">
+<link rel="alternate" hreflang="en" href="{SITE_URL}">
+<link rel="alternate" hreflang="ar" href="{SITE_URL}ar/">
+<link rel="alternate" hreflang="x-default" href="{SITE_URL}">
 <meta name="theme-color" content="#2563eb">
 <meta name="application-name" content="PayCore Payroll">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
@@ -130,16 +133,26 @@ open(os.path.join(dist, "index.html"), "w", encoding="utf-8").write(out)
 sys.path.insert(0, ROOT)
 import legal
 extra = legal.build(dist, SITE_URL, TODAY[:4])
+import ar
+ar_path = ar.build(dist, SITE_URL, DL, "PayCore-Payroll-Setup.1.0.0.exe", "PayCore-Payroll-Portable.1.0.0.exe", SHOTS, TODAY[:4])
+ALT = (f'    <xhtml:link rel="alternate" hreflang="en" href="{SITE_URL}"/>\n'
+       f'    <xhtml:link rel="alternate" hreflang="ar" href="{SITE_URL}{ar_path}"/>\n'
+       f'    <xhtml:link rel="alternate" hreflang="x-default" href="{SITE_URL}"/>\n')
 extra_urls = "".join(f"  <url>\n    <loc>{SITE_URL}{p}</loc>\n    <lastmod>{TODAY}</lastmod>\n  </url>\n" for p in extra)
 
 open(os.path.join(dist, "robots.txt"), "w").write(f"User-agent: *\nAllow: /\n\nSitemap: {SITE_URL}sitemap.xml\n")
 open(os.path.join(dist, "sitemap.xml"), "w").write(f"""<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>{SITE_URL}</loc>
-    <lastmod>{TODAY}</lastmod>
+{ALT}    <lastmod>{TODAY}</lastmod>
     <image:image><image:loc>{SITE_URL}images/paycore-payroll-dashboard.jpg</image:loc></image:image>
     <image:image><image:loc>{SITE_URL}images/paycore-monthly-payroll-run.jpg</image:loc></image:image>
+  </url>
+  <url>
+    <loc>{SITE_URL}{ar_path}</loc>
+    <lastmod>{TODAY}</lastmod>
+{ALT}    <image:image><image:loc>{SITE_URL}images/paycore-arabic-payroll-dashboard.jpg</image:loc></image:image>
   </url>
 {extra_urls}</urlset>
 """)
