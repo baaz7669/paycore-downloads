@@ -71,7 +71,7 @@ PAGES = {
 <p>Your payroll data stays on your computer and we never have a copy, so we cannot recover it for you. Make regular backups and store them safely.</p>
 
 <h2>Payments and refunds</h2>
-<p>Pricing and payment options are confirmed with you before you buy. A free live demo is available so you can see PayCore before purchasing. If PayCore does not run on your computer after purchase, contact us and we will help, or discuss a refund.</p>
+<p>A PayCore license costs USD 50, paid once. We confirm payment options with you before you buy. A free live demo is available so you can see PayCore before purchasing. If PayCore does not run on your computer after purchase, contact us and we will help, or discuss a refund.</p>
 
 <h2>Updates and custom work</h2>
 <p>We may release updates to PayCore from time to time. Custom features built for your business are quoted and agreed separately.</p>

@@ -39,8 +39,8 @@ page = re.sub(r'^<meta name="description"[^>]*>\s*', "", page, count=1)
 head_part, body_part = page.split("</style>", 1)
 
 TITLE = "Payroll & Salary Management Software for Windows | PayCore"
-DESC = ("Staff payroll and salary management system for Windows. Free download, one-time purchase, no monthly fees. "
-        "Works offline with unlimited employees.")
+DESC = ("Payroll and salary management software for Windows. $50 one-time license, no monthly fees, "
+        "unlimited employees. Works offline.")
 OG_TITLE = "PayCore: payroll software without the monthly bill"
 
 # FAQ schema built from the page's own FAQ, so the two never disagree
@@ -82,7 +82,9 @@ schema = {
         "Document expiry tracker",
         "Works fully offline with PIN lock and local backup",
         "English and Arabic interface; any currency including OMR, KWD, BHD, AED, SAR and QAR"],
-     "isAccessibleForFree": False},
+     "isAccessibleForFree": False,
+     "offers": {"@type": "Offer", "price": "50", "priceCurrency": "USD",
+                "availability": "https://schema.org/InStock", "url": SITE_URL + "#license"}},
     {"@type": "FAQPage", "@id": SITE_URL + "#faq",
      "mainEntity": [{"@type": "Question", "name": plain(q),
                      "acceptedAnswer": {"@type": "Answer", "text": plain(a)}} for q, a in faqs]}

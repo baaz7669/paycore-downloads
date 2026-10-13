@@ -25,7 +25,7 @@ FEATURES = [
 ]
 
 COMPARE = [
- ("السعر", "ترخيص لمرة واحدة", "اشتراك شهري أو سنوي"),
+ ("السعر", "50 دولارًا لمرة واحدة", "اشتراك شهري أو سنوي"),
  ("التكلفة مع زيادة الموظفين", "ثابتة لا تتغير", "تزيد مع كل موظف جديد"),
  ("مكان حفظ البيانات", "جهازك الخاص", "خوادم الشركة المزوّدة"),
  ("الاتصال بالإنترنت", "غير مطلوب", "مطلوب"),
@@ -38,7 +38,8 @@ FAQ = [
  ("هل يعمل برنامج الرواتب بدون إنترنت؟", "نعم. مسير الرواتب والتقارير والنسخ الاحتياطي وتفعيل الترخيص كلها تعمل بدون إنترنت. فقط المساعد الذكي الاختياري يحتاج إلى الإنترنت."),
  ("هل يدعم البرنامج اللغة العربية؟", "نعم. يحتوي PayCore على واجهة عربية كاملة، ويمكنك التبديل بين العربية والإنجليزية في أي وقت."),
  ("هل يحسب البرنامج مكافأة نهاية الخدمة؟", "نعم. يحسب PayCore مكافأة نهاية الخدمة بالنسبة التي تحددها في الإعدادات. ننصحك بمراجعة النسبة بما يتوافق مع نظام العمل في بلدك."),
- ("هل برنامج الرواتب مجاني؟", "تحميل PayCore مجاني، وكذلك العرض المباشر مع فريقنا. لاستخدام البرنامج تحتاج إلى ترخيص يُشترى مرة واحدة فقط: بدون رسوم شهرية أو اشتراك أو رسوم لكل موظف."),
+ ("كم سعر برنامج PayCore؟", "سعر ترخيص PayCore هو 50 دولارًا أمريكيًا تُدفع مرة واحدة فقط، لعدد غير محدود من الموظفين، بدون رسوم شهرية أو اشتراك أو رسوم لكل موظف."),
+ ("هل برنامج الرواتب مجاني؟", "تحميل PayCore مجاني، وكذلك العرض المباشر مع فريقنا. لاستخدام البرنامج تحتاج إلى ترخيص بدفعة واحدة قدرها 50 دولارًا: بدون رسوم شهرية أو اشتراك أو رسوم لكل موظف."),
  ("ما الذي يجب أن يتوفر في برنامج إدارة الرواتب الجيد؟", "للشركات الصغيرة، ابحث عن سجل للموظفين مع هيكل الرواتب، ومسير رواتب شهري يحسب العمل الإضافي والإجازات تلقائيًا، ومتابعة السلف والقروض، وقسائم رواتب وتقارير، وحساب مكافأة نهاية الخدمة. وانتبه للتسعير: الاشتراكات التي تُحسب لكل موظف تصبح مكلفة مع نمو شركتك. يوفر PayCore كل ذلك بترخيص لمرة واحدة."),
  ("هل يمكنني تجربة البرنامج قبل الشراء؟", "نعم. نقدم عرضًا مباشرًا مجانيًا عبر مكالمة فيديو. تواصل معنا عبر واتساب أو البريد الإلكتروني لتحديد موعد."),
  ("هل يمكن نقل البرنامج إلى جهاز جديد؟", "نعم. ثبّت PayCore على الجهاز الجديد وفعّله بنفس البريد الإلكتروني ومفتاح الترخيص، ثم استعد بياناتك من النسخة الاحتياطية."),
@@ -123,12 +124,16 @@ section{padding-block:80px}.head{display:grid;gap:14px;margin-bottom:40px;max-wi
 .dl .card{gap:12px}.tag{justify-self:start;font-size:13px;font-weight:700;padding:5px 12px;border-radius:999px;background:#e8efff;color:#1d4ed8}
 .file{direction:ltr;text-align:right;font-family:Consolas,monospace;font-size:14px;color:var(--muted);word-break:break-all}
 .note{margin-top:22px;background:#fffbeb;border:1px solid #fde68a;color:#6b4a0c;border-radius:var(--r);padding:18px 22px;font-size:16px}
+.price-tag{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 14px;background:#fff;border:1px solid var(--line);border-radius:20px;padding:18px 24px;justify-self:start;box-shadow:0 20px 40px -28px rgba(37,99,235,.45)}
+.price-tag .amt{direction:ltr;font:900 clamp(40px,6vw,56px)/1 var(--f-display);background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.price-tag .per{font-weight:700}
+.price-tag .inc{flex-basis:100%;color:var(--muted);font-size:15px}
 .steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}@media (max-width:860px){.steps{grid-template-columns:1fr}}
 .n{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;font:800 19px/1 var(--f-display);color:#fff;background:var(--grad)}
 .contact{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;margin-top:30px}@media (max-width:760px){.contact{grid-template-columns:1fr}}
 .cc{border-radius:24px;padding:28px;color:#fff;display:grid;gap:10px;align-content:start}
 .cc.wa{background:linear-gradient(140deg,#0f9f5a,#22c55e)}.cc.em{background:linear-gradient(140deg,#1d4ed8,#0ea5e9)}
-.cc .val{direction:ltr;text-align:right;font:800 clamp(19px,3vw,28px)/1.3 var(--f-display);overflow-wrap:anywhere}
+.cc .val{direction:ltr;text-align:right;font:800 clamp(17px,4.8vw,28px)/1.3 var(--f-display);overflow-wrap:anywhere}
 .cc .btn{background:#fff;color:var(--ink);justify-self:start;padding:11px 20px;font-size:16px}
 .demo{margin-top:30px;border-radius:24px;padding:2px;background:var(--grad)}
 .demo-in{background:#fff;border-radius:22px;padding:30px;display:flex;flex-wrap:wrap;gap:20px;align-items:center;justify-content:space-between}
@@ -164,7 +169,8 @@ def build(out_dir, site_url, dl_base, setup_name, portable_name, shots_dir, year
          "description": DESC, "applicationCategory": "BusinessApplication", "applicationSubCategory": "برنامج رواتب",
          "operatingSystem": "Windows 10, Windows 11", "softwareVersion": "1.0.0",
          "downloadUrl": dl_base + setup_name, "screenshot": site_url + "images/paycore-arabic-payroll-dashboard.jpg",
-         "publisher": {"@id": site_url + "#org"}, "isAccessibleForFree": False},
+         "publisher": {"@id": site_url + "#org"}, "isAccessibleForFree": False,
+         "offers": {"@type": "Offer", "price": "50", "priceCurrency": "USD", "availability": "https://schema.org/InStock", "url": url + "#license"}},
         {"@type": "FAQPage", "@id": url + "#faq", "inLanguage": "ar",
          "mainEntity": [{"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in FAQ]}]}
 
@@ -215,7 +221,7 @@ def build(out_dir, site_url, dl_base, setup_name, portable_name, shots_dir, year
 <h1>برنامج رواتب الموظفين <span class="grad">بدون اشتراك شهري</span></h1>
 <p class="lede">يحسب PayCore الرواتب والعمل الإضافي والسلف ومكافأة نهاية الخدمة لجميع موظفيك، ويُصدر قسائم الرواتب بخطوة واحدة. اشترِ الترخيص مرة واحدة واستخدمه لعدد غير محدود من الموظفين.</p>
 <div class="acts"><a class="btn btn-primary" href="#download">{DLICON}تحميل للويندوز</a><a class="btn btn-soft" href="{WA_DEMO}" target="_blank" rel="noopener">احجز عرضًا مجانيًا</a></div>
-<div class="pills"><span>{CHECK}ترخيص لمرة واحدة</span><span>{CHECK}عدد غير محدود من الموظفين</span><span>{CHECK}واجهة عربية كاملة</span></div>
+<div class="pills"><span>{CHECK}ترخيص بـ 50 دولارًا لمرة واحدة</span><span>{CHECK}عدد غير محدود من الموظفين</span><span>{CHECK}واجهة عربية كاملة</span></div>
 </div>
 <div class="shot rv"><img src="../images/paycore-arabic-payroll-dashboard.jpg" alt="لوحة تحكم برنامج الرواتب PayCore باللغة العربية: قاعدة الرواتب الشهرية وعدد الموظفين والسلف والقروض وتوزيع الرواتب حسب الأقسام" width="1200" height="750"></div>
 </div></header>
@@ -255,15 +261,16 @@ def build(out_dir, site_url, dl_base, setup_name, portable_name, shots_dir, year
 
 <section id="license"><div class="wrap">
 <div class="head"><h2>احصل على <span class="grad">ترخيص PayCore</span></h2>
-<p class="lede">تُباع تراخيص PayCore مباشرة من فريقنا. تواصل معنا عبر واتساب أو البريد الإلكتروني، وغالبًا تستلم مفتاح الترخيص في نفس يوم العمل.</p></div>
+<p class="lede">تُباع تراخيص PayCore مباشرة من فريقنا. تواصل معنا عبر واتساب أو البريد الإلكتروني، وغالبًا تستلم مفتاح الترخيص في نفس يوم العمل.</p>
+<div class="price-tag"><span class="amt">50$</span><span class="per">دولار أمريكي · لمرة واحدة</span><span class="inc">عدد غير محدود من الموظفين · بدون رسوم شهرية · بدون رسوم لكل موظف</span></div></div>
 <div class="steps">
 <div class="card"><span class="n">1</span><h3>تواصل مع المبيعات</h3><p>أرسل اسمك واسم شركتك والبريد الإلكتروني الذي سيُسجّل عليه الترخيص.</p></div>
-<div class="card"><span class="n">2</span><h3>إتمام الدفع</h3><p>نؤكد لك السعر وطرق الدفع. دفعة واحدة فقط، بدون تجديد أو رسوم لكل موظف.</p></div>
+<div class="card"><span class="n">2</span><h3>ادفع 50 دولارًا مرة واحدة</h3><p>نؤكد لك طرق الدفع المتاحة. دفعة واحدة قدرها 50 دولارًا، بدون تجديد أو رسوم لكل موظف.</p></div>
 <div class="card"><span class="n">3</span><h3>التفعيل</h3><p>أدخل بريدك الإلكتروني ومفتاح الترخيص في PayCore. التفعيل يعمل بدون إنترنت.</p></div>
 </div>
 <div class="contact">
 <div class="cc wa"><span>واتساب</span><span class="val">+968 9095 9084</span><span>المبيعات والدعم عبر الرسائل فقط، لا تتوفر مكالمات على هذا الرقم.</span><a class="btn" href="{WA_LICENSE}" target="_blank" rel="noopener">تواصل عبر واتساب</a></div>
-<div class="cc em"><span>البريد الإلكتروني</span><span class="val">{EMAIL}</span><span>اذكر البريد الإلكتروني الذي تريد تسجيل الترخيص عليه.</span><a class="btn" href="mailto:{EMAIL}">أرسل بريدًا إلكترونيًا</a></div>
+<div class="cc em"><span>البريد الإلكتروني</span><span class="val">info@<wbr>paycoresalarysystem.com</span><span>اذكر البريد الإلكتروني الذي تريد تسجيل الترخيص عليه.</span><a class="btn" href="mailto:{EMAIL}">أرسل بريدًا إلكترونيًا</a></div>
 </div>
 <div class="demo" id="demo"><div class="demo-in"><div><h3>احجز عرضًا مباشرًا مجانيًا</h3><p>شاهد PayCore قبل الشراء. سيعرض لك فريقنا دورة رواتب كاملة عبر مكالمة فيديو، من إضافة الموظفين حتى إصدار قسائم الرواتب، ويجيب عن أسئلتك.</p></div>
 <a class="btn btn-wa" href="{WA_DEMO}" target="_blank" rel="noopener">احجز عبر واتساب</a></div></div>
