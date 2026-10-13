@@ -50,10 +50,15 @@ def plain(t): return html.unescape(re.sub(r"<[^>]+>", "", t)).strip()
 schema = {
   "@context": "https://schema.org",
   "@graph": [
+    {"@type": "Organization", "@id": SITE_URL + "#org", "name": "PayCore", "url": SITE_URL,
+     "logo": SITE_URL + "apple-touch-icon.png", "email": "info@paycoresalarysystem.com",
+     "contactPoint": {"@type": "ContactPoint", "contactType": "sales", "email": "info@paycoresalarysystem.com",
+                      "telephone": "+968-9095-9084", "availableLanguage": ["English", "Arabic"]}},
     {"@type": "WebSite", "@id": SITE_URL + "#website", "url": SITE_URL, "name": "PayCore Payroll",
-     "inLanguage": "en"},
+     "inLanguage": "en", "publisher": {"@id": SITE_URL + "#org"}},
     {"@type": "SoftwareApplication", "@id": SITE_URL + "#app",
      "name": "PayCore Payroll",
+     "publisher": {"@id": SITE_URL + "#org"},
      "description": DESC,
      "url": SITE_URL,
      "applicationCategory": "BusinessApplication",
@@ -122,6 +127,11 @@ seo_head = f"""<!doctype html>
 out = seo_head + head_part + "</style>\n</head>\n<body>\n" + body_part.strip() + "\n</body>\n</html>\n"
 open(os.path.join(dist, "index.html"), "w", encoding="utf-8").write(out)
 
+sys.path.insert(0, ROOT)
+import legal
+extra = legal.build(dist, SITE_URL, TODAY[:4])
+extra_urls = "".join(f"  <url>\n    <loc>{SITE_URL}{p}</loc>\n    <lastmod>{TODAY}</lastmod>\n  </url>\n" for p in extra)
+
 open(os.path.join(dist, "robots.txt"), "w").write(f"User-agent: *\nAllow: /\n\nSitemap: {SITE_URL}sitemap.xml\n")
 open(os.path.join(dist, "sitemap.xml"), "w").write(f"""<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
@@ -131,7 +141,7 @@ open(os.path.join(dist, "sitemap.xml"), "w").write(f"""<?xml version="1.0" encod
     <image:image><image:loc>{SITE_URL}images/paycore-payroll-dashboard.jpg</image:loc></image:image>
     <image:image><image:loc>{SITE_URL}images/paycore-monthly-payroll-run.jpg</image:loc></image:image>
   </url>
-</urlset>
+{extra_urls}</urlset>
 """)
 open(os.path.join(dist, "favicon.svg"), "w").write(
  '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1">'
