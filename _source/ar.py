@@ -259,7 +259,7 @@ def build(out_dir, site_url, dl_base, setup_name, portable_name, shots_dir, year
 <div class="card"><span class="tag">موصى به</span><h3>ملف التثبيت</h3><p>تثبيت عادي على ويندوز مع اختصار على سطح المكتب وقائمة ابدأ.</p><span class="file">{e(setup_name)} · 123 MB</span><a class="btn btn-primary" href="{dl_base}{setup_name}">{DLICON}تحميل ملف التثبيت</a></div>
 <div class="card"><span class="tag" style="background:#ecfdf5;color:#047857">بدون تثبيت</span><h3>النسخة المحمولة</h3><p>ملف واحد يعمل مباشرة بدون تثبيت، مناسب لذاكرة USB وأجهزة المكاتب.</p><span class="file">{e(portable_name)} · 123 MB</span><a class="btn btn-soft" href="{dl_base}{portable_name}">{DLICON}تحميل النسخة المحمولة</a></div>
 </div>
-<p class="note"><b>متطلبات التشغيل:</b> ويندوز 10 أو 11 (64 بت)، ولا يحتاج إلى إنترنت.<br>عند التشغيل لأول مرة قد يظهر تنبيه «Windows protected your PC» لأن البرنامج غير موقّع بشهادة نشر تجارية. اضغط <b>More info</b> ثم <b>Run anyway</b>. يظهر التنبيه مرة واحدة فقط.</p>
+<p class="note"><b>متطلبات التشغيل:</b> ويندوز 10 أو 11 (64 بت)، ولا يحتاج إلى إنترنت.</p>
 </div></section>
 
 <section id="license"><div class="wrap">
