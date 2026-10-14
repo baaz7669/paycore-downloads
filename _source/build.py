@@ -140,6 +140,12 @@ ar_path = ar.build(dist, SITE_URL, DL, "PayCore-Payroll-Setup.1.0.0.exe", "PayCo
 ALT = (f'    <xhtml:link rel="alternate" hreflang="en" href="{SITE_URL}"/>\n'
        f'    <xhtml:link rel="alternate" hreflang="ar" href="{SITE_URL}{ar_path}"/>\n'
        f'    <xhtml:link rel="alternate" hreflang="x-default" href="{SITE_URL}"/>\n')
+import guide
+g_en, g_ar = guide.build(dist, SITE_URL, TODAY[:4])
+G_ALT = (f'    <xhtml:link rel="alternate" hreflang="en" href="{g_en}"/>\n'
+         f'    <xhtml:link rel="alternate" hreflang="ar" href="{g_ar}"/>\n'
+         f'    <xhtml:link rel="alternate" hreflang="x-default" href="{g_en}"/>\n')
+guide_urls = "".join(f"  <url>\n    <loc>{u}</loc>\n    <lastmod>{TODAY}</lastmod>\n{G_ALT}  </url>\n" for u in (g_en, g_ar))
 extra_urls = "".join(f"  <url>\n    <loc>{SITE_URL}{p}</loc>\n    <lastmod>{TODAY}</lastmod>\n  </url>\n" for p in extra)
 
 open(os.path.join(dist, "robots.txt"), "w").write(f"User-agent: *\nAllow: /\n\nSitemap: {SITE_URL}sitemap.xml\n")
@@ -156,7 +162,7 @@ open(os.path.join(dist, "sitemap.xml"), "w").write(f"""<?xml version="1.0" encod
     <lastmod>{TODAY}</lastmod>
 {ALT}    <image:image><image:loc>{SITE_URL}images/paycore-arabic-payroll-dashboard.jpg</image:loc></image:image>
   </url>
-{extra_urls}</urlset>
+{guide_urls}{extra_urls}</urlset>
 """)
 open(os.path.join(dist, "favicon.svg"), "w").write(
  '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1">'
