@@ -16,6 +16,10 @@ ROOT = os.path.dirname(os.path.abspath(__file__))
 SHOTS = os.path.join(ROOT, "shots")
 
 src = open(os.path.join(ROOT, "site-source.html"), encoding="utf-8").read()
+sys.path.insert(0, ROOT)
+import contact_form
+src = src.replace("<!--CONTACT_FORM-->", contact_form.html("en") + "\n" + contact_form.JS) \
+         .replace("/* about */", contact_form.CSS + "\n/* about */", 1)
 
 # ---------- artifact preview ----------
 art = src

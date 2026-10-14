@@ -5,6 +5,9 @@ Targets Arabic searches such as: برنامج رواتب، برنامج روات
 Edit the text below, then run build.py.
 """
 import html, json, os, shutil
+import contact_form
+FORM_AR = contact_form.html("ar")
+FORM_JS = contact_form.JS
 
 EMAIL = "info@paycoresalarysystem.com"
 WA = "96890959084"
@@ -127,6 +130,7 @@ section{padding-block:80px}.head{display:grid;gap:14px;margin-bottom:40px;max-wi
 .price-tag .amt{direction:ltr;font:900 clamp(40px,6vw,56px)/1 var(--f-display);background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
 .price-tag .per{font-weight:700}
 .price-tag .inc{flex-basis:100%;color:var(--muted);font-size:15px}
+"""+contact_form.CSS+"""
 .steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}@media (max-width:860px){.steps{grid-template-columns:1fr}}
 .n{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;font:800 19px/1 var(--f-display);color:#fff;background:var(--grad)}
 .contact{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;margin-top:30px}@media (max-width:760px){.contact{grid-template-columns:1fr}}
@@ -208,7 +212,7 @@ def build(out_dir, site_url, dl_base, setup_name, portable_name, shots_dir, year
 <nav class="nav" aria-label="القائمة الرئيسية"><div class="wrap"><div class="nav-in">
 <a class="brand" href="./">{MARK}PayCore</a>
 <ul>
-<li><a href="#features">المزايا</a></li><li><a href="#compare">المقارنة</a></li><li><a href="#download">التحميل</a></li><li><a href="#license">الترخيص</a></li><li><a href="#faq">الأسئلة الشائعة</a></li>
+<li><a href="#features">المزايا</a></li><li><a href="#compare">المقارنة</a></li><li><a href="#download">التحميل</a></li><li><a href="#license">الترخيص</a></li><li><a href="#faq">الأسئلة الشائعة</a></li><li><a href="#contact">تواصل معنا</a></li>
 <li><a href="../" hreflang="en" lang="en">English</a></li>
 </ul>
 <a class="btn btn-primary" href="#download">تحميل</a>
@@ -273,6 +277,11 @@ def build(out_dir, site_url, dl_base, setup_name, portable_name, shots_dir, year
 </div>
 <div class="demo" id="demo"><div class="demo-in"><div><h3>احجز عرضًا مباشرًا مجانيًا</h3><p>شاهد PayCore قبل الشراء. سيعرض لك فريقنا دورة رواتب كاملة عبر مكالمة فيديو، من إضافة الموظفين حتى إصدار قسائم الرواتب، ويجيب عن أسئلتك.</p></div>
 <a class="btn btn-wa" href="{WA_DEMO}" target="_blank" rel="noopener">احجز عبر واتساب</a></div></div>
+</div></section>
+
+<section id="contact-section" style="padding-top:20px"><div class="wrap">
+{FORM_AR}
+{FORM_JS}
 </div></section>
 
 <section id="faq" style="padding-top:20px"><div class="wrap">
