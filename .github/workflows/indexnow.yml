@@ -1,0 +1,42 @@
+# Tells Bing (and other IndexNow search engines) about every page in sitemap.xml
+# each time the website changes, so new or edited pages are picked up within hours.
+name: Notify search engines (IndexNow)
+
+on:
+  push:
+    branches: [main]
+    paths-ignore:
+      - "_source/**"
+      - "README.md"
+      - ".github/**"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  indexnow:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Wait for GitHub Pages to publish the change
+        run: sleep 120
+
+      - name: Submit sitemap URLs to IndexNow
+        env:
+          INDEXNOW_KEY: 81e5f46776dd0dd067369e919c55b201
+          HOST: paycoresalarysystem.com
+        run: |
+          python3 - <<'EOF'
+          import json, os, re, urllib.request
+          key, host = os.environ["INDEXNOW_KEY"], os.environ["HOST"]
+          urls = sorted(set(re.findall(r"<loc>([^<]+)</loc>", open("sitemap.xml", encoding="utf-8").read())))
+          body = json.dumps({"host": host, "key": key,
+                             "keyLocation": f"https://{host}/{key}.txt", "urlList": urls}).encode()
+          req = urllib.request.Request("https://api.indexnow.org/indexnow", data=body,
+                                       headers={"Content-Type": "application/json; charset=utf-8"})
+          with urllib.request.urlopen(req, timeout=30) as r:
+              print("IndexNow response:", r.status)
+          print("Submitted", len(urls), "URLs:"); print("\n".join(urls))
+          EOF

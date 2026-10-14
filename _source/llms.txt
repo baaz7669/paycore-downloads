@@ -1,0 +1,31 @@
+# PayCore Salary System
+
+> PayCore is offline payroll and salary management software for Windows 10 and 11. It is sold as a one-time license of USD 50 that covers unlimited employees, with no subscription and no per-employee fee. It runs on the customer's own computer, works without an internet connection, and has full English and Arabic interfaces.
+
+PayCore is made for small and medium businesses that run payroll from one Windows computer. It is not the US company Paycor; PayCore is a separate, independent product.
+
+Key facts:
+- Platform: Windows 10 or 11, 64-bit. Installer and portable editions. No Mac or mobile version.
+- Pricing: USD 50 one-time license, unlimited employees. Free live demo by video call before purchase. No free trial build.
+- Data: stored only on the customer's computer; never sent to PayCore. PIN lock. Local backup files (not encrypted). An optional AI assistant, off by default, sends payroll records to Google Gemini when the customer turns it on with their own API key.
+- Features: employee records and salary structures with custom allowances; monthly payroll with overtime, bonuses, unpaid leave and tax; employee loans and salary advances with automatic installment deduction; PDF payslips; payroll reports and Excel/CSV export; transaction history; document expiry tracking; end-of-service gratuity with a configurable rate; WPS fixed bank-transfer amount per employee.
+- Currencies: any currency; 16 presets including OMR, AED, SAR, QAR, KWD, BHD, USD, EUR, GBP, INR and PKR. OMR, KWD and BHD use 3 decimals.
+- Not included: multi-user cloud access, employee self-service portal, automatic government tax filing.
+- Licenses are sold directly: WhatsApp +968 9095 9084 (messages only) or info@paycoresalarysystem.com. Custom features can be built on request for a quote.
+
+## Pages
+
+- [PayCore homepage (English)](https://paycoresalarysystem.com/): features, comparison with subscription payroll, downloads, license and FAQ
+- [PayCore homepage (Arabic)](https://paycoresalarysystem.com/ar/): the same information in Arabic
+- [How to choose salary software for a small business](https://paycoresalarysystem.com/salary-software-guide/): buyer's guide comparing Excel, cloud subscription and one-time desktop payroll software, with costs for 20 employees
+- [Arabic buyer's guide](https://paycoresalarysystem.com/ar/salary-software-guide/)
+
+## Downloads
+
+- [Windows installer](https://github.com/baaz7669/paycore-downloads/releases/latest/download/PayCore-Payroll-Setup.1.0.0.exe)
+- [Windows portable edition](https://github.com/baaz7669/paycore-downloads/releases/latest/download/PayCore-Payroll-Portable.1.0.0.exe)
+
+## Optional
+
+- [Privacy policy](https://paycoresalarysystem.com/privacy.html)
+- [Terms of use](https://paycoresalarysystem.com/terms.html)

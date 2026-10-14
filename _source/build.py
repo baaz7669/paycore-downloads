@@ -148,6 +148,11 @@ G_ALT = (f'    <xhtml:link rel="alternate" hreflang="en" href="{g_en}"/>\n'
 guide_urls = "".join(f"  <url>\n    <loc>{u}</loc>\n    <lastmod>{TODAY}</lastmod>\n{G_ALT}  </url>\n" for u in (g_en, g_ar))
 extra_urls = "".join(f"  <url>\n    <loc>{SITE_URL}{p}</loc>\n    <lastmod>{TODAY}</lastmod>\n  </url>\n" for p in extra)
 
+# AI-readable summary (llms.txt) and the IndexNow key file used by .github/workflows/indexnow.yml
+shutil.copy(os.path.join(ROOT, "llms.txt"), os.path.join(dist, "llms.txt"))
+INDEXNOW_KEY = "81e5f46776dd0dd067369e919c55b201"
+open(os.path.join(dist, INDEXNOW_KEY + ".txt"), "w").write(INDEXNOW_KEY)
+
 open(os.path.join(dist, "robots.txt"), "w").write(f"User-agent: *\nAllow: /\n\nSitemap: {SITE_URL}sitemap.xml\n")
 open(os.path.join(dist, "sitemap.xml"), "w").write(f"""<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:xhtml="http://www.w3.org/1999/xhtml">
