@@ -29,9 +29,14 @@ dist = os.path.dirname(ROOT)  # repository root
 os.makedirs(os.path.join(dist, "images"), exist_ok=True)
 shutil.copy(f"{SHOTS}/dashboard.jpg", os.path.join(dist, "images", "paycore-payroll-dashboard.jpg"))
 shutil.copy(f"{SHOTS}/payroll.jpg", os.path.join(dist, "images", "paycore-monthly-payroll-run.jpg"))
+# WebP copies for the pages themselves (smaller); the .jpg files stay for schema, sitemap and sharing
+from PIL import Image
+for src_name, out_name in [("dashboard", "paycore-payroll-dashboard"), ("payroll", "paycore-monthly-payroll-run"),
+                           ("ar-dashboard", "paycore-arabic-payroll-dashboard")]:
+    Image.open(f"{SHOTS}/{src_name}.jpg").save(os.path.join(dist, "images", out_name + ".webp"), "WEBP", quality=80, method=6)
 
-page = src.replace("__DASHBOARD__", "images/paycore-payroll-dashboard.jpg") \
-          .replace("__PAYROLL__", "images/paycore-monthly-payroll-run.jpg")
+page = src.replace("__DASHBOARD__", "images/paycore-payroll-dashboard.webp") \
+          .replace("__PAYROLL__", "images/paycore-monthly-payroll-run.webp")
 
 # split off the preview's own title/description; the real head is written below
 page = re.sub(r"^<title>.*?</title>\s*", "", page, count=1, flags=re.S)
@@ -123,7 +128,7 @@ seo_head = f"""<!doctype html>
 <meta name="twitter:description" content="{html.escape(DESC)}">
 <meta name="twitter:image" content="{SITE_URL}og-image.png">
 
-<link rel="preload" as="image" href="images/paycore-payroll-dashboard.jpg">
+<link rel="preload" as="image" href="images/paycore-payroll-dashboard.webp" type="image/webp">
 <script type="application/ld+json">
 {json.dumps(schema, ensure_ascii=False, indent=1)}
 </script>
@@ -140,6 +145,8 @@ ar_path = ar.build(dist, SITE_URL, DL, "PayCore-Payroll-Setup.1.0.0.exe", "PayCo
 ALT = (f'    <xhtml:link rel="alternate" hreflang="en" href="{SITE_URL}"/>\n'
        f'    <xhtml:link rel="alternate" hreflang="ar" href="{SITE_URL}{ar_path}"/>\n'
        f'    <xhtml:link rel="alternate" hreflang="x-default" href="{SITE_URL}"/>\n')
+import notfound
+notfound.build(dist)
 import guide
 g_en, g_ar = guide.build(dist, SITE_URL, TODAY[:4])
 G_ALT = (f'    <xhtml:link rel="alternate" hreflang="en" href="{g_en}"/>\n'

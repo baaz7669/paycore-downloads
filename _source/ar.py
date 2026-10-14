@@ -222,7 +222,7 @@ def build(out_dir, site_url, dl_base, setup_name, portable_name, shots_dir, year
 <div class="acts"><a class="btn btn-primary" href="#download">{DLICON}تحميل للويندوز</a><a class="btn btn-soft" href="{WA_DEMO}" target="_blank" rel="noopener">احجز عرضًا مجانيًا</a></div>
 <div class="pills"><span>{CHECK}ترخيص لمرة واحدة</span><span>{CHECK}عدد غير محدود من الموظفين</span><span>{CHECK}واجهة عربية كاملة</span></div>
 </div>
-<div class="shot rv"><img src="../images/paycore-arabic-payroll-dashboard.jpg" alt="لوحة تحكم برنامج الرواتب PayCore باللغة العربية: قاعدة الرواتب الشهرية وعدد الموظفين والسلف والقروض وتوزيع الرواتب حسب الأقسام" width="1200" height="750"></div>
+<div class="shot rv"><img src="../images/paycore-arabic-payroll-dashboard.webp" alt="لوحة تحكم برنامج الرواتب PayCore باللغة العربية: قاعدة الرواتب الشهرية وعدد الموظفين والسلف والقروض وتوزيع الرواتب حسب الأقسام" width="1200" height="750"></div>
 </div></header>
 
 <main>
