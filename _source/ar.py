@@ -122,9 +122,9 @@ section{padding-block:80px}.head{display:grid;gap:14px;margin-bottom:40px;max-wi
 .checks li i{width:30px;height:30px;border-radius:9px;background:#ecfdf5;color:var(--mint);display:grid;place-items:center}.checks li i svg{width:16px;height:16px}
 .checks b{color:var(--ink)}
 #download{background:linear-gradient(180deg,#eef4ff,#f6f8ff);border-block:1px solid var(--line)}
-.dl{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}@media (max-width:760px){.dl{grid-template-columns:1fr}}
+.dl{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}@media (max-width:1000px){.dl{grid-template-columns:1fr}}
 .dl .card{gap:12px}.tag{justify-self:start;font-size:13px;font-weight:700;padding:5px 12px;border-radius:999px;background:#e8efff;color:#1d4ed8}
-.file{direction:ltr;text-align:right;font-family:Consolas,monospace;font-size:14px;color:var(--muted);word-break:break-all}
+.file{direction:ltr;text-align:right;font-family:Consolas,monospace;font-size:14px;color:var(--muted);overflow-wrap:anywhere}.file.ar{direction:rtl;font-family:inherit}
 .note{margin-top:22px;background:#fffbeb;border:1px solid #fde68a;color:#6b4a0c;border-radius:var(--r);padding:18px 22px;font-size:16px}
 .price-tag{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 14px;background:#fff;border:1px solid var(--line);border-radius:20px;padding:18px 24px;justify-self:start;box-shadow:0 20px 40px -28px rgba(37,99,235,.45)}
 .price-tag .amt{direction:ltr;font:900 clamp(40px,6vw,56px)/1 var(--f-display);background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
@@ -254,9 +254,10 @@ def build(out_dir, site_url, dl_base, setup_name, portable_name, shots_dir, year
 
 <section id="download"><div class="wrap">
 <div class="head"><h2>تحميل برنامج PayCore <span class="grad">للويندوز</span></h2>
-<p class="lede">اختر ملف التثبيت للاستخدام المعتاد، أو النسخة المحمولة لتشغيل البرنامج من ذاكرة USB بدون تثبيت. يطلب البرنامج مفتاح الترخيص عند تشغيله أول مرة.</p></div>
+<p class="lede">حمّل PayCore من متجر مايكروسوفت لأسهل تثبيت مع تحديثات تلقائية، أو حمّل ملف التثبيت أو النسخة المحمولة مباشرة. يطلب البرنامج مفتاح الترخيص عند تشغيله أول مرة.</p></div>
 <div class="dl">
-<div class="card"><span class="tag">موصى به</span><h3>ملف التثبيت</h3><p>تثبيت عادي على ويندوز مع اختصار على سطح المكتب وقائمة ابدأ.</p><span class="file">{e(setup_name)} · 123 MB</span><a class="btn btn-primary" href="{dl_base}{setup_name}">{DLICON}تحميل ملف التثبيت</a></div>
+<div class="card"><span class="tag">موصى به</span><h3>متجر مايكروسوفت</h3><p>يُثبَّت ويُحدَّث عبر ويندوز نفسه بدون أي تحذيرات أمان. ابحث عن <bdi>PayCore Salary System</bdi>.</p><span class="file ar">تحميل مجاني · الترخيص يُباع بشكل منفصل</span><a class="btn btn-primary" href="https://apps.microsoft.com/detail/9NMS2FWD82J3" target="_blank" rel="noopener">{DLICON}متجر مايكروسوفت</a></div>
+<div class="card"><span class="tag" style="background:#f1f5f9;color:#334155">تحميل مباشر</span><h3>ملف التثبيت</h3><p>تثبيت عادي على ويندوز مع اختصار على سطح المكتب وقائمة ابدأ.</p><span class="file">{e(setup_name)} · 123 MB</span><a class="btn btn-soft" href="{dl_base}{setup_name}">{DLICON}تحميل ملف التثبيت</a></div>
 <div class="card"><span class="tag" style="background:#ecfdf5;color:#047857">بدون تثبيت</span><h3>النسخة المحمولة</h3><p>ملف واحد يعمل مباشرة بدون تثبيت، مناسب لذاكرة USB وأجهزة المكاتب.</p><span class="file">{e(portable_name)} · 123 MB</span><a class="btn btn-soft" href="{dl_base}{portable_name}">{DLICON}تحميل النسخة المحمولة</a></div>
 </div>
 <p class="note"><b>متطلبات التشغيل:</b> ويندوز 10 أو 11 (64 بت)، ولا يحتاج إلى إنترنت.</p>

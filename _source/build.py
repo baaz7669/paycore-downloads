@@ -76,7 +76,7 @@ schema = {
      "softwareVersion": "1.0.0",
      "fileSize": "123MB",
      "downloadUrl": DL + "PayCore-Payroll-Setup.1.0.0.exe",
-     "installUrl": DL + "PayCore-Payroll-Setup.1.0.0.exe",
+     "installUrl": "https://apps.microsoft.com/detail/9NMS2FWD82J3",
      "inLanguage": ["en", "ar"],
      "screenshot": [SITE_URL + "images/paycore-payroll-dashboard.jpg",
                     SITE_URL + "images/paycore-monthly-payroll-run.jpg"],

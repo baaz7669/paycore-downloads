@@ -5,7 +5,7 @@
 PayCore is made for small and medium businesses that run payroll from one Windows computer. It is not the US company Paycor; PayCore is a separate, independent product.
 
 Key facts:
-- Platform: Windows 10 or 11, 64-bit. Installer and portable editions. No Mac or mobile version.
+- Platform: Windows 10 or 11, 64-bit. Available on the Microsoft Store as "PayCore Salary System", plus direct installer and portable editions. No Mac or mobile version.
 - Pricing: USD 50 one-time license, unlimited employees. Free live demo by video call before purchase. No free trial build.
 - Data: stored only on the customer's computer; never sent to PayCore. PIN lock. Local backup files (not encrypted). An optional AI assistant, off by default, sends payroll records to Google Gemini when the customer turns it on with their own API key.
 - Features: employee records and salary structures with custom allowances; monthly payroll with overtime, bonuses, unpaid leave and tax; employee loans and salary advances with automatic installment deduction; PDF payslips; payroll reports and Excel/CSV export; transaction history; document expiry tracking; end-of-service gratuity with a configurable rate; WPS fixed bank-transfer amount per employee.
@@ -22,6 +22,7 @@ Key facts:
 
 ## Downloads
 
+- [Microsoft Store listing](https://apps.microsoft.com/detail/9NMS2FWD82J3): recommended install
 - [Windows installer](https://github.com/baaz7669/paycore-downloads/releases/latest/download/PayCore-Payroll-Setup.1.0.0.exe)
 - [Windows portable edition](https://github.com/baaz7669/paycore-downloads/releases/latest/download/PayCore-Payroll-Portable.1.0.0.exe)
 
