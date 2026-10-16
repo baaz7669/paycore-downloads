@@ -74,9 +74,9 @@ schema = {
      "applicationCategory": "BusinessApplication",
      "applicationSubCategory": "Payroll software",
      "operatingSystem": "Windows 10, Windows 11",
-     "softwareVersion": "1.0.0",
+     "softwareVersion": "1.0.1",
      "fileSize": "123MB",
-     "downloadUrl": DL + "PayCore-Payroll-Setup.1.0.0.exe",
+     "downloadUrl": DL + "PayCore-Payroll-Setup.exe",
      "installUrl": "https://apps.microsoft.com/detail/9NMS2FWD82J3",
      "inLanguage": ["en", "ar"],
      "screenshot": [SITE_URL + "images/paycore-payroll-dashboard.jpg",
@@ -146,7 +146,7 @@ sys.path.insert(0, ROOT)
 import legal
 extra = legal.build(dist, SITE_URL, TODAY[:4])
 import ar
-ar_path = ar.build(dist, SITE_URL, DL, "PayCore-Payroll-Setup.1.0.0.exe", "PayCore-Payroll-Portable.1.0.0.exe", SHOTS, TODAY[:4])
+ar_path = ar.build(dist, SITE_URL, DL, "PayCore-Payroll-Setup.exe", "PayCore-Payroll-Portable.exe", SHOTS, TODAY[:4])
 ALT = (f'    <xhtml:link rel="alternate" hreflang="en" href="{SITE_URL}"/>\n'
        f'    <xhtml:link rel="alternate" hreflang="ar" href="{SITE_URL}{ar_path}"/>\n'
        f'    <xhtml:link rel="alternate" hreflang="x-default" href="{SITE_URL}"/>\n')
