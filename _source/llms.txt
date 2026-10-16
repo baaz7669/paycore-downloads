@@ -23,7 +23,7 @@ Key facts:
 ## Downloads
 
 - [Microsoft Store listing](https://apps.microsoft.com/detail/9NMS2FWD82J3): recommended install
-- [LinkedIn company page](https://www.linkedin.com/company/145310682/)
+- [LinkedIn company page](https://www.linkedin.com/company/paycoresalarysystem/)
 - [Windows installer](https://github.com/baaz7669/paycore-downloads/releases/latest/download/PayCore-Payroll-Setup.1.0.0.exe)
 - [Windows portable edition](https://github.com/baaz7669/paycore-downloads/releases/latest/download/PayCore-Payroll-Portable.1.0.0.exe)
 
