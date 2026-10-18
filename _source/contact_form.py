@@ -48,6 +48,7 @@ TEXT = {
         "wa": "Send on WhatsApp", "em": "Send by email",
         "note": "Nothing is stored on this website. Your message goes straight to our WhatsApp or email.",
         "err": "Please add your name and choose what you're interested in.",
+        "err_contact": "Please enter a valid email address or phone number, or leave it empty.",
         "hello": "Hello PayCore,", "subject": "PayCore enquiry",
         "labels": ["Name", "Company", "Contact", "Employees", "Interested in", "Message"],
     },
@@ -62,6 +63,7 @@ TEXT = {
         "wa": "أرسل عبر واتساب", "em": "أرسل بالبريد الإلكتروني",
         "note": "لا يُحفظ أي شيء على هذا الموقع. تصل رسالتك مباشرة إلى واتساب أو بريدنا الإلكتروني.",
         "err": "يرجى كتابة اسمك واختيار ما ترغب فيه.",
+        "err_contact": "يرجى إدخال بريد إلكتروني أو رقم هاتف صحيح، أو اترك الحقل فارغًا.",
         "hello": "مرحبًا PayCore،", "subject": "استفسار عن PayCore",
         "labels": ["الاسم", "الشركة", "التواصل", "عدد الموظفين", "أرغب في", "الرسالة"],
     },
@@ -76,7 +78,7 @@ def html(lang):
     rv = ' rv' if lang == "en" else ''
     return f"""<div class="cform{rv}" id="contact">
   <div class="intro"><h2>{t['title']}</h2><p>{t['intro']}</p></div>
-  <form id="cform" novalidate data-wa="{WA_NUMBER}" data-email="{EMAIL}" data-hello="{t['hello']}" data-subject="{t['subject']}" data-labels="{'|'.join(t['labels'])}">
+  <form id="cform" novalidate data-err-contact="{t['err_contact']}" data-err="{t['err']}" data-wa="{WA_NUMBER}" data-email="{EMAIL}" data-hello="{t['hello']}" data-subject="{t['subject']}" data-labels="{'|'.join(t['labels'])}">
     <label><span class="lbl">{t['name']}</span><input id="cf-name" name="name" autocomplete="name" required></label>
     <label><span class="lbl">{t['company']} <span class="opt">{o}</span></span><input id="cf-company" name="company" autocomplete="organization"></label>
     <label><span class="lbl">{t['contact']} <span class="opt">{o}</span></span><input id="cf-contact" name="contact" autocomplete="email" dir="ltr"></label>
@@ -103,8 +105,12 @@ JS = """<script>
     e.preventDefault();
     var via = (e.submitter && e.submitter.value) || 'wa';
     var v = function (id) { var el = document.getElementById(id); return el ? el.value.trim() : ''; };
-    var name = v('cf-name'), need = v('cf-need'), err = document.getElementById('cf-err');
-    if (!name || !need) { err.hidden = false; (name ? document.getElementById('cf-need') : document.getElementById('cf-name')).focus(); return; }
+    var name = v('cf-name'), need = v('cf-need'), contact = v('cf-contact'), err = document.getElementById('cf-err');
+    if (!name || !need) { err.textContent = f.getAttribute('data-err'); err.hidden = false; (name ? document.getElementById('cf-need') : document.getElementById('cf-name')).focus(); return; }
+    // Optional field: if filled, it must look like an email or a phone number (7+ digits).
+    var isEmail = /^[^\\s@]+@[^\\s@]+\\.[^\\s@]{2,}$/.test(contact);
+    var isPhone = /^[+()\\d\\s-]+$/.test(contact) && contact.replace(/\\D/g, '').length >= 7;
+    if (contact && !isEmail && !isPhone) { err.textContent = f.getAttribute('data-err-contact'); err.hidden = false; document.getElementById('cf-contact').focus(); return; }
     err.hidden = true;
     var L = f.getAttribute('data-labels').split('|');
     var vals = [name, v('cf-company'), v('cf-contact'), v('cf-staff'), need, v('cf-msg')];

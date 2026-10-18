@@ -330,7 +330,7 @@ footer a{color:var(--ink);font-weight:600;text-decoration:none}
 <section id="contact-section" style="padding-top:20px"><div class="wrap">
 <div class="cform" id="contact">
   <div class="intro"><h2>أرسل لنا <span class="grad">رسالة</span></h2><p>أخبرنا قليلًا عن شركتك وما تحتاجه. أسرع طريقة هي واتساب: يفتح الزر محادثة فيها بياناتك مكتوبة مسبقًا، وما عليك إلا الضغط على إرسال.</p></div>
-  <form id="cform" novalidate data-wa="96890959084" data-email="info@paycoresalarysystem.com" data-hello="مرحبًا PayCore،" data-subject="استفسار عن PayCore" data-labels="الاسم|الشركة|التواصل|عدد الموظفين|أرغب في|الرسالة">
+  <form id="cform" novalidate data-err-contact="يرجى إدخال بريد إلكتروني أو رقم هاتف صحيح، أو اترك الحقل فارغًا." data-err="يرجى كتابة اسمك واختيار ما ترغب فيه." data-wa="96890959084" data-email="info@paycoresalarysystem.com" data-hello="مرحبًا PayCore،" data-subject="استفسار عن PayCore" data-labels="الاسم|الشركة|التواصل|عدد الموظفين|أرغب في|الرسالة">
     <label><span class="lbl">الاسم</span><input id="cf-name" name="name" autocomplete="name" required></label>
     <label><span class="lbl">الشركة <span class="opt">(اختياري)</span></span><input id="cf-company" name="company" autocomplete="organization"></label>
     <label><span class="lbl">البريد الإلكتروني أو الهاتف <span class="opt">(اختياري)</span></span><input id="cf-contact" name="contact" autocomplete="email" dir="ltr"></label>
@@ -355,8 +355,12 @@ footer a{color:var(--ink);font-weight:600;text-decoration:none}
     e.preventDefault();
     var via = (e.submitter && e.submitter.value) || 'wa';
     var v = function (id) { var el = document.getElementById(id); return el ? el.value.trim() : ''; };
-    var name = v('cf-name'), need = v('cf-need'), err = document.getElementById('cf-err');
-    if (!name || !need) { err.hidden = false; (name ? document.getElementById('cf-need') : document.getElementById('cf-name')).focus(); return; }
+    var name = v('cf-name'), need = v('cf-need'), contact = v('cf-contact'), err = document.getElementById('cf-err');
+    if (!name || !need) { err.textContent = f.getAttribute('data-err'); err.hidden = false; (name ? document.getElementById('cf-need') : document.getElementById('cf-name')).focus(); return; }
+    // Optional field: if filled, it must look like an email or a phone number (7+ digits).
+    var isEmail = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(contact);
+    var isPhone = /^[+()\d\s-]+$/.test(contact) && contact.replace(/\D/g, '').length >= 7;
+    if (contact && !isEmail && !isPhone) { err.textContent = f.getAttribute('data-err-contact'); err.hidden = false; document.getElementById('cf-contact').focus(); return; }
     err.hidden = true;
     var L = f.getAttribute('data-labels').split('|');
     var vals = [name, v('cf-company'), v('cf-contact'), v('cf-staff'), need, v('cf-msg')];

@@ -484,6 +484,13 @@ section{padding-block:100px}
   .cmp-head>span:first-child{display:none}
   .cmp-row>span{padding:12px 14px;font-size:15px}
 }
+/* very narrow phones (e.g. foldable cover screens, 280-360px) */
+@media (max-width:360px){
+  .cmp-row>span{padding:10px 10px;font-size:13.5px;gap:6px}
+  .cmp i,.cmp-brand .mark{display:none}
+  .cmp-brand{font-size:16px}
+  .nav .btn{padding:9px 12px;font-size:13px}
+}
 
 /* contact form */
 .cform{background:#fff;border:1px solid var(--line);border-radius:24px;padding:32px;display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:32px;align-items:start}
@@ -877,7 +884,7 @@ main,header,footer{position:relative;z-index:1}
   <div class="wrap">
 <div class="cform rv" id="contact">
   <div class="intro"><h2>Send us a <span class="grad-text">message</span></h2><p>Tell us a little about your business and what you need. The quickest way is WhatsApp: the button opens a chat with your details already written, so you only press send.</p></div>
-  <form id="cform" novalidate data-wa="96890959084" data-email="info@paycoresalarysystem.com" data-hello="Hello PayCore," data-subject="PayCore enquiry" data-labels="Name|Company|Contact|Employees|Interested in|Message">
+  <form id="cform" novalidate data-err-contact="Please enter a valid email address or phone number, or leave it empty." data-err="Please add your name and choose what you're interested in." data-wa="96890959084" data-email="info@paycoresalarysystem.com" data-hello="Hello PayCore," data-subject="PayCore enquiry" data-labels="Name|Company|Contact|Employees|Interested in|Message">
     <label><span class="lbl">Your name</span><input id="cf-name" name="name" autocomplete="name" required></label>
     <label><span class="lbl">Company <span class="opt">(optional)</span></span><input id="cf-company" name="company" autocomplete="organization"></label>
     <label><span class="lbl">Email or phone <span class="opt">(optional)</span></span><input id="cf-contact" name="contact" autocomplete="email" dir="ltr"></label>
@@ -902,8 +909,12 @@ main,header,footer{position:relative;z-index:1}
     e.preventDefault();
     var via = (e.submitter && e.submitter.value) || 'wa';
     var v = function (id) { var el = document.getElementById(id); return el ? el.value.trim() : ''; };
-    var name = v('cf-name'), need = v('cf-need'), err = document.getElementById('cf-err');
-    if (!name || !need) { err.hidden = false; (name ? document.getElementById('cf-need') : document.getElementById('cf-name')).focus(); return; }
+    var name = v('cf-name'), need = v('cf-need'), contact = v('cf-contact'), err = document.getElementById('cf-err');
+    if (!name || !need) { err.textContent = f.getAttribute('data-err'); err.hidden = false; (name ? document.getElementById('cf-need') : document.getElementById('cf-name')).focus(); return; }
+    // Optional field: if filled, it must look like an email or a phone number (7+ digits).
+    var isEmail = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(contact);
+    var isPhone = /^[+()\d\s-]+$/.test(contact) && contact.replace(/\D/g, '').length >= 7;
+    if (contact && !isEmail && !isPhone) { err.textContent = f.getAttribute('data-err-contact'); err.hidden = false; document.getElementById('cf-contact').focus(); return; }
     err.hidden = true;
     var L = f.getAttribute('data-labels').split('|');
     var vals = [name, v('cf-company'), v('cf-contact'), v('cf-staff'), need, v('cf-msg')];
@@ -1064,9 +1075,16 @@ var DOWNLOADS = {
     tilt.style.setProperty('--rx', (-y * 6).toFixed(2) + 'deg');
   });
   tilt.addEventListener('mouseleave', function () { tilt.style.setProperty('--ry', '0deg'); tilt.style.setProperty('--rx', '0deg'); });
+  // Scroll tilt: at most once per frame, and only while the hero image is on screen.
+  var tiltTick = false;
   window.addEventListener('scroll', function () {
-    var r = tilt.getBoundingClientRect(), p = Math.max(0, Math.min(1, 1 - r.top / window.innerHeight));
-    if (!tilt.matches(':hover')) tilt.style.setProperty('--rx', (8 - p * 8).toFixed(2) + 'deg');
+    if (tiltTick || window.scrollY > window.innerHeight * 1.5) return;
+    tiltTick = true;
+    requestAnimationFrame(function () {
+      tiltTick = false;
+      var r = tilt.getBoundingClientRect(), p = Math.max(0, Math.min(1, 1 - r.top / window.innerHeight));
+      if (!tilt.matches(':hover')) tilt.style.setProperty('--rx', (8 - p * 8).toFixed(2) + 'deg');
+    });
   }, { passive: true });
 
   // spotlight follows the cursor on feature cards
@@ -1085,13 +1103,20 @@ var DOWNLOADS = {
 
   // scroll progress, nav shadow, back-to-top
   var prog = document.getElementById('progress'), nav = document.getElementById('nav'), totop = document.getElementById('totop');
+  // Runs at most once per frame; page height is measured once and on resize, not on every scroll event.
+  var pageH = 0, scrollTick = false;
+  function measure() { pageH = document.documentElement.scrollHeight - innerHeight; }
   function onScroll() {
-    var h = document.documentElement.scrollHeight - innerHeight, y = scrollY;
-    prog.style.setProperty('--sp', h > 0 ? (y / h).toFixed(4) : 0);
+    scrollTick = false;
+    var y = scrollY;
+    prog.style.setProperty('--sp', pageH > 0 ? Math.min(1, y / pageH).toFixed(4) : 0);
     nav.classList.toggle('scrolled', y > 30);
     totop.classList.toggle('show', y > 900);
   }
-  addEventListener('scroll', onScroll, { passive: true }); onScroll();
+  addEventListener('scroll', function () { if (!scrollTick) { scrollTick = true; requestAnimationFrame(onScroll); } }, { passive: true });
+  addEventListener('resize', function () { measure(); onScroll(); });
+  addEventListener('load', function () { measure(); onScroll(); });
+  measure(); onScroll();
 
   // cursor glow
   var glow = document.getElementById('glow');

@@ -283,6 +283,13 @@ section{padding-block:100px}
   .cmp-head>span:first-child{display:none}
   .cmp-row>span{padding:12px 14px;font-size:15px}
 }
+/* very narrow phones (e.g. foldable cover screens, 280-360px) */
+@media (max-width:360px){
+  .cmp-row>span{padding:10px 10px;font-size:13.5px;gap:6px}
+  .cmp i,.cmp-brand .mark{display:none}
+  .cmp-brand{font-size:16px}
+  .nav .btn{padding:9px 12px;font-size:13px}
+}
 /* about */
 #about{padding-top:20px}
 .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px}
@@ -792,9 +799,16 @@ var DOWNLOADS = {
     tilt.style.setProperty('--rx', (-y * 6).toFixed(2) + 'deg');
   });
   tilt.addEventListener('mouseleave', function () { tilt.style.setProperty('--ry', '0deg'); tilt.style.setProperty('--rx', '0deg'); });
+  // Scroll tilt: at most once per frame, and only while the hero image is on screen.
+  var tiltTick = false;
   window.addEventListener('scroll', function () {
-    var r = tilt.getBoundingClientRect(), p = Math.max(0, Math.min(1, 1 - r.top / window.innerHeight));
-    if (!tilt.matches(':hover')) tilt.style.setProperty('--rx', (8 - p * 8).toFixed(2) + 'deg');
+    if (tiltTick || window.scrollY > window.innerHeight * 1.5) return;
+    tiltTick = true;
+    requestAnimationFrame(function () {
+      tiltTick = false;
+      var r = tilt.getBoundingClientRect(), p = Math.max(0, Math.min(1, 1 - r.top / window.innerHeight));
+      if (!tilt.matches(':hover')) tilt.style.setProperty('--rx', (8 - p * 8).toFixed(2) + 'deg');
+    });
   }, { passive: true });
 
   // spotlight follows the cursor on feature cards
@@ -813,13 +827,20 @@ var DOWNLOADS = {
 
   // scroll progress, nav shadow, back-to-top
   var prog = document.getElementById('progress'), nav = document.getElementById('nav'), totop = document.getElementById('totop');
+  // Runs at most once per frame; page height is measured once and on resize, not on every scroll event.
+  var pageH = 0, scrollTick = false;
+  function measure() { pageH = document.documentElement.scrollHeight - innerHeight; }
   function onScroll() {
-    var h = document.documentElement.scrollHeight - innerHeight, y = scrollY;
-    prog.style.setProperty('--sp', h > 0 ? (y / h).toFixed(4) : 0);
+    scrollTick = false;
+    var y = scrollY;
+    prog.style.setProperty('--sp', pageH > 0 ? Math.min(1, y / pageH).toFixed(4) : 0);
     nav.classList.toggle('scrolled', y > 30);
     totop.classList.toggle('show', y > 900);
   }
-  addEventListener('scroll', onScroll, { passive: true }); onScroll();
+  addEventListener('scroll', function () { if (!scrollTick) { scrollTick = true; requestAnimationFrame(onScroll); } }, { passive: true });
+  addEventListener('resize', function () { measure(); onScroll(); });
+  addEventListener('load', function () { measure(); onScroll(); });
+  measure(); onScroll();
 
   // cursor glow
   var glow = document.getElementById('glow');
