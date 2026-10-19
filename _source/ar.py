@@ -212,7 +212,7 @@ def build(out_dir, site_url, dl_base, setup_name, portable_name, shots_dir, year
 <nav class="nav" aria-label="القائمة الرئيسية"><div class="wrap"><div class="nav-in">
 <a class="brand" href="./">{MARK}PayCore</a>
 <ul>
-<li><a href="#features">المزايا</a></li><li><a href="#compare">المقارنة</a></li><li><a href="#download">التحميل</a></li><li><a href="#license">الترخيص</a></li><li><a href="#faq">الأسئلة الشائعة</a></li><li><a href="#contact">تواصل معنا</a></li>
+<li><a href="#features">المزايا</a></li><li><a href="#compare">المقارنة</a></li><li><a href="#download">التحميل</a></li><li><a href="#license">الترخيص</a></li><li><a href="gratuity-calculator/">حاسبة نهاية الخدمة</a></li><li><a href="#contact">تواصل معنا</a></li>
 <li><a href="../" hreflang="en" lang="en">English</a></li>
 </ul>
 <a class="btn btn-primary" href="#download">تحميل</a>
@@ -242,6 +242,11 @@ def build(out_dir, site_url, dl_base, setup_name, portable_name, shots_dir, year
 <li><i>{CHECK}</i><span><b>نسخ احتياطي واستعادة.</b> احفظ نسخة احتياطية في أي مجلد أو ذاكرة USB واستعدها على أي جهاز. ملفات النسخ غير مشفرة، لذا احفظها في مكان آمن.</span></li>
 <li><i>{CHECK}</i><span><b>أي عملة.</b> الريال العماني والدينار الكويتي والبحريني بثلاث خانات عشرية، والدرهم والريال السعودي والقطري وأي عملة أخرى.</span></li>
 </ul></div>
+</div></section>
+
+<section class="toolband" id="gratuity" aria-label="حاسبة مكافأة نهاية الخدمة"><style>.toolband{{padding-block:10px 30px}}.toolcard{{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:18px 28px;border-radius:24px;padding:26px 30px;background:linear-gradient(115deg,#eef4ff,#e7fbf3);border:1px solid #d6e3ff}}.toolcard .tc-t{{max-width:60ch}}.toolcard .tc-k{{display:inline-block;font-size:12.5px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:#047857;background:#fff;border:1px solid #c9f2df;border-radius:999px;padding:4px 10px;margin-bottom:8px}}.toolcard h2{{margin:0 0 6px;font-size:clamp(22px,3.4vw,28px);line-height:1.2}}.toolcard p{{margin:0;color:#4b5a74}}@media (max-width:560px){{.toolcard{{padding:22px 18px}}.toolcard .btn{{width:100%;justify-content:center}}}}</style><div class="wrap">
+<div class="toolcard rv"><div class="tc-t"><span class="tc-k">أداة مجانية</span><h2>حاسبة مكافأة نهاية الخدمة</h2><p>احسب مكافأة نهاية الخدمة لأي موظف في عمان أو الإمارات أو السعودية خلال ثوانٍ. بدون تسجيل وبدون تحميل.</p></div>
+<a class="btn btn-primary" href="gratuity-calculator/">افتح الحاسبة</a></div>
 </div></section>
 
 <section id="compare" style="padding-top:20px"><div class="wrap">
