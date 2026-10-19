@@ -158,6 +158,10 @@ G_ALT = (f'    <xhtml:link rel="alternate" hreflang="en" href="{g_en}"/>\n'
          f'    <xhtml:link rel="alternate" hreflang="ar" href="{g_ar}"/>\n'
          f'    <xhtml:link rel="alternate" hreflang="x-default" href="{g_en}"/>\n')
 guide_urls = "".join(f"  <url>\n    <loc>{u}</loc>\n    <lastmod>{TODAY}</lastmod>\n{G_ALT}  </url>\n" for u in (g_en, g_ar))
+import gratuity
+c_en, c_ar = gratuity.build(dist, SITE_URL, TODAY[:4])
+C_ALT = G_ALT.replace(g_en, c_en).replace(g_ar, c_ar)
+guide_urls += "".join(f"  <url>\n    <loc>{u}</loc>\n    <lastmod>{TODAY}</lastmod>\n{C_ALT}  </url>\n" for u in (c_en, c_ar))
 extra_urls = "".join(f"  <url>\n    <loc>{SITE_URL}{p}</loc>\n    <lastmod>{TODAY}</lastmod>\n  </url>\n" for p in extra)
 
 # AI-readable summary (llms.txt) and the IndexNow key file used by .github/workflows/indexnow.yml
