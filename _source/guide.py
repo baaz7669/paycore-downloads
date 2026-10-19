@@ -158,7 +158,7 @@ EN_BODY = f"""
 <li><b>Monthly calculations:</b> overtime, bonuses, unpaid leave and deductions worked out automatically.</li>
 <li><b>Loans and advances:</b> installments taken from salary each month, with a way to pause or record early repayment.</li>
 <li><b>Payslips and reports:</b> PDF payslips with your company name, plus an Excel export for your accountant or bank.</li>
-<li><b>End-of-service and bank rules:</b> gratuity at the rate your country uses (see our <a href="/gratuity-calculator/">gratuity calculator</a>), and a fixed bank-transfer amount if you follow a wage protection system (WPS).</li>
+<li><b>End-of-service and bank rules:</b> gratuity at the rate your country uses (see our <a href="/gratuity-calculator/">free gratuity calculator</a>), and a fixed bank-transfer amount if you follow a wage protection system (WPS).</li>
 <li><b>Currency and language:</b> your currency with the right decimals (OMR, KWD and BHD use three), and Arabic if your team needs it.</li>
 <li><b>Your data:</b> where it's stored, how you back it up, and how you get it out if you leave.</li>
 <li><b>Support:</b> who answers when payroll is due tomorrow and something looks wrong.</li>
@@ -315,14 +315,14 @@ def build(out_dir, site_url, year):
          EN_BODY, "/", "Back to home",
          "https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,800&family=Figtree:wght@400;600;700&display=swap",
          '"Figtree","Segoe UI",system-ui,sans-serif', '"Bricolage Grotesque","Segoe UI",sans-serif',
-         '<a href="/">Home</a> · <a href="/gratuity-calculator/">Gratuity calculator</a> · <a href="/ar/salary-software-guide/" hreflang="ar" lang="ar">العربية</a> · <a href="/privacy.html">Privacy</a> · <a href="/terms.html">Terms</a>',
+         '<a href="/">Home</a> · <a href="/gratuity-calculator/">Free gratuity calculator</a> · <a href="/salary-calculator/">Free salary calculator</a> · <a href="/ar/salary-software-guide/" hreflang="ar" lang="ar">العربية</a> · <a href="/privacy.html">Privacy</a> · <a href="/terms.html">Terms</a>',
          "How to choose salary software for a small business", os.path.join(out_dir, "salary-software-guide")),
         ("ar", ar_url, en_url, "كيف تختار أفضل برنامج رواتب لشركتك الصغيرة (دليل 2026) | PayCore",
          "مقارنة بين Excel وبرامج الرواتب بالاشتراك والبرامج بترخيص لمرة واحدة: المزايا التي يجب التحقق منها، والتكلفة الحقيقية لعشرين موظفًا، وأسئلة قبل الشراء.",
          AR_BODY, "/ar/", "العودة للرئيسية",
          "https://fonts.googleapis.com/css2?family=Cairo:wght@700;800&family=IBM+Plex+Sans+Arabic:wght@400;600;700&display=swap",
          '"IBM Plex Sans Arabic","Segoe UI",Tahoma,sans-serif', '"Cairo","Segoe UI",Tahoma,sans-serif',
-         '<a href="/ar/">الرئيسية</a> · <a href="/ar/gratuity-calculator/">حاسبة مكافأة نهاية الخدمة</a> · <a href="/salary-software-guide/" hreflang="en" lang="en">English</a> · <a href="/privacy.html">سياسة الخصوصية</a> · <a href="/terms.html">شروط الاستخدام</a>',
+         '<a href="/ar/">الرئيسية</a> · <a href="/ar/gratuity-calculator/">حاسبة مكافأة نهاية الخدمة المجانية</a> · <a href="/ar/salary-calculator/">حاسبة الراتب المجانية</a> · <a href="/salary-software-guide/" hreflang="en" lang="en">English</a> · <a href="/privacy.html">سياسة الخصوصية</a> · <a href="/terms.html">شروط الاستخدام</a>',
          "كيف تختار برنامج الرواتب المناسب لشركتك الصغيرة", os.path.join(out_dir, "ar", "salary-software-guide")),
     ]
     for lang, url, alt, title, desc, body, home, back, fonts, bf, df, links, headline, folder in pages:

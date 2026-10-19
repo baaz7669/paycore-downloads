@@ -65,6 +65,7 @@ p{margin:0}
 .nav ul a:hover{background:#eef3ff;color:var(--blue)}
 .nav .btn{padding:11px 18px;font-size:14px}
 @media (max-width:760px){.nav ul{display:none}.nav-in{justify-content:space-between}}
+@media (min-width:761px) and (max-width:980px){.nav ul a{padding:8px 8px;font-size:14px}.nav ul li:nth-child(2){display:none}}
 
 /* hero */
 .hero{position:relative;padding-block:40px 40px;isolation:isolate;overflow-x:clip}
@@ -418,7 +419,7 @@ main,header,footer{position:relative;z-index:1}
         <li><a href="#compare">Compare</a></li>
         <li><a href="#download">Download</a></li>
         <li><a href="#license">License</a></li>
-        <li><a href="gratuity-calculator/">Gratuity calculator</a></li>
+        <li><a class="navfree" href="#free-tools">Free calculators</a></li>
         <li><a href="#contact">Contact</a></li>
         <li><a href="ar/" hreflang="ar" lang="ar">العربية</a></li>
       </ul>
@@ -527,11 +528,18 @@ main,header,footer{position:relative;z-index:1}
   </div>
 </section>
 
-<section class="toolband" id="gratuity" aria-label="Free gratuity calculator"><style>.toolband{padding-block:10px 30px}.toolcard{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:18px 28px;border-radius:24px;padding:26px 30px;background:linear-gradient(115deg,#eef4ff,#e7fbf3);border:1px solid #d6e3ff}.toolcard .tc-t{max-width:60ch}.toolcard .tc-k{display:inline-block;font-size:12.5px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:#047857;background:#fff;border:1px solid #c9f2df;border-radius:999px;padding:4px 10px;margin-bottom:8px}.toolcard h2{margin:0 0 6px;font-size:clamp(22px,3.4vw,28px);line-height:1.2}.toolcard p{margin:0;color:#4b5a74}@media (max-width:560px){.toolcard{padding:22px 18px}.toolcard .btn{width:100%;justify-content:center}}</style>
+<section class="toolband" id="free-tools" aria-label="Free payroll calculators"><style>.toolband{padding-block:10px 30px}.toolcard{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:18px 28px;border-radius:24px;padding:26px 30px;background:linear-gradient(115deg,#eef4ff,#e7fbf3);border:1px solid #d6e3ff}.toolcard .tc-t{max-width:60ch}.toolcard .tc-k{display:inline-block;font-size:12.5px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:#047857;background:#fff;border:1px solid #c9f2df;border-radius:999px;padding:4px 10px;margin-bottom:8px}.toolcard h2{margin:0 0 6px;font-size:clamp(22px,3.4vw,28px);line-height:1.2}.toolcard p{margin:0;color:#4b5a74}@media (max-width:560px){.toolcard{padding:22px 18px}.toolcard .btn{width:100%;justify-content:center}}.toolgrid{display:grid;grid-template-columns:1fr 1fr;gap:18px}@media (max-width:860px){.toolgrid{grid-template-columns:1fr}}.toolcard{flex-direction:column;align-items:flex-start;box-shadow:0 0 0 3px #a7f3d0}.toolcard .tc-k{background:#059669;color:#fff;border-color:#059669}.toolhead{text-align:center;margin:0 0 18px}.toolhead h2{margin:0}.nav ul a.navfree{background:#059669;color:#fff}.nav ul a.navfree:hover{background:#047857;color:#fff}</style>
   <div class="wrap">
+    <div class="toolhead rv"><h2>Free payroll calculators</h2></div>
+    <div class="toolgrid">
     <div class="toolcard rv">
-      <div class="tc-t"><span class="tc-k">Free tool</span><h2>End-of-service gratuity calculator</h2><p>Work out gratuity for any employee in Oman, the UAE or Saudi Arabia in seconds. No sign-up, no download.</p></div>
-      <a class="btn btn-primary" href="gratuity-calculator/">Open the calculator</a>
+      <div class="tc-t"><span class="tc-k">Free</span><h2>Free gratuity calculator</h2><p>End-of-service gratuity for any employee in Oman, the UAE or Saudi Arabia, in seconds. No sign-up, no download.</p></div>
+      <a class="btn btn-primary" href="gratuity-calculator/">Open free gratuity calculator</a>
+    </div>
+    <div class="toolcard rv">
+      <div class="tc-t"><span class="tc-k">Free</span><h2>Free salary calculator</h2><p>Deductions for absent and unpaid leave days, or pay for days worked. Use full salary, basic only or selected allowances.</p></div>
+      <a class="btn btn-primary" href="salary-calculator/">Open free salary calculator</a>
+    </div>
     </div>
   </div>
 </section>
@@ -690,7 +698,7 @@ main,header,footer{position:relative;z-index:1}
           <details><summary>What should a good salary management system include?</summary><p>For a small business, look for employee records with salary structures, automatic monthly payroll with overtime and leave, loan and advance tracking, payslips and reports, and end-of-service calculations. Also check the pricing: per-employee subscriptions get expensive as you grow. PayCore includes all of these with a one-time license. Our <a href="salary-software-guide/">salary software guide</a> compares the options in more detail.</p></details>
           <details><summary>Can PayCore replace my Excel payroll sheet?</summary><p>Yes. You enter your employees and their salary structure once, and PayCore calculates overtime, unpaid leave, loan installments and net pay every month, then produces payslips and an Excel report for your accountant.</p></details>
           <details><summary>Can I move it to a new computer?</summary><p>Yes. Install PayCore on the new computer, activate it with the same email and license key, and restore your data from a backup.</p></details>
-          <details><summary>Does it handle payroll in Oman and the Gulf?</summary><p>Yes. Omani Rial, Kuwaiti Dinar and Bahraini Dinar use 3 decimals, and AED, SAR and QAR are built in. PayCore also has a full Arabic interface, end-of-service gratuity with your own rate (try our free <a href="gratuity-calculator/">gratuity calculator</a>), and WPS bank-transfer rules for each employee.</p></details>
+          <details><summary>Does it handle payroll in Oman and the Gulf?</summary><p>Yes. Omani Rial, Kuwaiti Dinar and Bahraini Dinar use 3 decimals, and AED, SAR and QAR are built in. PayCore also has a full Arabic interface, end-of-service gratuity with your own rate (try our <a href="gratuity-calculator/">free gratuity calculator</a>), and WPS bank-transfer rules for each employee.</p></details>
           <details><summary>What if I lose my license key?</summary><p>Contact us with the email address the license was registered to, and we'll send it again.</p></details>
           <details><summary>Is my data safe?</summary><p>Your payroll data stays on your computer and is never sent to us. The only exception is the optional AI assistant: if you turn it on, your payroll records are sent to Google with each question. Access is protected by a PIN, and backup files are not encrypted, so store them securely.</p></details>
         </div>
@@ -714,7 +722,7 @@ main,header,footer{position:relative;z-index:1}
 <footer>
   <div class="wrap">
     <span>© <span id="yr">2026</span> PayCore. All rights reserved.</span>
-    <span><a href="#download">Download</a> · <a href="#license">License</a> · <a href="salary-software-guide/">Buyer's guide</a> · <a href="gratuity-calculator/">Gratuity calculator</a> · <a href="ar/" hreflang="ar" lang="ar">العربية</a> · <a href="privacy.html">Privacy</a> · <a href="terms.html">Terms</a> · <a href="https://wa.me/96890959084" target="_blank" rel="noopener">WhatsApp</a> · <a href="https://www.linkedin.com/company/paycoresalarysystem/" target="_blank" rel="noopener">LinkedIn</a></span>
+    <span><a href="#download">Download</a> · <a href="#license">License</a> · <a href="salary-software-guide/">Buyer's guide</a> · <a href="gratuity-calculator/">Free gratuity calculator</a> · <a href="salary-calculator/">Free salary calculator</a> · <a href="ar/" hreflang="ar" lang="ar">العربية</a> · <a href="privacy.html">Privacy</a> · <a href="terms.html">Terms</a> · <a href="https://wa.me/96890959084" target="_blank" rel="noopener">WhatsApp</a> · <a href="https://www.linkedin.com/company/paycoresalarysystem/" target="_blank" rel="noopener">LinkedIn</a></span>
   </div>
 </footer>
 

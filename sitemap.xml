@@ -46,6 +46,20 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://paycoresalarysystem.com/gratuity-calculator/"/>
   </url>
   <url>
+    <loc>https://paycoresalarysystem.com/salary-calculator/</loc>
+    <lastmod>2026-10-19</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://paycoresalarysystem.com/salary-calculator/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://paycoresalarysystem.com/ar/salary-calculator/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://paycoresalarysystem.com/salary-calculator/"/>
+  </url>
+  <url>
+    <loc>https://paycoresalarysystem.com/ar/salary-calculator/</loc>
+    <lastmod>2026-10-19</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://paycoresalarysystem.com/salary-calculator/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://paycoresalarysystem.com/ar/salary-calculator/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://paycoresalarysystem.com/salary-calculator/"/>
+  </url>
+  <url>
     <loc>https://paycoresalarysystem.com/privacy.html</loc>
     <lastmod>2026-10-19</lastmod>
   </url>

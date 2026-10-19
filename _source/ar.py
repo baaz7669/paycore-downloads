@@ -212,7 +212,7 @@ def build(out_dir, site_url, dl_base, setup_name, portable_name, shots_dir, year
 <nav class="nav" aria-label="القائمة الرئيسية"><div class="wrap"><div class="nav-in">
 <a class="brand" href="./">{MARK}PayCore</a>
 <ul>
-<li><a href="#features">المزايا</a></li><li><a href="#compare">المقارنة</a></li><li><a href="#download">التحميل</a></li><li><a href="#license">الترخيص</a></li><li><a href="gratuity-calculator/">حاسبة نهاية الخدمة</a></li><li><a href="#contact">تواصل معنا</a></li>
+<li><a href="#features">المزايا</a></li><li><a href="#compare">المقارنة</a></li><li><a href="#download">التحميل</a></li><li><a href="#license">الترخيص</a></li><li><a class="navfree" href="#free-tools">حاسبات مجانية</a></li><li><a href="#contact">تواصل معنا</a></li>
 <li><a href="../" hreflang="en" lang="en">English</a></li>
 </ul>
 <a class="btn btn-primary" href="#download">تحميل</a>
@@ -244,9 +244,14 @@ def build(out_dir, site_url, dl_base, setup_name, portable_name, shots_dir, year
 </ul></div>
 </div></section>
 
-<section class="toolband" id="gratuity" aria-label="حاسبة مكافأة نهاية الخدمة"><style>.toolband{{padding-block:10px 30px}}.toolcard{{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:18px 28px;border-radius:24px;padding:26px 30px;background:linear-gradient(115deg,#eef4ff,#e7fbf3);border:1px solid #d6e3ff}}.toolcard .tc-t{{max-width:60ch}}.toolcard .tc-k{{display:inline-block;font-size:12.5px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:#047857;background:#fff;border:1px solid #c9f2df;border-radius:999px;padding:4px 10px;margin-bottom:8px}}.toolcard h2{{margin:0 0 6px;font-size:clamp(22px,3.4vw,28px);line-height:1.2}}.toolcard p{{margin:0;color:#4b5a74}}@media (max-width:560px){{.toolcard{{padding:22px 18px}}.toolcard .btn{{width:100%;justify-content:center}}}}</style><div class="wrap">
-<div class="toolcard rv"><div class="tc-t"><span class="tc-k">أداة مجانية</span><h2>حاسبة مكافأة نهاية الخدمة</h2><p>احسب مكافأة نهاية الخدمة لأي موظف في عمان أو الإمارات أو السعودية خلال ثوانٍ. بدون تسجيل وبدون تحميل.</p></div>
-<a class="btn btn-primary" href="gratuity-calculator/">افتح الحاسبة</a></div>
+<section class="toolband" id="free-tools" aria-label="حاسبات رواتب مجانية"><style>.toolband{{padding-block:10px 30px}}.toolcard{{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:18px 28px;border-radius:24px;padding:26px 30px;background:linear-gradient(115deg,#eef4ff,#e7fbf3);border:1px solid #d6e3ff}}.toolcard .tc-t{{max-width:60ch}}.toolcard .tc-k{{display:inline-block;font-size:12.5px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:#047857;background:#fff;border:1px solid #c9f2df;border-radius:999px;padding:4px 10px;margin-bottom:8px}}.toolcard h2{{margin:0 0 6px;font-size:clamp(22px,3.4vw,28px);line-height:1.2}}.toolcard p{{margin:0;color:#4b5a74}}@media (max-width:560px){{.toolcard{{padding:22px 18px}}.toolcard .btn{{width:100%;justify-content:center}}}}.toolgrid{{display:grid;grid-template-columns:1fr 1fr;gap:18px}}@media (max-width:860px){{.toolgrid{{grid-template-columns:1fr}}}}.toolcard{{flex-direction:column;align-items:flex-start;box-shadow:0 0 0 3px #a7f3d0}}.toolcard .tc-k{{background:#059669;color:#fff;border-color:#059669}}.toolhead{{text-align:center;margin:0 0 18px}}.toolhead h2{{margin:0}}.nav ul a.navfree{{background:#059669;color:#fff}}.nav ul a.navfree:hover{{background:#047857;color:#fff}}</style><div class="wrap">
+<div class="toolhead rv"><h2>حاسبات رواتب مجانية</h2></div>
+<div class="toolgrid">
+<div class="toolcard rv"><div class="tc-t"><span class="tc-k">مجانية</span><h2>حاسبة مكافأة نهاية الخدمة المجانية</h2><p>احسب مكافأة نهاية الخدمة لأي موظف في عمان أو الإمارات أو السعودية خلال ثوانٍ. بدون تسجيل وبدون تحميل.</p></div>
+<a class="btn btn-primary" href="gratuity-calculator/">افتح حاسبة نهاية الخدمة المجانية</a></div>
+<div class="toolcard rv"><div class="tc-t"><span class="tc-k">مجانية</span><h2>حاسبة الراتب المجانية</h2><p>خصم أيام الغياب والإجازة بدون أجر، أو الراتب عن أيام العمل. على الراتب الكامل أو الأساسي أو بدلات تختارها.</p></div>
+<a class="btn btn-primary" href="salary-calculator/">افتح حاسبة الراتب المجانية</a></div>
+</div>
 </div></section>
 
 <section id="compare" style="padding-top:20px"><div class="wrap">
@@ -300,7 +305,7 @@ def build(out_dir, site_url, dl_base, setup_name, portable_name, shots_dir, year
 
 <footer><div class="wrap">
 <span>© {year} PayCore. جميع الحقوق محفوظة.</span>
-<span><a href="salary-software-guide/">دليل اختيار برنامج الرواتب</a> · <a href="gratuity-calculator/">حاسبة مكافأة نهاية الخدمة</a> · <a href="../" hreflang="en" lang="en">English</a> · <a href="../privacy.html">سياسة الخصوصية (بالإنجليزية)</a> · <a href="../terms.html">شروط الاستخدام (بالإنجليزية)</a> · <a href="https://wa.me/{WA}" target="_blank" rel="noopener">واتساب</a> · <a href="https://www.linkedin.com/company/paycoresalarysystem/" target="_blank" rel="noopener" dir="ltr">LinkedIn</a></span>
+<span><a href="salary-software-guide/">دليل اختيار برنامج الرواتب</a> · <a href="gratuity-calculator/">حاسبة مكافأة نهاية الخدمة المجانية</a> · <a href="salary-calculator/">حاسبة الراتب المجانية</a> · <a href="../" hreflang="en" lang="en">English</a> · <a href="../privacy.html">سياسة الخصوصية (بالإنجليزية)</a> · <a href="../terms.html">شروط الاستخدام (بالإنجليزية)</a> · <a href="https://wa.me/{WA}" target="_blank" rel="noopener">واتساب</a> · <a href="https://www.linkedin.com/company/paycoresalarysystem/" target="_blank" rel="noopener" dir="ltr">LinkedIn</a></span>
 </div></footer>
 <!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{{"token": "a6468f1ecc92499d89496f6e15f55399"}}'></script><!-- End Cloudflare Web Analytics -->
 </body>

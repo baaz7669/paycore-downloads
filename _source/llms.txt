@@ -19,8 +19,10 @@ Key facts:
 - [PayCore homepage (Arabic)](https://paycoresalarysystem.com/ar/): the same information in Arabic
 - [How to choose salary software for a small business](https://paycoresalarysystem.com/salary-software-guide/): buyer's guide comparing Excel, cloud subscription and one-time desktop payroll software, with costs for 20 employees
 - [Arabic buyer's guide](https://paycoresalarysystem.com/ar/salary-software-guide/)
-- [End-of-service gratuity calculator](https://paycoresalarysystem.com/gratuity-calculator/): free calculator for Oman, UAE and Saudi Arabia under each country's labour law, with worked examples
+- [Free end-of-service gratuity calculator](https://paycoresalarysystem.com/gratuity-calculator/): free calculator for Oman, UAE and Saudi Arabia under each country's labour law, with worked examples
 - [Arabic gratuity calculator](https://paycoresalarysystem.com/ar/gratuity-calculator/)
+- [Free salary calculator](https://paycoresalarysystem.com/salary-calculator/): daily rate, deductions for absent or unpaid leave days, and pay for days worked, using full salary, basic only or selected allowances
+- [Arabic salary calculator](https://paycoresalarysystem.com/ar/salary-calculator/)
 
 ## Downloads
 

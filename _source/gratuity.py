@@ -70,6 +70,8 @@ CALC_CSS = """
 .res ul{margin:8px 0 0;padding-inline-start:20px;font-size:15.5px;color:var(--muted)}
 .res .warn{color:#9a3412}
 .ex td,.ex th{white-space:normal}
+.also{margin-top:34px;padding:14px 18px;border-radius:14px;background:#f0fdf6;border:1px solid #c9f2df;font-weight:600}
+.free{display:inline-block;vertical-align:middle;font:800 13px/1 sans-serif;letter-spacing:.08em;color:#fff;background:#059669;border-radius:999px;padding:6px 10px;margin-inline-end:10px}
 """
 
 # The calculator reads its words from data attributes so one script serves both languages.
@@ -247,9 +249,9 @@ def _sources(label):
 
 
 EN_BODY = f"""
-<p class="crumbs"><a href="/">Home</a> › Gratuity calculator</p>
-<h1>End-of-service gratuity calculator for Oman, UAE and Saudi Arabia</h1>
-<p class="updated">Rules checked {CHECKED} · Free, no sign-up</p>
+<p class="crumbs"><a href="/">Home</a> › Free gratuity calculator</p>
+<h1>Free end-of-service gratuity calculator for Oman, UAE and Saudi Arabia</h1>
+<p class="updated"><span class="free">FREE</span>Rules checked {CHECKED} · Free, no sign-up</p>
 <p class="lead">Work out an employee's end-of-service gratuity in seconds. Pick the country, enter the dates and salary, and the calculator applies that country's labour law and shows how it got the number.</p>
 {_form(T_EN, L_EN)}
 <h2>How gratuity works in each country</h2>
@@ -261,14 +263,15 @@ EN_BODY = f"""
 <p>Oman's Social Protection Law will replace gratuity for expatriate employees with a savings system funded by the employer at 9% of the basic wage each month. The Social Protection Fund decides the start date, which can't be later than 19 July 2027. Until it starts, employers keep paying gratuity under Article 61, and gratuity for service before the start date is still owed.</p>
 <h2>Common questions</h2>
 <div class="faq">{guide._faq_html(FAQ_EN)}</div>
+<p class="also">Also free: <a href="/salary-calculator/">salary calculator for absences, unpaid leave and days worked</a>.</p>
 <div class="cta"><p><strong>Calculate gratuity for your whole team</strong>PayCore keeps every employee's joining date and salary, and works out gratuity, payroll, loans and payslips on your own PC. One-time USD 50, unlimited employees.</p><a href="/#download">Get PayCore</a></div>
 {_sources("Sources")}
 """
 
 AR_BODY = f"""
-<p class="crumbs"><a href="/ar/">الرئيسية</a> › حاسبة مكافأة نهاية الخدمة</p>
-<h1>حاسبة مكافأة نهاية الخدمة في عمان والإمارات والسعودية</h1>
-<p class="updated">راجعنا القواعد في {CHECKED_AR} · مجانية وبدون تسجيل</p>
+<p class="crumbs"><a href="/ar/">الرئيسية</a> › حاسبة مكافأة نهاية الخدمة المجانية</p>
+<h1>حاسبة مكافأة نهاية الخدمة المجانية في عمان والإمارات والسعودية</h1>
+<p class="updated"><span class="free">مجانية</span>راجعنا القواعد في {CHECKED_AR} · مجانية وبدون تسجيل</p>
 <p class="lead">احسب مكافأة نهاية الخدمة لأي موظف في ثوانٍ. اختر الدولة وأدخل التواريخ والراتب، وتطبق الحاسبة قانون العمل في تلك الدولة وتوضح طريقة الحساب.</p>
 {_form(T_AR, L_AR)}
 <h2>كيف تُحسب المكافأة في كل دولة</h2>
@@ -280,13 +283,15 @@ AR_BODY = f"""
 <p>سيستبدل قانون الحماية الاجتماعية في عمان مكافأة نهاية الخدمة للعاملين الوافدين بنظام ادخار يموّله صاحب العمل بنسبة 9% من الأجر الأساسي شهريًا. يحدد صندوق الحماية الاجتماعية تاريخ البدء، على ألا يتجاوز 19 يوليو 2027. وإلى أن يبدأ، يستمر أصحاب العمل في دفع المكافأة وفق المادة 61، وتبقى المكافأة عن الخدمة قبل تاريخ البدء حقًا للعامل.</p>
 <h2>أسئلة شائعة</h2>
 <div class="faq">{guide._faq_html(FAQ_AR)}</div>
+<p class="also">أداة مجانية أخرى: <a href="/ar/salary-calculator/">حاسبة الراتب للغياب والإجازة بدون أجر وأيام العمل</a>.</p>
 <div class="cta"><p><strong>احسب مكافأة نهاية الخدمة لكل فريقك</strong>يحفظ PayCore تاريخ تعيين وراتب كل موظف، ويحسب المكافأة والرواتب والسلف وقسائم الرواتب على جهازك. 50 دولارًا لمرة واحدة، لعدد غير محدود من الموظفين.</p><a href="/ar/#download">احصل على PayCore</a></div>
 {_sources("المصادر")}
 """
 
 
-def _page(lang, url, alt_url, title, desc, body, home, back, fonts, bodyfont, dispfont, footer_links, site_url, year, headline, faq):
-    css = (guide.CSS + CALC_CSS).replace("%BODYFONT%", bodyfont).replace("%DISPFONT%", dispfont)
+def _page(lang, url, alt_url, title, desc, body, home, back, fonts, bodyfont, dispfont, footer_links, site_url, year, headline, faq, js=None, extra_css=""):
+    js = JS if js is None else js
+    css = (guide.CSS + CALC_CSS + extra_css).replace("%BODYFONT%", bodyfont).replace("%DISPFONT%", dispfont)
     schema = {"@context": "https://schema.org", "@graph": [
         {"@type": "WebApplication", "@id": url + "#calculator", "name": headline, "url": url, "description": desc,
          "inLanguage": lang, "applicationCategory": "BusinessApplication", "operatingSystem": "Any (web browser)",
@@ -336,7 +341,7 @@ def _page(lang, url, alt_url, title, desc, body, home, back, fonts, bodyfont, di
 <main>{body}</main>
 <footer><span>© {year} PayCore.</span><span>{footer_links}</span></footer>
 </div>
-<script>{JS}</script>
+<script>{js}</script>
 {guide.BEACON}
 </body>
 </html>
@@ -347,20 +352,20 @@ def build(out_dir, site_url, year):
     en_url = site_url + "gratuity-calculator/"
     ar_url = site_url + "ar/gratuity-calculator/"
     pages = [
-        ("en", en_url, ar_url, "Gratuity Calculator for Oman, UAE & Saudi Arabia (2026) | PayCore",
+        ("en", en_url, ar_url, "Free Gratuity Calculator for Oman, UAE & Saudi Arabia (2026) | PayCore",
          "Free end-of-service gratuity calculator for Oman, the UAE and Saudi Arabia. Enter dates and salary to see the amount under each country's labour law, with worked examples.",
          EN_BODY, "/", "Back to home",
          "https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,800&family=Figtree:wght@400;600;700&display=swap",
          '"Figtree","Segoe UI",system-ui,sans-serif', '"Bricolage Grotesque","Segoe UI",sans-serif',
-         '<a href="/">Home</a> · <a href="/salary-software-guide/">Buyer\'s guide</a> · <a href="/ar/gratuity-calculator/" hreflang="ar" lang="ar">العربية</a> · <a href="/privacy.html">Privacy</a> · <a href="/terms.html">Terms</a>',
-         "End-of-service gratuity calculator", os.path.join(out_dir, "gratuity-calculator"), FAQ_EN),
-        ("ar", ar_url, en_url, "حاسبة مكافأة نهاية الخدمة في عمان والإمارات والسعودية (2026) | PayCore",
+         '<a href="/">Home</a> · <a href="/salary-calculator/">Free salary calculator</a> · <a href="/salary-software-guide/">Buyer\'s guide</a> · <a href="/ar/gratuity-calculator/" hreflang="ar" lang="ar">العربية</a> · <a href="/privacy.html">Privacy</a> · <a href="/terms.html">Terms</a>',
+         "Free end-of-service gratuity calculator", os.path.join(out_dir, "gratuity-calculator"), FAQ_EN),
+        ("ar", ar_url, en_url, "حاسبة مكافأة نهاية الخدمة المجانية في عمان والإمارات والسعودية (2026) | PayCore",
          "حاسبة مجانية لمكافأة نهاية الخدمة في عمان والإمارات والسعودية. أدخل التواريخ والراتب لمعرفة المبلغ وفق قانون العمل في كل دولة، مع أمثلة محسوبة.",
          AR_BODY, "/ar/", "العودة للرئيسية",
          "https://fonts.googleapis.com/css2?family=Cairo:wght@700;800&family=IBM+Plex+Sans+Arabic:wght@400;600;700&display=swap",
          '"IBM Plex Sans Arabic","Segoe UI",Tahoma,sans-serif', '"Cairo","Segoe UI",Tahoma,sans-serif',
-         '<a href="/ar/">الرئيسية</a> · <a href="/ar/salary-software-guide/">دليل اختيار برنامج الرواتب</a> · <a href="/gratuity-calculator/" hreflang="en" lang="en">English</a> · <a href="/privacy.html">سياسة الخصوصية</a> · <a href="/terms.html">شروط الاستخدام</a>',
-         "حاسبة مكافأة نهاية الخدمة", os.path.join(out_dir, "ar", "gratuity-calculator"), FAQ_AR),
+         '<a href="/ar/">الرئيسية</a> · <a href="/ar/salary-calculator/">حاسبة الراتب المجانية</a> · <a href="/ar/salary-software-guide/">دليل اختيار برنامج الرواتب</a> · <a href="/gratuity-calculator/" hreflang="en" lang="en">English</a> · <a href="/privacy.html">سياسة الخصوصية</a> · <a href="/terms.html">شروط الاستخدام</a>',
+         "حاسبة مكافأة نهاية الخدمة المجانية", os.path.join(out_dir, "ar", "gratuity-calculator"), FAQ_AR),
     ]
     for lang, url, alt, title, desc, body, home, back, fonts, bf, df, links, headline, folder, faq in pages:
         os.makedirs(folder, exist_ok=True)
