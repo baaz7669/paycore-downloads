@@ -90,6 +90,7 @@ schema = {
         "WPS bank-transfer rules per employee",
         "Transaction ledger",
         "Document expiry tracker",
+        "Optional AI assistant (own Google Gemini key): payroll questions, pre-approval anomaly check, report summaries, letter drafting",
         "Works fully offline with PIN lock and local backup",
         "English and Arabic interface; any currency including OMR, KWD, BHD, AED, SAR and QAR"],
      "isAccessibleForFree": False,

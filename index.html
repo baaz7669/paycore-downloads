@@ -100,6 +100,7 @@
     "WPS bank-transfer rules per employee",
     "Transaction ledger",
     "Document expiry tracker",
+    "Optional AI assistant (own Google Gemini key): payroll questions, pre-approval anomaly check, report summaries, letter drafting",
     "Works fully offline with PIN lock and local backup",
     "English and Arabic interface; any currency including OMR, KWD, BHD, AED, SAR and QAR"
    ],
@@ -186,6 +187,14 @@
      "acceptedAnswer": {
       "@type": "Answer",
       "text": "Contact us with the email address the license was registered to, and we'll send it again."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Does PayCore have AI features?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Yes, as an option. With your own Google Gemini API key, the built-in AI assistant answers questions about your payroll, checks a payroll for unusual amounts before you approve it, summarises monthly reports, drafts letters and explains import errors. It is off by default; when you turn it on, your questions and the payroll records it needs are sent to Google."
      }
     },
     {
@@ -733,6 +742,18 @@ main,header,footer{position:relative;z-index:1}
       <div class="feat rv"><span class="ic g6"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></svg></span><h3>Document expiry tracking</h3><p>Keep trade licenses, visas, IDs and insurance records in one place, with dashboard reminders before anything expires.</p></div>
     </div>
 
+    <div class="aiband rv" id="ai"><style>.aiband{margin-top:22px;border-radius:24px;padding:28px 30px;background:linear-gradient(115deg,#0d1a33,#1e3a8a 60%,#0e7490);color:#e8efff;display:grid;grid-template-columns:1.1fr 1fr;gap:20px 34px;align-items:start}.aiband h3{color:#fff;font-size:24px;margin:8px 0 8px}.aiband p{margin:0;color:#c7d4f0}.aiband .aik{display:inline-block;font-size:12.5px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;background:#a7f3d0;color:#064e3b;border-radius:999px;padding:4px 10px}.aiband ul{margin:0;padding:0;list-style:none;display:grid;gap:10px}.aiband li{padding-inline-start:26px;position:relative}.aiband li::before{content:"✦";position:absolute;inset-inline-start:0;color:#5eead4}.aiband li b{color:#fff}.aiband .ainote{grid-column:1/-1;font-size:14px;color:#a9b8d8;border-top:1px solid rgba(255,255,255,.15);padding-top:12px}@media (max-width:760px){.aiband{grid-template-columns:1fr;padding:24px 20px}}</style>
+      <div><span class="aik">Optional</span><h3>Built-in AI assistant</h3><p>Turn on the AI assistant with your own Google Gemini key and get a second pair of eyes on your payroll. It's off by default, and everything else in PayCore works without it.</p></div>
+      <ul>
+        <li><b>Ask about your payroll</b> in plain words: totals, salaries, loans and month-to-month changes.</li>
+        <li><b>Check a payroll before you approve it</b> for unusual amounts and likely mistakes.</li>
+        <li><b>Summarise monthly reports</b> with a comparison to the previous month.</li>
+        <li><b>Draft letters</b> such as salary certificates and warning letters.</li>
+        <li><b>Fix import problems</b> with an explanation of what's wrong in a spreadsheet row.</li>
+      </ul>
+      <p class="ainote">When the AI assistant is on, your questions and the payroll records it needs are sent to Google to get an answer. Leave it off and nothing leaves your computer.</p>
+    </div>
+
     <div class="split">
       <div class="pic rv">
         <div class="frame" style="--rx:0deg">
@@ -976,6 +997,7 @@ main,header,footer{position:relative;z-index:1}
           <details><summary>Can I move it to a new computer?</summary><p>Yes. Install PayCore on the new computer, activate it with the same email and license key, and restore your data from a backup.</p></details>
           <details><summary>Does it handle payroll in Oman and the Gulf?</summary><p>Yes. Omani Rial, Kuwaiti Dinar and Bahraini Dinar use 3 decimals, and AED, SAR and QAR are built in. PayCore also has a full Arabic interface, end-of-service gratuity with your own rate (try our <a href="gratuity-calculator/">free gratuity calculator</a>), and WPS bank-transfer rules for each employee.</p></details>
           <details><summary>What if I lose my license key?</summary><p>Contact us with the email address the license was registered to, and we'll send it again.</p></details>
+          <details><summary>Does PayCore have AI features?</summary><p>Yes, as an option. With your own Google Gemini API key, the built-in AI assistant answers questions about your payroll, checks a payroll for unusual amounts before you approve it, summarises monthly reports, drafts letters and explains import errors. It is off by default; when you turn it on, your questions and the payroll records it needs are sent to Google.</p></details>
           <details><summary>Is my data safe?</summary><p>Your payroll data stays on your computer and is never sent to us. The only exception is the optional AI assistant: if you turn it on, your payroll records are sent to Google with each question. Access is protected by a PIN, and backup files are not encrypted, so store them securely.</p></details>
         </div>
       </div>

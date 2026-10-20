@@ -45,6 +45,7 @@ FAQ = [
  ("ما الذي يجب أن يتوفر في برنامج إدارة الرواتب الجيد؟", "للشركات الصغيرة، ابحث عن سجل للموظفين مع هيكل الرواتب، ومسير رواتب شهري يحسب العمل الإضافي والإجازات تلقائيًا، ومتابعة السلف والقروض، وقسائم رواتب وتقارير، وحساب مكافأة نهاية الخدمة. وانتبه للتسعير: الاشتراكات التي تُحسب لكل موظف تصبح مكلفة مع نمو شركتك. يوفر PayCore كل ذلك بترخيص لمرة واحدة."),
  ("هل يمكنني تجربة البرنامج قبل الشراء؟", "نعم. نقدم عرضًا مباشرًا مجانيًا عبر مكالمة فيديو. تواصل معنا عبر واتساب أو البريد الإلكتروني لتحديد موعد."),
  ("هل يمكن نقل البرنامج إلى جهاز جديد؟", "نعم. ثبّت PayCore على الجهاز الجديد وفعّله بنفس البريد الإلكتروني ومفتاح الترخيص، ثم استعد بياناتك من النسخة الاحتياطية."),
+ ("هل يحتوي PayCore على ميزات الذكاء الاصطناعي؟", "نعم، كخيار إضافي. بمفتاح Google Gemini الخاص بك، يجيب المساعد الذكي المدمج عن أسئلتك حول الرواتب، ويراجع مسير الرواتب لاكتشاف المبالغ غير المعتادة قبل اعتماده، ويلخص التقارير الشهرية، ويكتب الخطابات، ويشرح أخطاء الاستيراد. المساعد متوقف افتراضيًا، وعند تفعيله تُرسل أسئلتك وسجلات الرواتب التي يحتاجها إلى Google."),
  ("هل بياناتي آمنة؟", "بيانات الرواتب تبقى على جهازك ولا تُرسل إلينا. الاستثناء الوحيد هو المساعد الذكي الاختياري: عند تفعيله تُرسل سجلات الرواتب إلى Google مع كل سؤال. الدخول محمي برمز PIN، وملفات النسخ الاحتياطي غير مشفرة لذا احفظها في مكان آمن."),
 ]
 
@@ -242,6 +243,18 @@ def build(out_dir, site_url, dl_base, setup_name, portable_name, shots_dir, year
 <li><i>{CHECK}</i><span><b>نسخ احتياطي واستعادة.</b> احفظ نسخة احتياطية في أي مجلد أو ذاكرة USB واستعدها على أي جهاز. ملفات النسخ غير مشفرة، لذا احفظها في مكان آمن.</span></li>
 <li><i>{CHECK}</i><span><b>أي عملة.</b> الريال العماني والدينار الكويتي والبحريني بثلاث خانات عشرية، والدرهم والريال السعودي والقطري وأي عملة أخرى.</span></li>
 </ul></div>
+
+<div class="aiband rv" id="ai"><style>.aiband{{margin-top:22px;border-radius:24px;padding:28px 30px;background:linear-gradient(115deg,#0d1a33,#1e3a8a 60%,#0e7490);color:#e8efff;display:grid;grid-template-columns:1.1fr 1fr;gap:20px 34px;align-items:start}}.aiband h3{{color:#fff;font-size:24px;margin:8px 0 8px}}.aiband p{{margin:0;color:#c7d4f0}}.aiband .aik{{display:inline-block;font-size:12.5px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;background:#a7f3d0;color:#064e3b;border-radius:999px;padding:4px 10px}}.aiband ul{{margin:0;padding:0;list-style:none;display:grid;gap:10px}}.aiband li{{padding-inline-start:26px;position:relative}}.aiband li::before{{content:"✦";position:absolute;inset-inline-start:0;color:#5eead4}}.aiband li b{{color:#fff}}.aiband .ainote{{grid-column:1/-1;font-size:14px;color:#a9b8d8;border-top:1px solid rgba(255,255,255,.15);padding-top:12px}}@media (max-width:760px){{.aiband{{grid-template-columns:1fr;padding:24px 20px}}}}</style>
+<div><span class="aik">اختياري</span><h3>مساعد ذكاء اصطناعي مدمج</h3><p>فعّل المساعد الذكي بمفتاح Google Gemini الخاص بك ليراجع معك الرواتب. المساعد متوقف افتراضيًا، وكل ميزات PayCore الأخرى تعمل بدونه.</p></div>
+<ul>
+<li><b>اسأل عن رواتبك</b> بكلمات بسيطة: الإجماليات والرواتب والسلف والتغيّرات من شهر لآخر.</li>
+<li><b>راجع مسير الرواتب قبل اعتماده</b> لاكتشاف المبالغ غير المعتادة والأخطاء المحتملة.</li>
+<li><b>لخّص التقارير الشهرية</b> مع مقارنة بالشهر السابق.</li>
+<li><b>اكتب الخطابات</b> مثل شهادات الراتب وخطابات الإنذار.</li>
+<li><b>أصلح مشاكل الاستيراد</b> مع شرح الخطأ في صف جدول البيانات.</li>
+</ul>
+<p class="ainote">عند تفعيل المساعد الذكي تُرسل أسئلتك وسجلات الرواتب التي يحتاجها إلى Google للحصول على الإجابة. اتركه متوقفًا ولن يغادر أي شيء جهازك.</p>
+</div>
 </div></section>
 
 <section class="toolband" id="free-tools" aria-label="حاسبات رواتب مجانية"><style>.toolband{{padding-block:10px 30px}}.toolcard{{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:18px 28px;border-radius:24px;padding:26px 30px;background:linear-gradient(115deg,#eef4ff,#e7fbf3);border:1px solid #d6e3ff}}.toolcard .tc-t{{max-width:60ch}}.toolcard .tc-k{{display:inline-block;font-size:12.5px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:#047857;background:#fff;border:1px solid #c9f2df;border-radius:999px;padding:4px 10px;margin-bottom:8px}}.toolcard h2{{margin:0 0 6px;font-size:clamp(22px,3.4vw,28px);line-height:1.2}}.toolcard p{{margin:0;color:#4b5a74}}@media (max-width:560px){{.toolcard{{padding:22px 18px}}.toolcard .btn{{width:100%;justify-content:center}}}}.toolgrid{{display:grid;grid-template-columns:1fr 1fr;gap:18px}}@media (max-width:860px){{.toolgrid{{grid-template-columns:1fr}}}}.toolcard{{flex-direction:column;align-items:flex-start;box-shadow:0 0 0 3px #a7f3d0}}.toolcard .tc-k{{background:#059669;color:#fff;border-color:#059669}}.toolhead{{text-align:center;margin:0 0 18px}}.toolhead h2{{margin:0}}.nav ul a.navfree{{background:#059669;color:#fff}}.nav ul a.navfree:hover{{background:#047857;color:#fff}}</style><div class="wrap">
