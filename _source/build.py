@@ -196,4 +196,24 @@ open(os.path.join(dist, "favicon.svg"), "w").write(
  '<stop offset="0" stop-color="#2563eb"/><stop offset=".55" stop-color="#0ea5e9"/><stop offset="1" stop-color="#10b981"/></linearGradient></defs>'
  '<rect width="64" height="64" rx="16" fill="url(#g)"/><g fill="none" stroke="#fff" stroke-width="6" stroke-linecap="round">'
  '<circle cx="25" cy="25" r="13"/><circle cx="39" cy="39" r="13"/></g></svg>\n')
+
+# Social buttons (LinkedIn, Facebook, WhatsApp) in every page footer, plus the homepage contact box
+import social
+def _add_social(path, lang, contact=False):
+    h = open(path, encoding="utf-8").read()
+    if 'class="social"' in h:
+        return
+    h = h.replace("</head>", "<style>" + social.CSS + "</style>\n</head>", 1)
+    i = h.index("<footer")
+    j = h.index(">", h.index("<div class=\"wrap\">", i) if h.find("<div class=\"wrap\">", i, i + 80) != -1 else i) + 1
+    h = h[:j] + social.html(lang) + h[j:]
+    if contact and 'class="intro"' in h:
+        k = h.index('class="intro"'); k = h.index("</div>", k)
+        h = h[:k] + social.html(lang).replace('class="social"', 'class="social" style="margin-top:16px"') + h[k:]
+    open(path, "w", encoding="utf-8").write(h)
+for rel, lang, contact in [("index.html", "en", True), ("ar/index.html", "ar", True),
+                           ("salary-software-guide/index.html", "en", False), ("ar/salary-software-guide/index.html", "ar", False),
+                           ("gratuity-calculator/index.html", "en", False), ("ar/gratuity-calculator/index.html", "ar", False),
+                           ("salary-calculator/index.html", "en", False), ("ar/salary-calculator/index.html", "ar", False)]:
+    _add_social(os.path.join(dist, rel), lang, contact)
 print("built", len(faqs), "FAQs into schema")
