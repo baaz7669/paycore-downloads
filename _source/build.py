@@ -47,7 +47,7 @@ page = re.sub(r"^<title>.*?</title>\s*", "", page, count=1, flags=re.S)
 page = re.sub(r'^<meta name="description"[^>]*>\s*', "", page, count=1)
 head_part, body_part = page.split("</style>", 1)
 
-TITLE = "Payroll & Salary Management Software for Windows | PayCore"
+TITLE = "Payroll & Salary Software for Windows | PayCore Salary System"
 DESC = ("Payroll and salary management software for Windows. $50 one-time license, no monthly fees, "
         "unlimited employees. Works offline.")
 OG_TITLE = "PayCore: payroll software without the monthly bill"
@@ -59,22 +59,23 @@ def plain(t): return html.unescape(re.sub(r"<[^>]+>", "", t)).strip()
 schema = {
   "@context": "https://schema.org",
   "@graph": [
-    {"@type": "Organization", "@id": SITE_URL + "#org", "name": "PayCore", "url": SITE_URL,
+    {"@type": "Organization", "@id": SITE_URL + "#org", "name": "PayCore Salary System", "alternateName": ["PayCore", "PayCore Payroll"], "url": SITE_URL,
      "logo": SITE_URL + "apple-touch-icon.png", "email": "info@paycoresalarysystem.com",
      "sameAs": ["https://www.linkedin.com/company/paycoresalarysystem/", "https://apps.microsoft.com/detail/9NMS2FWD82J3"],
      "contactPoint": {"@type": "ContactPoint", "contactType": "sales", "email": "info@paycoresalarysystem.com",
                       "telephone": "+968-9095-9084", "availableLanguage": ["English", "Arabic"]}},
-    {"@type": "WebSite", "@id": SITE_URL + "#website", "url": SITE_URL, "name": "PayCore Payroll",
+    {"@type": "WebSite", "@id": SITE_URL + "#website", "url": SITE_URL, "name": "PayCore Salary System", "alternateName": "PayCore",
      "inLanguage": "en", "publisher": {"@id": SITE_URL + "#org"}},
     {"@type": "SoftwareApplication", "@id": SITE_URL + "#app",
-     "name": "PayCore Payroll",
+     "name": "PayCore Salary System",
+     "alternateName": ["PayCore", "PayCore Payroll"],
+     "disambiguatingDescription": "Offline Windows payroll software sold by PayCore (paycoresalarysystem.com); not related to the US company Paycor.",
      "publisher": {"@id": SITE_URL + "#org"},
      "description": DESC,
      "url": SITE_URL,
      "applicationCategory": "BusinessApplication",
      "applicationSubCategory": "Payroll software",
      "operatingSystem": "Windows 10, Windows 11",
-     "softwareVersion": "1.0.1",
      "fileSize": "123MB",
      "downloadUrl": DL + "PayCore-Payroll-Setup.exe",
      "installUrl": "https://apps.microsoft.com/detail/9NMS2FWD82J3",

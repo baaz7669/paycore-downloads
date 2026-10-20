@@ -221,8 +221,8 @@ def build(out_dir, site_url, year):
     en_url = site_url + "salary-calculator/"
     ar_url = site_url + "ar/salary-calculator/"
     pages = [
-        ("en", en_url, ar_url, "Free Salary Calculator: Absence, Unpaid Leave & Days Worked | PayCore",
-         "Free salary calculator: work out the daily rate, the deduction for absent or unpaid leave days, or pay for days worked, using full salary, basic only or selected allowances.",
+        ("en", en_url, ar_url, "Free Salary Calculator: Absence, Unpaid Leave & Days Worked",
+         "Free salary calculator: daily rate, deduction for absent or unpaid leave days, or pay for days worked, on full salary, basic only or chosen allowances.",
          EN_BODY, "/", "Back to home",
          "https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,800&family=Figtree:wght@400;600;700&display=swap",
          '"Figtree","Segoe UI",system-ui,sans-serif', '"Bricolage Grotesque","Segoe UI",sans-serif',

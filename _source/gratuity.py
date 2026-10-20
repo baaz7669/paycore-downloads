@@ -73,7 +73,7 @@ CALC_CSS = """
 .res .warn{color:#9a3412}
 .ex td,.ex th{white-space:normal}
 .also{margin-top:34px;padding:14px 18px;border-radius:14px;background:#f0fdf6;border:1px solid #c9f2df;font-weight:600}
-.free{display:inline-block;vertical-align:middle;font:800 13px/1 sans-serif;letter-spacing:.08em;color:#fff;background:#059669;border-radius:999px;padding:6px 10px;margin-inline-end:10px}
+.free{display:inline-block;vertical-align:middle;font:800 13px/1 sans-serif;letter-spacing:.08em;color:#fff;background:#047857;border-radius:999px;padding:6px 10px;margin-inline-end:10px}
 """
 
 # The calculator reads its words from data attributes so one script serves both languages.
@@ -364,8 +364,8 @@ def build(out_dir, site_url, year):
     en_url = site_url + "gratuity-calculator/"
     ar_url = site_url + "ar/gratuity-calculator/"
     pages = [
-        ("en", en_url, ar_url, "Free Gratuity Calculator for Oman, UAE & Saudi Arabia (2026) | PayCore",
-         "Free end-of-service gratuity calculator for Oman, the UAE and Saudi Arabia. Enter dates and salary to see the amount under each country's labour law, with worked examples.",
+        ("en", en_url, ar_url, "Free Gratuity Calculator: Oman, UAE & Saudi Arabia (2026)",
+         "Free end-of-service gratuity calculator for Oman, UAE and Saudi Arabia. Enter dates and salary to get the amount under each labour law, with examples.",
          EN_BODY, "/", "Back to home",
          "https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,800&family=Figtree:wght@400;600;700&display=swap",
          '"Figtree","Segoe UI",system-ui,sans-serif', '"Bricolage Grotesque","Segoe UI",sans-serif',
