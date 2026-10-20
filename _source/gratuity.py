@@ -17,6 +17,8 @@ CHECKED_AR = "أكتوبر 2026"
 SOURCES = [
  ("Teamed: Oman end-of-service gratuity and the 9% savings system", "https://www.teamed.global/gulf-employment-law/oman-end-of-service-and-savings-system"),
  ("HLB Hamt: End-of-service gratuity in Oman", "https://hlbhamt.com/insights/end-of-service-gratuity-in-oman/"),
+ ("Oman Observer: How employees' gratuity will be calculated in Oman (Ministry of Labour clarification)", "https://www.omanobserver.om/article/1161053/oman/labour/how-employees-gratuity-will-be-calculated-in-oman-for-now"),
+ ("Gulf Business: Oman clarifies end-of-service gratuity rules (August 2026)", "https://gulfbusiness.com/en/2026/oman/oman-clarifies-end-of-service-gratuity-rules-in-key-labour-update/"),
  ("Khaleej Times: UAE gratuity calculator and rules", "https://www.khaleejtimes.com/uae/jobs/gratuity-calculator"),
  ("Saudi Ministry of Human Resources: end-of-service award", "https://www.hrsd.gov.sa/en/knowledge-centre/articles/317-0"),
  ("ZenHR: How to calculate end-of-service benefits in Saudi Arabia", "https://blog.zenhr.com/en/how-to-calculate-end-of-service-benefits-esb-in-saudi-arabia-2026-guide"),
@@ -24,7 +26,7 @@ SOURCES = [
 
 FAQ_EN = [
  ("How is end-of-service gratuity calculated in Oman?",
-  "Under Article 61 of the Oman Labour Law (Royal Decree 53/2023), a non-Omani employee gets at least one month of their last basic wage for each year of service, with part years paid in proportion. Allowances are not included. Omani employees are covered by the Social Protection Fund instead of a gratuity."),
+  "Under Article 61 of the Oman Labour Law (Royal Decree 53/2023), a non-Omani employee gets at least one month of their last basic wage for each year of service from 1 August 2023, with part years paid in proportion. Service up to 31 July 2023 follows the previous law: 15 days' basic wage for each of the first three years and a month for each later year, as the Ministry of Labour has clarified. Allowances are not included. Omani employees are covered by the Social Protection Fund instead of a gratuity."),
  ("Is Oman replacing gratuity with a savings system?",
   "Yes. The Social Protection Law (Royal Decree 52/2023) will replace gratuity for expatriates with a savings system: the employer pays 9% of the basic wage each month. The Social Protection Fund sets the start date, which must be no later than 19 July 2027. When we checked in October 2026, no start date had been announced. Gratuity earned before the start date is still owed."),
  ("How is gratuity calculated in the UAE?",
@@ -38,7 +40,7 @@ FAQ_EN = [
 ]
 FAQ_AR = [
  ("كيف تُحسب مكافأة نهاية الخدمة في سلطنة عمان؟",
-  "بموجب المادة 61 من قانون العمل العماني (المرسوم السلطاني 53/2023)، يستحق العامل غير العماني أجرًا أساسيًا لشهر واحد على الأقل عن كل سنة خدمة، بحسب آخر أجر أساسي، وتُحسب أجزاء السنة بنسبتها. لا تدخل البدلات في الحساب. أما العمانيون فيشملهم صندوق الحماية الاجتماعية بدلًا من المكافأة."),
+  "بموجب المادة 61 من قانون العمل العماني (المرسوم السلطاني 53/2023)، يستحق العامل غير العماني أجرًا أساسيًا لشهر واحد على الأقل عن كل سنة خدمة اعتبارًا من 1 أغسطس 2023، بحسب آخر أجر أساسي، وتُحسب أجزاء السنة بنسبتها. أما الخدمة حتى 31 يوليو 2023 فتخضع للقانون السابق: أجر 15 يومًا عن كل سنة من السنوات الثلاث الأولى، وأجر شهر عن كل سنة بعدها، وفق توضيح وزارة العمل. لا تدخل البدلات في الحساب. أما العمانيون فيشملهم صندوق الحماية الاجتماعية بدلًا من المكافأة."),
  ("هل ستستبدل عمان مكافأة نهاية الخدمة بنظام ادخار؟",
   "نعم. قانون الحماية الاجتماعية (المرسوم السلطاني 52/2023) سيستبدل مكافأة نهاية الخدمة للعمال الوافدين بنظام ادخار يدفع فيه صاحب العمل 9% من الأجر الأساسي شهريًا. يحدد صندوق الحماية الاجتماعية تاريخ البدء، على ألا يتجاوز 19 يوليو 2027. عند مراجعتنا في أكتوبر 2026 لم يُعلن تاريخ البدء بعد. والمكافأة المستحقة عن الخدمة قبل تاريخ البدء تبقى حقًا للعامل."),
  ("كيف تُحسب مكافأة نهاية الخدمة في الإمارات؟",
@@ -105,7 +107,13 @@ JS = r"""
   var lines=[], amt=0, note='';
   lines.push(T.service.replace('{y}',yy).replace('{m}',mm).replace('{d}',dd).replace('{t}',fmt(y,2))+(un>0?T.minus.replace('{u}',un):''));
   if(c==='om'){
-   amt=sal*y; lines.push(T.om1.replace('{s}',cur+' '+fmt(sal,d)).replace('{t}',fmt(y,2)));
+   var C=new Date(Date.UTC(2023,7,1));
+   function yrs(p,q){if(q<=p)return 0;var n=q.getUTCFullYear()-p.getUTCFullYear();if(add(p,n,0)>q)n--;return n+Math.round((q-add(p,n,0))/864e5)/365}
+   var oy=Math.min(yrs(a,b<C?b:C),y), ny=Math.max(0,y-oy);
+   var o1=Math.min(oy,3), o2=Math.max(0,oy-3);
+   amt=sal*(o1/2+o2+ny);
+   if(oy>0) lines.push(T.omOld.replace('{t}',fmt(oy,2)).replace('{a}',fmt(o1,2)).replace('{b}',fmt(o2,2)).replace('{x}',cur+' '+fmt(sal*(o1/2+o2),d)));
+   lines.push(T.om1.replace('{s}',cur+' '+fmt(sal,d)).replace('{t}',fmt(ny,2)).replace('{x}',cur+' '+fmt(sal*ny,d)));
    note=T.omNote;
   } else if(c==='ae'){
    if(y<1){out.innerHTML=res(0,cur,d,lines.concat([T.ae0]));return}
@@ -145,7 +153,8 @@ T_EN = {
  "est": "Estimated gratuity",
  "service": "Service: {y} yr {m} mo {d} days ({t} years)",
  "minus": ", after taking off {u} unpaid days",
- "om1": "{s} × {t} years (one month of basic wage per year)",
+ "om1": "From 1 August 2023 (current law): {t} years × {s} (one month of basic wage per year) = {x}",
+ "omOld": "Up to 31 July 2023 (previous law): {t} years, at 15 days' basic for the first 3 years ({a}) and a month for later years ({b}) = {x}",
  "omNote": "For non-Omani employees. Omani employees are covered by the Social Protection Fund instead. Oman plans to replace gratuity with a 9% savings system no later than 19 July 2027; gratuity earned before then is still owed.",
  "ae0": "No gratuity before one year of continuous service.",
  "ae1": "Daily wage {w}: {a} days for the first 5 years + {b} days after",
@@ -165,7 +174,8 @@ T_AR = {
  "est": "المكافأة التقديرية",
  "service": "مدة الخدمة: السنوات {y} · الأشهر {m} · الأيام {d} ({t} سنة)",
  "minus": "، بعد خصم {u} يوم بدون أجر",
- "om1": "{s} × {t} سنة (أجر أساسي لشهر عن كل سنة)",
+ "om1": "من 1 أغسطس 2023 (القانون الحالي): {t} سنة × {s} (أجر أساسي لشهر عن كل سنة) = {x}",
+ "omOld": "حتى 31 يوليو 2023 (القانون السابق): {t} سنة، بأجر 15 يومًا عن أول 3 سنوات ({a}) وأجر شهر عن السنوات التالية ({b}) = {x}",
  "omNote": "للعاملين غير العمانيين. أما العمانيون فيشملهم صندوق الحماية الاجتماعية. وتخطط عمان لاستبدال المكافأة بنظام ادخار بنسبة 9% في موعد أقصاه 19 يوليو 2027، مع بقاء المكافأة المستحقة قبل ذلك.",
  "ae0": "لا مكافأة قبل إتمام سنة خدمة متصلة.",
  "ae1": "الأجر اليومي {w}: {a} يومًا عن أول 5 سنوات + {b} يومًا بعدها",
@@ -222,22 +232,24 @@ def _ex_table(rows, heads):
 
 
 RULES_EN = [
- ("Oman (non-Omanis)", "One month of last basic wage per year", "Part years in proportion; no reduction for resignation", "Labour Law, Article 61"),
+ ("Oman (non-Omanis)", "One month of last basic wage per year from 1 August 2023; before that, 15 days a year for the first 3 years, then a month", "Part years in proportion; no reduction for resignation", "Labour Law 53/2023, Article 61"),
  ("UAE (private sector)", "21 days of basic per year for 5 years, then 30 days", "Needs 1 year of service; capped at 2 years' wage", "Decree-Law 33/2021, Article 51"),
  ("Saudi Arabia", "Half a month's wage per year for 5 years, then a month", "Reduced if the employee resigns before 10 years", "Labour Law, Articles 84–85"),
 ]
 RULES_AR = [
- ("عمان (غير العمانيين)", "أجر أساسي لشهر عن كل سنة بحسب آخر أجر", "أجزاء السنة بنسبتها، ولا تقل بالاستقالة", "قانون العمل، المادة 61"),
+ ("عمان (غير العمانيين)", "أجر أساسي لشهر عن كل سنة من 1 أغسطس 2023، وقبلها أجر 15 يومًا عن كل سنة لأول 3 سنوات ثم شهر", "أجزاء السنة بنسبتها، ولا تقل بالاستقالة", "قانون العمل 53/2023، المادة 61"),
  ("الإمارات (القطاع الخاص)", "21 يومًا من الأساسي عن كل سنة لأول 5 سنوات، ثم 30 يومًا", "تشترط سنة خدمة، وبحد أقصى أجر سنتين", "المرسوم بقانون 33/2021، المادة 51"),
  ("السعودية", "نصف أجر شهر عن كل سنة لأول 5 سنوات، ثم شهر", "تقل إذا استقال العامل قبل 10 سنوات", "نظام العمل، المادتان 84 و85"),
 ]
 EX_EN = [
- ("Oman", "Basic OMR 400, 3½ years", "400 × 3.5", "OMR 1,400"),
+ ("Oman, joined after July 2023", "Basic OMR 400, 3 years", "400 × 3", "OMR 1,200"),
+ ("Oman, joined before July 2023", "Basic OMR 500, 1 Aug 2021 to 31 Jul 2026", "2 years × 250 (old law) + 3 years × 500", "OMR 2,000"),
  ("UAE", "Basic AED 6,000, 7 years", "200 a day × (105 + 60 days)", "AED 33,000"),
  ("Saudi Arabia", "Wage SAR 8,000, 7 years", "20,000 + 16,000 (two thirds if resigned)", "SAR 36,000 (24,000)"),
 ]
 EX_AR = [
- ("عمان", "أساسي 400 ريال، 3.5 سنوات", "400 × 3.5", "1,400 ريال عماني"),
+ ("عمان، التحق بعد يوليو 2023", "أساسي 400 ريال، 3 سنوات", "400 × 3", "1,200 ريال عماني"),
+ ("عمان، التحق قبل يوليو 2023", "أساسي 500 ريال، من 1 أغسطس 2021 إلى 31 يوليو 2026", "سنتان × 250 (القانون السابق) + 3 سنوات × 500", "2,000 ريال عماني"),
  ("الإمارات", "أساسي 6,000 درهم، 7 سنوات", "200 درهم يوميًا × (105 + 60 يومًا)", "33,000 درهم"),
  ("السعودية", "أجر 8,000 ريال، 7 سنوات", "20,000 + 16,000 (الثلثان عند الاستقالة)", "36,000 ريال (24,000)"),
 ]
@@ -258,7 +270,7 @@ EN_BODY = f"""
 {_ex_table(RULES_EN, ["Country", "Rate", "Conditions", "Law"])}
 <h2>Worked examples</h2>
 {_ex_table(EX_EN, ["Country", "Employee", "Calculation", "Gratuity"])}
-<p class="note">UAE daily wage is the basic salary divided by 30: AED 6,000 ÷ 30 = AED 200. Seven years gives 5 × 21 = 105 days plus 2 × 30 = 60 days.</p>
+<p class="note">Oman: the Ministry of Labour's own example uses this split, with half a month's basic for each year before the new law and a full month after it. UAE daily wage is the basic salary divided by 30: AED 6,000 ÷ 30 = AED 200. Seven years gives 5 × 21 = 105 days plus 2 × 30 = 60 days.</p>
 <h2>Oman's change to a savings system</h2>
 <p>Oman's Social Protection Law will replace gratuity for expatriate employees with a savings system funded by the employer at 9% of the basic wage each month. The Social Protection Fund decides the start date, which can't be later than 19 July 2027. Until it starts, employers keep paying gratuity under Article 61, and gratuity for service before the start date is still owed.</p>
 <h2>Common questions</h2>
@@ -278,7 +290,7 @@ AR_BODY = f"""
 {_ex_table(RULES_AR, ["الدولة", "النسبة", "الشروط", "القانون"])}
 <h2>أمثلة محسوبة</h2>
 {_ex_table(EX_AR, ["الدولة", "الموظف", "الحساب", "المكافأة"])}
-<p class="note">الأجر اليومي في الإمارات هو الراتب الأساسي مقسومًا على 30: 6,000 ÷ 30 = 200 درهم. سبع سنوات تعطي 5 × 21 = 105 أيام و2 × 30 = 60 يومًا.</p>
+<p class="note">عمان: يستخدم مثال وزارة العمل هذا التقسيم، بنصف أجر أساسي عن كل سنة قبل القانون الجديد وأجر شهر كامل بعده. الأجر اليومي في الإمارات هو الراتب الأساسي مقسومًا على 30: 6,000 ÷ 30 = 200 درهم. سبع سنوات تعطي 5 × 21 = 105 أيام و2 × 30 = 60 يومًا.</p>
 <h2>تحوّل عمان إلى نظام الادخار</h2>
 <p>سيستبدل قانون الحماية الاجتماعية في عمان مكافأة نهاية الخدمة للعاملين الوافدين بنظام ادخار يموّله صاحب العمل بنسبة 9% من الأجر الأساسي شهريًا. يحدد صندوق الحماية الاجتماعية تاريخ البدء، على ألا يتجاوز 19 يوليو 2027. وإلى أن يبدأ، يستمر أصحاب العمل في دفع المكافأة وفق المادة 61، وتبقى المكافأة عن الخدمة قبل تاريخ البدء حقًا للعامل.</p>
 <h2>أسئلة شائعة</h2>
