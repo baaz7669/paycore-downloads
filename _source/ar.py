@@ -346,7 +346,7 @@ def build(out_dir, site_url, dl_base, setup_name, portable_name, shots_dir, year
 
 <footer><div class="wrap">
 <span>© {year} PayCore. جميع الحقوق محفوظة.</span>
-<span><a href="salary-software-guide/">دليل اختيار برنامج الرواتب</a> · <a href="gratuity-calculator/">حاسبة مكافأة نهاية الخدمة المجانية</a> · <a href="salary-calculator/">حاسبة الراتب المجانية</a> · <a href="../" hreflang="en" lang="en">English</a> · <a href="../privacy.html">سياسة الخصوصية (بالإنجليزية)</a> · <a href="../terms.html">شروط الاستخدام (بالإنجليزية)</a> · <a href="https://wa.me/{WA}" target="_blank" rel="noopener">واتساب</a> · <a href="https://www.linkedin.com/company/paycoresalarysystem/" target="_blank" rel="noopener" dir="ltr">LinkedIn</a></span>
+<span><a href="salary-software-guide/">دليل اختيار برنامج الرواتب</a> · <a href="gratuity-calculator/">حاسبة مكافأة نهاية الخدمة المجانية</a> · <a href="salary-calculator/">حاسبة الراتب المجانية</a> · <a href="../" hreflang="en" lang="en">English</a> · <a href="../privacy.html">سياسة الخصوصية (بالإنجليزية)</a> · <a href="../terms.html">شروط الاستخدام (بالإنجليزية)</a> · <a href="https://wa.me/{WA}" target="_blank" rel="noopener">واتساب</a> · <a href="https://www.linkedin.com/company/paycoresalarysystem/" target="_blank" rel="noopener" dir="ltr">LinkedIn</a> · <a href="https://www.facebook.com/profile.php?id=61595637748793" target="_blank" rel="noopener" dir="ltr">Facebook</a></span>
 </div></footer>
 <!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{{"token": "a6468f1ecc92499d89496f6e15f55399"}}'></script><!-- End Cloudflare Web Analytics -->
 </body>

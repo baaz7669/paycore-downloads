@@ -61,7 +61,7 @@ schema = {
   "@graph": [
     {"@type": "Organization", "@id": SITE_URL + "#org", "name": "PayCore Salary System", "alternateName": ["PayCore", "PayCore Payroll"], "url": SITE_URL,
      "logo": SITE_URL + "apple-touch-icon.png", "email": "info@paycoresalarysystem.com",
-     "sameAs": ["https://www.linkedin.com/company/paycoresalarysystem/", "https://apps.microsoft.com/detail/9NMS2FWD82J3"],
+     "sameAs": ["https://www.linkedin.com/company/paycoresalarysystem/", "https://www.facebook.com/profile.php?id=61595637748793", "https://apps.microsoft.com/detail/9NMS2FWD82J3"],
      "contactPoint": {"@type": "ContactPoint", "contactType": "sales", "email": "info@paycoresalarysystem.com",
                       "telephone": "+968-9095-9084", "availableLanguage": ["English", "Arabic"]}},
     {"@type": "WebSite", "@id": SITE_URL + "#website", "url": SITE_URL, "name": "PayCore Salary System", "alternateName": "PayCore",
