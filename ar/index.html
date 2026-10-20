@@ -298,8 +298,35 @@ footer a{color:var(--ink);font-weight:600;text-decoration:none}
 <li><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5 9-10"/></svg></i><span><b>أي عملة.</b> الريال العماني والدينار الكويتي والبحريني بثلاث خانات عشرية، والدرهم والريال السعودي والقطري وأي عملة أخرى.</span></li>
 </ul></div>
 
-<div class="aiband rv" id="ai"><style>.aiband{margin-top:22px;border-radius:24px;padding:28px 30px;background:linear-gradient(115deg,#0d1a33,#1e3a8a 60%,#0e7490);color:#e8efff;display:grid;grid-template-columns:1.1fr 1fr;gap:20px 34px;align-items:start}.aiband h3{color:#fff;font-size:24px;margin:8px 0 8px}.aiband p{margin:0;color:#c7d4f0}.aiband .aik{display:inline-block;font-size:12.5px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;background:#a7f3d0;color:#064e3b;border-radius:999px;padding:4px 10px}.aiband ul{margin:0;padding:0;list-style:none;display:grid;gap:10px}.aiband li{padding-inline-start:26px;position:relative}.aiband li::before{content:"✦";position:absolute;inset-inline-start:0;color:#5eead4}.aiband li b{color:#fff}.aiband .ainote{grid-column:1/-1;font-size:14px;color:#a9b8d8;border-top:1px solid rgba(255,255,255,.15);padding-top:12px}@media (max-width:760px){.aiband{grid-template-columns:1fr;padding:24px 20px}}</style>
-<div><span class="aik">اختياري</span><h3>مساعد ذكاء اصطناعي مدمج</h3><p>فعّل المساعد الذكي بمفتاح Google Gemini الخاص بك ليراجع معك الرواتب. المساعد متوقف افتراضيًا، وكل ميزات PayCore الأخرى تعمل بدونه.</p></div>
+<div class="aiband rv" id="ai"><style>
+.aiband{position:relative;overflow:hidden;isolation:isolate;margin-top:22px;border-radius:24px;padding:28px 30px;background:linear-gradient(115deg,#0d1a33,#1e3a8a 35%,#0e7490 65%,#1e3a8a 85%,#0d1a33);background-size:300% 100%;animation:aibg 14s ease-in-out infinite alternate,aiglow 4s ease-in-out infinite;color:#e8efff;display:grid;grid-template-columns:1.1fr 1fr;gap:20px 34px;align-items:start}
+.aiband::before{content:"";position:absolute;z-index:-1;width:420px;height:420px;border-radius:50%;background:radial-gradient(circle,rgba(94,234,212,.28),transparent 65%);top:-160px;left:-120px;animation:aiorb 11s ease-in-out infinite alternate}
+.aiband::after{content:"";position:absolute;z-index:-1;inset:0;background:linear-gradient(105deg,transparent 40%,rgba(255,255,255,.09) 50%,transparent 60%);transform:translateX(-100%);animation:aisweep 7s ease-in-out infinite 1.5s}
+.aiband h3{color:#fff;font-size:24px;margin:8px 0 8px}
+.aiband h3 .aiw{background:linear-gradient(90deg,#5eead4,#a5b4fc,#5eead4);background-size:200% auto;-webkit-background-clip:text;background-clip:text;color:transparent;animation:aitext 3.5s linear infinite}
+.aiband p{margin:0;color:#c7d4f0}
+.aiband .aik{display:inline-flex;align-items:center;gap:7px;font-size:12.5px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;background:#a7f3d0;color:#064e3b;border-radius:999px;padding:4px 10px}
+.aiband .aik::before{content:"";width:7px;height:7px;border-radius:50%;background:#059669;animation:aidot 1.6s ease-in-out infinite}
+.aiband ul{margin:0;padding:0;list-style:none;display:grid;gap:10px}
+.aiband li{padding-inline-start:26px;position:relative;opacity:0;transform:translateX(24px);transition:opacity .6s ease,transform .6s cubic-bezier(.2,.8,.2,1)}
+[dir=rtl] .aiband li{transform:translateX(-24px)}
+.aiband.go li{opacity:1;transform:none}
+.aiband.go li:nth-child(2){transition-delay:.12s}.aiband.go li:nth-child(3){transition-delay:.24s}.aiband.go li:nth-child(4){transition-delay:.36s}.aiband.go li:nth-child(5){transition-delay:.48s}
+.aiband li::before{content:"✦";position:absolute;inset-inline-start:0;color:#5eead4;display:inline-block;animation:aistar 2.4s ease-in-out infinite}
+.aiband li:nth-child(2)::before{animation-delay:.4s}.aiband li:nth-child(3)::before{animation-delay:.8s}.aiband li:nth-child(4)::before{animation-delay:1.2s}.aiband li:nth-child(5)::before{animation-delay:1.6s}
+.aiband li b{color:#fff}
+.aiband .ainote{grid-column:1/-1;font-size:14px;color:#a9b8d8;border-top:1px solid rgba(255,255,255,.15);padding-top:12px}
+@keyframes aibg{to{background-position:100% 0}}
+@keyframes aiglow{0%,100%{box-shadow:0 20px 50px -24px rgba(14,116,144,.55)}50%{box-shadow:0 26px 70px -20px rgba(94,234,212,.45)}}
+@keyframes aiorb{to{transform:translate(min(70vw,760px),180px)}}
+@keyframes aisweep{0%{transform:translateX(-100%)}45%,100%{transform:translateX(100%)}}
+@keyframes aitext{to{background-position:-200% center}}
+@keyframes aidot{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.6);opacity:.45}}
+@keyframes aistar{0%,100%{transform:scale(1) rotate(0);opacity:1}50%{transform:scale(1.35) rotate(45deg);opacity:.6}}
+@media (max-width:760px){.aiband{grid-template-columns:1fr;padding:24px 20px}}
+@media (prefers-reduced-motion: reduce){.aiband,.aiband::before,.aiband::after,.aiband *,.aiband *::before{animation:none!important;transition:none!important}.aiband li{opacity:1;transform:none}}
+</style>
+<div><span class="aik">اختياري</span><h3>مساعد <span class="aiw">ذكاء اصطناعي</span> مدمج</h3><p>فعّل المساعد الذكي بمفتاح Google Gemini الخاص بك ليراجع معك الرواتب. المساعد متوقف افتراضيًا، وكل ميزات PayCore الأخرى تعمل بدونه.</p></div>
 <ul>
 <li><b>اسأل عن رواتبك</b> بكلمات بسيطة: الإجماليات والرواتب والسلف والتغيّرات من شهر لآخر.</li>
 <li><b>راجع مسير الرواتب قبل اعتماده</b> لاكتشاف المبالغ غير المعتادة والأخطاء المحتملة.</li>
@@ -309,6 +336,7 @@ footer a{color:var(--ink);font-weight:600;text-decoration:none}
 </ul>
 <p class="ainote">عند تفعيل المساعد الذكي تُرسل أسئلتك وسجلات الرواتب التي يحتاجها إلى Google للحصول على الإجابة. اتركه متوقفًا ولن يغادر أي شيء جهازك.</p>
 </div>
+<script>(function(){var b=document.getElementById('ai');if(!b)return;if(!('IntersectionObserver' in window)){b.classList.add('go');return}var o=new IntersectionObserver(function(e){if(e[0].isIntersecting){b.classList.add('go');o.disconnect()}},{threshold:.25});o.observe(b)})();</script>
 </div></section>
 
 <section class="toolband" id="free-tools" aria-label="حاسبات رواتب مجانية"><style>.toolband{padding-block:10px 30px}.toolcard{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:18px 28px;border-radius:24px;padding:26px 30px;background:linear-gradient(115deg,#eef4ff,#e7fbf3);border:1px solid #d6e3ff}.toolcard .tc-t{max-width:60ch}.toolcard .tc-k{display:inline-block;font-size:12.5px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:#047857;background:#fff;border:1px solid #c9f2df;border-radius:999px;padding:4px 10px;margin-bottom:8px}.toolcard h2{margin:0 0 6px;font-size:clamp(22px,3.4vw,28px);line-height:1.2}.toolcard p{margin:0;color:#4b5a74}@media (max-width:560px){.toolcard{padding:22px 18px}.toolcard .btn{width:100%;justify-content:center}}.toolgrid{display:grid;grid-template-columns:1fr 1fr;gap:18px}@media (max-width:860px){.toolgrid{grid-template-columns:1fr}}.toolcard{flex-direction:column;align-items:flex-start;box-shadow:0 0 0 3px #a7f3d0}.toolcard .tc-k{background:#059669;color:#fff;border-color:#059669}.toolhead{text-align:center;margin:0 0 18px}.toolhead h2{margin:0}.nav ul a.navfree{background:#059669;color:#fff}.nav ul a.navfree:hover{background:#047857;color:#fff}</style><div class="wrap">
