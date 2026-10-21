@@ -135,7 +135,7 @@ seo_head = f"""<!doctype html>
 <meta name="twitter:description" content="{html.escape(DESC)}">
 <meta name="twitter:image" content="{SITE_URL}og-image.png">
 
-<link rel="preload" as="image" href="images/paycore-payroll-dashboard.webp" type="image/webp">
+<link rel="preload" as="image" href="images/paycore-payroll-dashboard.webp" type="image/webp" fetchpriority="high">
 <script type="application/ld+json">
 {json.dumps(schema, ensure_ascii=False, indent=1)}
 </script>
