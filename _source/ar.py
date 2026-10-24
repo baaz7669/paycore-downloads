@@ -25,6 +25,9 @@ FEATURES = [
  ("قسائم الرواتب والتقارير", "قسائم رواتب بصيغة PDF تحمل بيانات شركتك، وتقارير رواتب شهرية مع تصدير إلى Excel للمحاسب أو البنك."),
  ("مكافأة نهاية الخدمة ونظام حماية الأجور", "احسب مكافأة نهاية الخدمة بالنسبة التي تحددها، وحدد مبلغ التحويل البنكي لكل موظف وفق نظام حماية الأجور (WPS)."),
  ("متابعة انتهاء الوثائق", "احفظ السجلات التجارية والإقامات والهويات ووثائق التأمين في مكان واحد، مع تذكيرات على لوحة التحكم قبل انتهاء صلاحيتها."),
+ ("رواتب الموظفين بالساعة", "ادفع لموظفي الساعات إلى جانب الموظفين الشهريين: بسعر ثابت للساعة، أو الراتب الشهري حسب الساعات الفعلية، مع احتساب الساعات الإضافية بالنسبة التي تحددها.", True),
+ ("استيراد الساعات من Excel", "ارفع ساعات الشهر من ملف Excel أو CSV، وطابق الأعمدة مرة واحدة، ويتأكد PayCore من عدم نقص ساعات أي موظف قبل تشغيل الرواتب.", True),
+ ("إجازة تبدأ في منتصف الشهر", "عندما تبدأ الإجازة أو تنتهي في منتصف الشهر، اختر خصم أيام الغياب أو دفع أيام العمل، مع إمكانية التعديل اليدوي عند الحاجة.", True),
 ]
 
 COMPARE = [
@@ -45,6 +48,7 @@ FAQ = [
  ("ما الذي يجب أن يتوفر في برنامج إدارة الرواتب الجيد؟", "للشركات الصغيرة، ابحث عن سجل للموظفين مع هيكل الرواتب، ومسير رواتب شهري يحسب العمل الإضافي والإجازات تلقائيًا، ومتابعة السلف والقروض، وقسائم رواتب وتقارير، وحساب مكافأة نهاية الخدمة. وانتبه للتسعير: الاشتراكات التي تُحسب لكل موظف تصبح مكلفة مع نمو شركتك. يوفر PayCore كل ذلك بترخيص لمرة واحدة."),
  ("هل يمكنني تجربة البرنامج قبل الشراء؟", "نعم. نقدم عرضًا مباشرًا مجانيًا عبر مكالمة فيديو. تواصل معنا عبر واتساب أو البريد الإلكتروني لتحديد موعد."),
  ("هل يمكن نقل البرنامج إلى جهاز جديد؟", "نعم. ثبّت PayCore على الجهاز الجديد وفعّله بنفس البريد الإلكتروني ومفتاح الترخيص، ثم استعد بياناتك من النسخة الاحتياطية."),
+ ("هل يدعم PayCore رواتب الموظفين بالساعة؟", "نعم. يمكن دفع راتب كل موظف شهريًا أو بالساعة. لموظفي الساعات اختر سعرًا ثابتًا للساعة، أو الراتب الشهري حسب الساعات الفعلية مقارنة بساعات الشهر القياسية، مع احتساب الساعات الإضافية بالنسبة التي تحددها. أدخل الساعات يدويًا أو استوردها لكل الفريق من ملف Excel أو CSV، وينبهك PayCore إذا نقصت ساعات أي موظف قبل تشغيل الرواتب."),
  ("هل يحتوي PayCore على ميزات الذكاء الاصطناعي؟", "نعم، كخيار إضافي. بمفتاح Google Gemini الخاص بك، يجيب المساعد الذكي المدمج عن أسئلتك حول الرواتب، ويراجع مسير الرواتب لاكتشاف المبالغ غير المعتادة قبل اعتماده، ويلخص التقارير الشهرية، ويكتب الخطابات، ويشرح أخطاء الاستيراد. المساعد متوقف افتراضيًا، وعند تفعيله تُرسل أسئلتك وسجلات الرواتب التي يحتاجها إلى Google."),
  ("هل بياناتي آمنة؟", "بيانات الرواتب تبقى على جهازك ولا تُرسل إلينا. الاستثناء الوحيد هو المساعد الذكي الاختياري: عند تفعيله تُرسل سجلات الرواتب إلى Google مع كل سؤال. الدخول محمي برمز PIN، وملفات النسخ الاحتياطي غير مشفرة لذا احفظها في مكان آمن."),
 ]
@@ -60,8 +64,11 @@ ICONS = [
  '<path d="M7 3h7l5 5v13H7z"/><path d="M14 3v5h5M10 13h6M10 17h6"/>',
  '<rect x="3" y="6" width="18" height="13" rx="2"/><path d="M3 10h18M7 15h4"/>',
  '<circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/>',
+ '<circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/>',
+ '<path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M12 18v-6M9 15l3-3 3 3"/>',
+ '<rect x="3.5" y="5" width="17" height="15" rx="2"/><path d="M3.5 10h17M8 3v4M16 3v4M8 14h3"/>',
 ]
-GRADS = ["g1", "g2", "g3", "g4", "g5", "g6"]
+GRADS = ["g1", "g2", "g3", "g4", "g5", "g6", "g3", "g2", "g5"]
 
 CSS = """
 :root{color-scheme:light;--bg:#f6f8ff;--ink:#0d1a33;--muted:#4b5a74;--line:#dfe6f3;--card:#fff;--blue:#1d4ed8;--mint:#047857;
@@ -104,11 +111,12 @@ section{padding-block:80px}.head{display:grid;gap:14px;margin-bottom:40px;max-wi
 .grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
 @media (max-width:900px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (max-width:600px){.grid{grid-template-columns:1fr}}
-.card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:26px;display:grid;gap:10px;align-content:start;transition:transform .3s,box-shadow .3s}
+.card{position:relative;background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:26px;display:grid;gap:10px;align-content:start;transition:transform .3s,box-shadow .3s}
 .card:hover{transform:translateY(-5px);box-shadow:0 26px 50px -30px rgba(37,99,235,.45)}
 .card p{color:var(--muted);font-size:16.5px}
 .ic{width:50px;height:50px;border-radius:14px;display:grid;place-items:center;color:#fff}.ic svg{width:25px;height:25px}
 .g1{background:linear-gradient(135deg,#2563eb,#60a5fa)}.g2{background:linear-gradient(135deg,#0ea5e9,#67e8f9)}.g3{background:linear-gradient(135deg,#10b981,#6ee7b7)}
+.newtag{position:absolute;top:16px;left:16px;font-size:12px;font-weight:800;color:#fff;background:#047857;border-radius:999px;padding:4px 10px}
 .g4{background:linear-gradient(135deg,#f59e0b,#fcd34d)}.g5{background:linear-gradient(135deg,#6366f1,#a5b4fc)}.g6{background:linear-gradient(135deg,#f43f5e,#fda4af)}
 .cmp{background:#fff;border:1px solid var(--line);border-radius:24px;overflow:hidden}
 .row{display:grid;grid-template-columns:1.1fr 1fr 1fr;border-top:1px solid var(--line)}.row:first-child{border-top:0}
@@ -160,12 +168,15 @@ footer a{color:var(--ink);font-weight:600;text-decoration:none}
 """
 
 
+NEWTAG = '<span class="newtag">جديد</span>'
+
+
 def build(out_dir, site_url, dl_base, setup_name, portable_name, shots_dir, year):
     os.makedirs(os.path.join(out_dir, "ar"), exist_ok=True)
     shutil.copy(os.path.join(shots_dir, "ar-dashboard.jpg"), os.path.join(out_dir, "images", "paycore-arabic-payroll-dashboard.jpg"))
     url = site_url + "ar/"
     e = html.escape
-    feats = "".join(f'<div class="card"><span class="ic {GRADS[i]}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">{ICONS[i]}</svg></span><h3>{e(t)}</h3><p>{e(d)}</p></div>' for i, (t, d) in enumerate(FEATURES))
+    feats = "".join(f'<div class="card">{NEWTAG if len(f) > 2 else ""}<span class="ic {GRADS[i]}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">{ICONS[i]}</svg></span><h3>{e(f[0])}</h3><p>{e(f[1])}</p></div>' for i, f in enumerate(FEATURES))
     rows = "".join(f'<div class="row" role="row"><span class="k" role="rowheader">{e(k)}</span><span class="p" role="cell"><i class="y">{CHECK}</i>{e(p)}</span><span class="s" role="cell"><i class="n">{CROSS}</i>{e(o)}</span></div>' for k, p, o in COMPARE)
     faqs = "".join(f'<details{" open" if i == 0 else ""}><summary>{e(q)}</summary><p>{e(a)}</p></details>' for i, (q, a) in enumerate(FAQ))
     schema = {"@context": "https://schema.org", "@graph": [

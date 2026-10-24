@@ -85,6 +85,9 @@ schema = {
      "image": SITE_URL + "og-image.png",
      "featureList": [
         "Monthly payroll processing with overtime, bonuses, unpaid leave and tax",
+        "Hourly staff payroll: fixed hourly rate or monthly salary by hours worked, with extra hours at a set percentage",
+        "Import monthly working hours from Excel or CSV with column matching",
+        "Leave starting or ending mid-month: deduct days absent or pay days worked",
         "Employee loans and salary advances with automatic installment deduction",
         "PDF payslips, payroll reports and Excel/CSV exports",
         "End-of-service gratuity settlement",
