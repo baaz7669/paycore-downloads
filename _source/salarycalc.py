@@ -19,6 +19,8 @@ FAQ_EN = [
   "It depends on the employment contract, company policy and local labour law. Many employers deduct from the full salary (basic plus allowances) for unpaid days, while others deduct from basic only. This calculator lets you choose which parts of the salary are affected, so you can follow your own rule."),
  ("How do I calculate salary for someone who joined or left mid-month?",
   "Choose “Days worked”, enter the number of days the employee worked that month, and the calculator pays the chosen salary parts for those days only. Parts you leave unticked are paid in full."),
+ ("How do I calculate pay for hourly employees?",
+  "With a fixed hourly rate, multiply the rate by the hours worked; hours above the standard monthly hours (for example 208) are paid at your extra-hours rate, such as 125%. If the employee has a monthly salary paid by hours, the hourly rate is the salary divided by the standard hours: fewer hours reduce the salary and extra hours add to it. Choose “Hourly pay” in the calculator above to work it out."),
  ("Does PayCore do this automatically?",
   "Yes. PayCore tracks leave, attendance and overtime and works out unpaid-leave deductions in the monthly payroll for every employee, then produces payslips and the bank transfer list. It's a one-time USD 50 license for unlimited employees."),
 ]
@@ -31,6 +33,8 @@ FAQ_AR = [
   "يعتمد ذلك على عقد العمل وسياسة الشركة وقانون العمل المحلي. كثير من أصحاب العمل يخصمون من الراتب الكامل (الأساسي مع البدلات) عن الأيام بدون أجر، وآخرون يخصمون من الأساسي فقط. تتيح لك هذه الحاسبة اختيار أجزاء الراتب التي يشملها الحساب لتطبق قاعدتك."),
  ("كيف أحسب راتب موظف التحق أو غادر في منتصف الشهر؟",
   "اختر «أيام العمل»، وأدخل عدد الأيام التي عملها الموظف في ذلك الشهر، فتحسب الحاسبة أجزاء الراتب المختارة عن تلك الأيام فقط. أما الأجزاء غير المحددة فتُدفع كاملة."),
+ ("كيف أحسب أجر الموظف بالساعة؟",
+  "مع سعر ثابت للساعة، اضرب السعر في ساعات العمل، وتُدفع الساعات التي تزيد على ساعات الشهر القياسية (مثل 208) بنسبة الساعات الإضافية، مثل 125%. وإذا كان للموظف راتب شهري يُحسب بالساعات، فأجر الساعة هو الراتب مقسومًا على الساعات القياسية: الساعات الأقل تُنقص الراتب والساعات الإضافية تزيده. اختر «الأجر بالساعة» في الحاسبة أعلاه لحسابه."),
  ("هل يقوم PayCore بذلك تلقائيًا؟",
   "نعم. يتابع PayCore الإجازات والحضور والعمل الإضافي ويحسب خصم الإجازات بدون أجر ضمن الرواتب الشهرية لكل موظف، ثم يُصدر قسائم الرواتب وكشف التحويل البنكي. والترخيص لمرة واحدة بـ 50 دولارًا لعدد غير محدود من الموظفين."),
 ]
@@ -46,6 +50,8 @@ CSS = """
 .res td,.res th{padding:8px 10px}
 .res td.num{text-align:end}
 #sc-bm{display:none}#sc-bc{display:none}
+.newpill{font-size:11px;font-weight:800;letter-spacing:.06em;color:#fff;background:#047857;border-radius:999px;padding:2px 7px;margin-inline-start:4px}
+[hidden]{display:none!important}
 """
 
 JS = r"""
@@ -70,6 +76,9 @@ JS = r"""
   marks();
   var cur=$('sc-cur').value, d=DEC[cur]===undefined?2:DEC[cur], out=$('sc-out'), mode=val('m'), basis=val('b');
   $('sc-bm').style.display=basis==='cal'?'block':'none'; $('sc-bc').style.display=basis==='cus'?'block':'none';
+  var hr=mode==='hr';
+  ['sc-days-f','sc-parts-f','sc-basis-f'].forEach(function(id){$(id).hidden=hr}); $('sc-hr-f').hidden=!hr;
+  if(hr){hourly(cur,d,out);return}
   $('sc-days-l').textContent=T.daysL[mode]; $('sc-ck-l').textContent=T.ckL[mode];
   var div=30;
   if(basis==='cal'){var m=$('sc-month').value; if(m){var p=m.split('-');div=new Date(Date.UTC(+p[0],+p[1],0)).getUTCDate()}}
@@ -92,6 +101,26 @@ JS = r"""
    +'<div class="tbl"><table><thead><tr><th scope="col">'+T.h[0]+'</th><th scope="col">'+T.h[1]+'</th><th scope="col">'+T.h[2]+'</th></tr></thead><tbody>'+rows
    +'<tr><th scope="row">'+T.total+'</th><td class="num"><b>'+fmt(total,d)+'</b></td><td class="num"><b>'+fmt(pay,d)+'</b></td></tr></tbody></table></div>';
  }
+ function hourly(cur,d,out){
+  var m=val('hm'), fixed=m==='fixed';
+  $('sc-rate-f').hidden=!fixed; $('sc-msal-f').hidden=fixed;
+  var Tt=parseFloat($('sc-std').value), H=parseFloat($('sc-hw').value), P=(parseFloat($('sc-pct').value)||0)/100;
+  var R=parseFloat($('sc-rate').value), S=parseFloat($('sc-msal').value);
+  if(!(Tt>0)||isNaN(H)||H<0||(fixed?!(R>0):!(S>0))){out.innerHTML='<p class="hint">'+T.hfill+'</p>';return}
+  var c=function(v){return cur+' '+fmt(v,d)}, fh=function(v){return v.toLocaleString(T.locale,{maximumFractionDigits:2})}, lines=[], pay;
+  var reg=Math.min(H,Tt), ext=Math.max(0,H-Tt);
+  if(fixed){
+   pay=R*reg+R*ext*P;
+   lines.push(T.hreg.replace('{h}',fh(reg)).replace('{r}',c(R)).replace('{x}',c(R*reg)));
+   if(ext>0) lines.push(T.hext.replace('{h}',fh(ext)).replace('{r}',c(R)).replace('{p}',Math.round(P*100)).replace('{x}',c(R*ext*P)));
+  } else {
+   var rate=S/Tt; lines.push(T.hrate.replace('{s}',c(S)).replace('{t}',fh(Tt)).replace('{r}',c(rate)));
+   if(H<Tt){var ded=S*(Tt-H)/Tt; pay=S-ded; lines.push(T.hshort.replace('{h}',fh(Tt-H)).replace('{x}',c(ded)));}
+   else if(H>Tt){var ex=S*(H-Tt)/Tt*P; pay=S+ex; lines.push(T.hext.replace('{h}',fh(ext)).replace('{r}',c(rate)).replace('{p}',Math.round(P*100)).replace('{x}',c(ex)));}
+   else {pay=S; lines.push(T.hfull);}
+  }
+  out.innerHTML='<div class="lbl">'+T.hest+'</div><div class="big">'+c(pay)+'</div><ul>'+lines.map(function(l){return '<li>'+l+'</li>'}).join('')+'</ul>';
+ }
  f.addEventListener('input',calc); f.addEventListener('change',calc);
  f.addEventListener('submit',function(e){e.preventDefault();calc()});
  f.querySelectorAll('.presets button').forEach(function(b){b.addEventListener('click',function(){preset(b.getAttribute('data-p'))})});
@@ -112,7 +141,14 @@ T_EN = {"locale": "en-US",
  "ded": "Deduction: {x} for {n} days",
  "earn": "{n} days worked: {x}",
  "names": {"basic": "Basic salary", "housing": "Housing allowance", "transport": "Transport allowance", "other": "Other allowances"},
- "h": ["Salary part", "Monthly", "Paid"], "total": "Total"}
+ "h": ["Salary part", "Monthly", "Paid"], "total": "Total",
+ "hfill": "Enter the hourly rate or monthly salary, the hours worked and the standard monthly hours.",
+ "hest": "Pay for the month",
+ "hreg": "Regular hours: {h} × {r} = {x}",
+ "hext": "Extra hours: {h} × {r} × {p}% = {x}",
+ "hrate": "Hourly rate: {s} ÷ {t} hours = {r}",
+ "hshort": "Short by {h} hours: deduction {x}",
+ "hfull": "Worked exactly the standard hours: full salary"}
 T_AR = {"locale": "ar-OM-u-nu-latn",
  "daysL": {"abs": "أيام الغياب أو الإجازة بدون أجر", "work": "أيام العمل في هذا الشهر"},
  "ckL": {"abs": "الخصم من", "work": "أجزاء الراتب التي تُحسب بأيام العمل"},
@@ -123,20 +159,35 @@ T_AR = {"locale": "ar-OM-u-nu-latn",
  "ded": "الخصم: {x} عن {n} يوم",
  "earn": "{n} يوم عمل: {x}",
  "names": {"basic": "الراتب الأساسي", "housing": "بدل السكن", "transport": "بدل النقل", "other": "بدلات أخرى"},
- "h": ["جزء الراتب", "شهريًا", "المدفوع"], "total": "الإجمالي"}
+ "h": ["جزء الراتب", "شهريًا", "المدفوع"], "total": "الإجمالي",
+ "hfill": "أدخل سعر الساعة أو الراتب الشهري، وساعات العمل، وساعات الشهر القياسية.",
+ "hest": "أجر الشهر",
+ "hreg": "الساعات العادية: {h} × {r} = {x}",
+ "hext": "الساعات الإضافية: {h} × {r} × {p}% = {x}",
+ "hrate": "أجر الساعة: {s} ÷ {t} ساعة = {r}",
+ "hshort": "نقص {h} ساعة: خصم {x}",
+ "hfull": "عمل الساعات القياسية كاملة: الراتب كاملًا"}
 
 L_EN = {"cur": "Currency", "mode": "What do you want to calculate?", "abs": "Deduction for absent or unpaid days", "work": "Salary for days worked",
         "parts": "Monthly salary", "basis": "Days in a month", "b30": "30 days", "bcal": "Actual days in the month", "bcus": "Working days",
         "month": "Month", "wd": "Working days in the month",
         "presets": "Quick choice", "pfull": "Full salary", "pbasic": "Basic only", "pbh": "Basic + housing",
         "hint": "Unticked parts are paid in full.",
-        "disc": "A free estimate. Follow your employment contract, company policy and local labour law; this isn't legal advice."}
+        "disc": "A free estimate. Follow your employment contract, company policy and local labour law; this isn't legal advice.",
+        "hr": "Hourly pay", "new": "NEW", "hmeth": "How is this employee paid?", "hfixed": "Fixed rate per hour", "hsal": "Monthly salary by hours worked",
+        "hrate": "Hourly rate", "hmsal": "Monthly salary", "hworked": "Hours worked this month",
+        "hstd": "Standard hours in the month", "hstdh": "208 is 8 hours × 26 working days. Hours above this count as extra hours.",
+        "hpct": "Extra hours paid at (%)", "hpcth": "Use 100 for the same rate. Overtime rates differ by country and contract."}
 L_AR = {"cur": "العملة", "mode": "ماذا تريد أن تحسب؟", "abs": "خصم أيام الغياب أو الإجازة بدون أجر", "work": "الراتب عن أيام العمل",
         "parts": "الراتب الشهري", "basis": "عدد أيام الشهر", "b30": "30 يومًا", "bcal": "أيام الشهر الفعلية", "bcus": "أيام العمل",
         "month": "الشهر", "wd": "أيام العمل في الشهر",
         "presets": "اختيار سريع", "pfull": "الراتب الكامل", "pbasic": "الأساسي فقط", "pbh": "الأساسي + السكن",
         "hint": "الأجزاء غير المحددة تُدفع كاملة.",
-        "disc": "تقدير مجاني. اتبع عقد العمل وسياسة الشركة وقانون العمل المحلي، وهذه ليست استشارة قانونية."}
+        "disc": "تقدير مجاني. اتبع عقد العمل وسياسة الشركة وقانون العمل المحلي، وهذه ليست استشارة قانونية.",
+        "hr": "الأجر بالساعة", "new": "جديد", "hmeth": "كيف يُدفع أجر هذا الموظف؟", "hfixed": "سعر ثابت للساعة", "hsal": "الراتب الشهري حسب ساعات العمل",
+        "hrate": "سعر الساعة", "hmsal": "الراتب الشهري", "hworked": "ساعات العمل هذا الشهر",
+        "hstd": "ساعات الشهر القياسية", "hstdh": "208 تعني 8 ساعات × 26 يوم عمل. ما يزيد عليها يُحسب ساعات إضافية.",
+        "hpct": "أجر الساعات الإضافية (%)", "hpcth": "استخدم 100 لنفس السعر. تختلف نسب العمل الإضافي حسب الدولة والعقد."}
 
 
 def _form(t, L):
@@ -151,15 +202,16 @@ def _form(t, L):
 <div class="seg" role="radiogroup" aria-labelledby="sc-m-l">
 <label><input type="radio" name="m" value="abs" checked> {L['abs']}</label>
 <label><input type="radio" name="m" value="work"> {L['work']}</label>
+<label><input type="radio" name="m" value="hr"> {L['hr']} <span class="newpill">{L['new']}</span></label>
 </div></div>
 <div class="row">
 <div class="fld"><label for="sc-cur">{L['cur']}</label><select id="sc-cur">{opts}</select></div>
-<div class="fld"><label for="sc-days" id="sc-days-l"></label><input type="number" id="sc-days" min="0" step="0.5" inputmode="decimal" placeholder="0"></div>
+<div class="fld" id="sc-days-f"><label for="sc-days" id="sc-days-l"></label><input type="number" id="sc-days" min="0" step="0.5" inputmode="decimal" placeholder="0"></div>
 </div>
-<div class="fld"><label>{L['parts']} · <span id="sc-ck-l"></span></label>
+<div class="fld" id="sc-parts-f"><label>{L['parts']} · <span id="sc-ck-l"></span></label>
 <div class="presets" role="group" aria-label="{L['presets']}"><button type="button" data-p="full">{L['pfull']}</button><button type="button" data-p="basic">{L['pbasic']}</button><button type="button" data-p="bh">{L['pbh']}</button></div>
 <div class="comp">{rows}</div><p class="hint">{L['hint']}</p></div>
-<div class="fld"><label id="sc-b-l">{L['basis']}</label>
+<div class="fld" id="sc-basis-f"><label id="sc-b-l">{L['basis']}</label>
 <div class="seg" role="radiogroup" aria-labelledby="sc-b-l">
 <label><input type="radio" name="b" value="30" checked> {L['b30']}</label>
 <label><input type="radio" name="b" value="cal"> {L['bcal']}</label>
@@ -168,6 +220,22 @@ def _form(t, L):
 <div id="sc-bm" class="fld" style="margin-top:10px"><label for="sc-month">{L['month']}</label><input type="month" id="sc-month"></div>
 <div id="sc-bc" class="fld" style="margin-top:10px"><label for="sc-wd">{L['wd']}</label><input type="number" id="sc-wd" min="1" max="31" step="1" value="26"></div>
 </div>
+<div id="sc-hr-f" hidden>
+<div class="fld"><label id="sc-hm-l">{L['hmeth']}</label>
+<div class="seg" role="radiogroup" aria-labelledby="sc-hm-l">
+<label><input type="radio" name="hm" value="fixed" checked> {L['hfixed']}</label>
+<label><input type="radio" name="hm" value="sal"> {L['hsal']}</label>
+</div></div>
+<div class="row">
+<div class="fld" id="sc-rate-f"><label for="sc-rate">{L['hrate']}</label><input type="number" id="sc-rate" min="0" step="any" inputmode="decimal" placeholder="0"></div>
+<div class="fld" id="sc-msal-f" hidden><label for="sc-msal">{L['hmsal']}</label><input type="number" id="sc-msal" min="0" step="any" inputmode="decimal" placeholder="0"></div>
+<div class="fld"><label for="sc-hw">{L['hworked']}</label><input type="number" id="sc-hw" min="0" step="0.25" inputmode="decimal" placeholder="0"></div>
+</div>
+<div class="row">
+<div class="fld"><label for="sc-std">{L['hstd']}</label><input type="number" id="sc-std" min="1" step="1" value="208"><p class="hint">{L['hstdh']}</p></div>
+<div class="fld"><label for="sc-pct">{L['hpct']}</label><input type="number" id="sc-pct" min="0" step="1" value="125"><p class="hint">{L['hpcth']}</p></div>
+</div>
+</div>
 <div class="res" id="sc-out" aria-live="polite"></div>
 <p class="hint">{L['disc']}</p>
 </form>"""
@@ -175,16 +243,20 @@ def _form(t, L):
 
 EX_EN = [("Full salary, 3 unpaid days", "Basic 400 + housing 150 + transport 50 = OMR 600", "600 ÷ 30 = 20 a day; 20 × 3 = 60", "OMR 540"),
          ("Basic only, 3 unpaid days", "Same salary", "400 ÷ 30 = 13.333 a day; × 3 = 40", "OMR 560"),
-         ("Joined on the 11th (20 days worked)", "Full salary OMR 600", "600 ÷ 30 × 20", "OMR 400")]
+         ("Joined on the 11th (20 days worked)", "Full salary OMR 600", "600 ÷ 30 × 20", "OMR 400"),
+         ("Hourly, fixed rate, 220 hours", "OMR 2.500 an hour, 208 standard hours, extra at 125%", "208 × 2.5 + 12 × 2.5 × 1.25", "OMR 557.500"),
+         ("Hourly, salary by hours, 190 hours", "Salary OMR 520, 208 standard hours", "520 − 520 × 18 ÷ 208", "OMR 475")]
 EX_AR = [("الراتب الكامل، 3 أيام بدون أجر", "أساسي 400 + سكن 150 + نقل 50 = 600 ريال عماني", "600 ÷ 30 = 20 يوميًا؛ 20 × 3 = 60", "540 ريالًا"),
          ("الأساسي فقط، 3 أيام بدون أجر", "الراتب نفسه", "400 ÷ 30 = 13.333 يوميًا؛ × 3 = 40", "560 ريالًا"),
-         ("التحق يوم 11 (20 يوم عمل)", "راتب كامل 600 ريال", "600 ÷ 30 × 20", "400 ريال")]
+         ("التحق يوم 11 (20 يوم عمل)", "راتب كامل 600 ريال", "600 ÷ 30 × 20", "400 ريال"),
+         ("بالساعة، سعر ثابت، 220 ساعة", "2.500 ريال للساعة، 208 ساعات قياسية، الإضافي 125%", "208 × 2.5 + 12 × 2.5 × 1.25", "557.500 ريال"),
+         ("بالساعة، الراتب حسب الساعات، 190 ساعة", "راتب 520 ريالًا، 208 ساعات قياسية", "520 − 520 × 18 ÷ 208", "475 ريالًا")]
 
 EN_BODY = f"""
 <p class="crumbs"><a href="/">Home</a> › Free salary calculator</p>
-<h1>Free salary calculator for absences, unpaid leave and days worked</h1>
+<h1>Free salary calculator for absences, unpaid leave, days worked and hourly pay</h1>
 <p class="updated"><span class="free">FREE</span>No sign-up · Works for any currency</p>
-<p class="lead">Work out a daily salary rate, the deduction for absent or unpaid leave days, or the pay for an employee who worked only part of the month. Choose whether the calculation uses the full salary, basic salary only, or basic plus selected allowances.</p>
+<p class="lead">Work out a daily salary rate, the deduction for absent or unpaid leave days, the pay for an employee who worked only part of the month, or hourly pay with extra hours. Choose whether the calculation uses the full salary, basic salary only, or basic plus selected allowances.</p>
 {_form(T_EN, L_EN)}
 <h2>Worked examples</h2>
 {gratuity._ex_table(EX_EN, ["Case", "Salary", "Calculation", "Salary for the month"])}
@@ -200,9 +272,9 @@ EN_BODY = f"""
 
 AR_BODY = f"""
 <p class="crumbs"><a href="/ar/">الرئيسية</a> › حاسبة الراتب المجانية</p>
-<h1>حاسبة الراتب المجانية للغياب والإجازة بدون أجر وأيام العمل</h1>
+<h1>حاسبة الراتب المجانية للغياب والإجازة بدون أجر وأيام العمل والأجر بالساعة</h1>
 <p class="updated"><span class="free">مجانية</span>بدون تسجيل · تعمل مع أي عملة</p>
-<p class="lead">احسب الأجر اليومي، وخصم أيام الغياب أو الإجازة بدون أجر، أو راتب موظف عمل جزءًا من الشهر فقط. اختر إن كان الحساب على الراتب الكامل، أو الأساسي فقط، أو الأساسي مع بدلات تختارها.</p>
+<p class="lead">احسب الأجر اليومي، وخصم أيام الغياب أو الإجازة بدون أجر، أو راتب موظف عمل جزءًا من الشهر فقط، أو الأجر بالساعة مع الساعات الإضافية. اختر إن كان الحساب على الراتب الكامل، أو الأساسي فقط، أو الأساسي مع بدلات تختارها.</p>
 {_form(T_AR, L_AR)}
 <h2>أمثلة محسوبة</h2>
 {gratuity._ex_table(EX_AR, ["الحالة", "الراتب", "الحساب", "راتب الشهر"])}
@@ -221,20 +293,20 @@ def build(out_dir, site_url, year):
     en_url = site_url + "salary-calculator/"
     ar_url = site_url + "ar/salary-calculator/"
     pages = [
-        ("en", en_url, ar_url, "Free Salary Calculator: Absence, Unpaid Leave & Days Worked",
-         "Free salary calculator: daily rate, deduction for absent or unpaid leave days, or pay for days worked, on full salary, basic only or chosen allowances.",
+        ("en", en_url, ar_url, "Free Salary & Hourly Pay Calculator: Absence, Days Worked",
+         "Free salary calculator: deductions for absent or unpaid days, pay for days worked, and hourly pay with extra hours. Full salary, basic only or chosen allowances.",
          EN_BODY, "/", "Back to home",
          "https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,800&family=Figtree:wght@400;600;700&display=swap",
          '"Figtree","Segoe UI",system-ui,sans-serif', '"Bricolage Grotesque","Segoe UI",sans-serif',
          '<a href="/">Home</a> · <a href="/gratuity-calculator/">Free gratuity calculator</a> · <a href="/salary-software-guide/">Buyer\'s guide</a> · <a href="/ar/salary-calculator/" hreflang="ar" lang="ar">العربية</a> · <a href="/privacy.html">Privacy</a> · <a href="/terms.html">Terms</a>',
-         "Free salary calculator for absences, unpaid leave and days worked", os.path.join(out_dir, "salary-calculator"), FAQ_EN),
-        ("ar", ar_url, en_url, "حاسبة الراتب المجانية: خصم الغياب والإجازة بدون أجر وأيام العمل | PayCore",
+         "Free salary calculator for absences, unpaid leave, days worked and hourly pay", os.path.join(out_dir, "salary-calculator"), FAQ_EN),
+        ("ar", ar_url, en_url, "حاسبة الراتب والأجر بالساعة المجانية: الغياب وأيام العمل | PayCore",
          "حاسبة راتب مجانية: احسب الأجر اليومي وخصم أيام الغياب أو الإجازة بدون أجر أو الراتب عن أيام العمل، على الراتب الكامل أو الأساسي أو بدلات تختارها.",
          AR_BODY, "/ar/", "العودة للرئيسية",
          "https://fonts.googleapis.com/css2?family=Cairo:wght@700;800&family=IBM+Plex+Sans+Arabic:wght@400;600;700&display=swap",
          '"IBM Plex Sans Arabic","Segoe UI",Tahoma,sans-serif', '"Cairo","Segoe UI",Tahoma,sans-serif',
          '<a href="/ar/">الرئيسية</a> · <a href="/ar/gratuity-calculator/">حاسبة مكافأة نهاية الخدمة المجانية</a> · <a href="/ar/salary-software-guide/">دليل اختيار برنامج الرواتب</a> · <a href="/salary-calculator/" hreflang="en" lang="en">English</a> · <a href="/privacy.html">سياسة الخصوصية</a> · <a href="/terms.html">شروط الاستخدام</a>',
-         "حاسبة الراتب المجانية للغياب والإجازة بدون أجر وأيام العمل", os.path.join(out_dir, "ar", "salary-calculator"), FAQ_AR),
+         "حاسبة الراتب المجانية للغياب والإجازة بدون أجر وأيام العمل والأجر بالساعة", os.path.join(out_dir, "ar", "salary-calculator"), FAQ_AR),
     ]
     for lang, url, alt, title, desc, body, home, back, fonts, bf, df, links, headline, folder, faq in pages:
         os.makedirs(folder, exist_ok=True)

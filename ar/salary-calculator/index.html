@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>حاسبة الراتب المجانية: خصم الغياب والإجازة بدون أجر وأيام العمل | PayCore</title>
+<title>حاسبة الراتب والأجر بالساعة المجانية: الغياب وأيام العمل | PayCore</title>
 <meta name="description" content="حاسبة راتب مجانية: احسب الأجر اليومي وخصم أيام الغياب أو الإجازة بدون أجر أو الراتب عن أيام العمل، على الراتب الكامل أو الأساسي أو بدلات تختارها.">
 <meta name="robots" content="index, follow, max-image-preview:large">
 <link rel="canonical" href="https://paycoresalarysystem.com/ar/salary-calculator/">
@@ -14,7 +14,7 @@
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="PayCore">
-<meta property="og:title" content="حاسبة الراتب المجانية: خصم الغياب والإجازة بدون أجر وأيام العمل | PayCore">
+<meta property="og:title" content="حاسبة الراتب والأجر بالساعة المجانية: الغياب وأيام العمل | PayCore">
 <meta property="og:description" content="حاسبة راتب مجانية: احسب الأجر اليومي وخصم أيام الغياب أو الإجازة بدون أجر أو الراتب عن أيام العمل، على الراتب الكامل أو الأساسي أو بدلات تختارها.">
 <meta property="og:url" content="https://paycoresalarysystem.com/ar/salary-calculator/">
 <meta property="og:image" content="https://paycoresalarysystem.com/og-image.png">
@@ -29,7 +29,7 @@
   {
    "@type": "WebApplication",
    "@id": "https://paycoresalarysystem.com/ar/salary-calculator/#calculator",
-   "name": "حاسبة الراتب المجانية للغياب والإجازة بدون أجر وأيام العمل",
+   "name": "حاسبة الراتب المجانية للغياب والإجازة بدون أجر وأيام العمل والأجر بالساعة",
    "url": "https://paycoresalarysystem.com/ar/salary-calculator/",
    "description": "حاسبة راتب مجانية: احسب الأجر اليومي وخصم أيام الغياب أو الإجازة بدون أجر أو الراتب عن أيام العمل، على الراتب الكامل أو الأساسي أو بدلات تختارها.",
    "inLanguage": "ar",
@@ -57,7 +57,7 @@
     {
      "@type": "ListItem",
      "position": 2,
-     "name": "حاسبة الراتب المجانية للغياب والإجازة بدون أجر وأيام العمل",
+     "name": "حاسبة الراتب المجانية للغياب والإجازة بدون أجر وأيام العمل والأجر بالساعة",
      "item": "https://paycoresalarysystem.com/ar/salary-calculator/"
     }
    ]
@@ -97,6 +97,14 @@
      "acceptedAnswer": {
       "@type": "Answer",
       "text": "اختر «أيام العمل»، وأدخل عدد الأيام التي عملها الموظف في ذلك الشهر، فتحسب الحاسبة أجزاء الراتب المختارة عن تلك الأيام فقط. أما الأجزاء غير المحددة فتُدفع كاملة."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "كيف أحسب أجر الموظف بالساعة؟",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "مع سعر ثابت للساعة، اضرب السعر في ساعات العمل، وتُدفع الساعات التي تزيد على ساعات الشهر القياسية (مثل 208) بنسبة الساعات الإضافية، مثل 125%. وإذا كان للموظف راتب شهري يُحسب بالساعات، فأجر الساعة هو الراتب مقسومًا على الساعات القياسية: الساعات الأقل تُنقص الراتب والساعات الإضافية تزيده. اختر «الأجر بالساعة» في الحاسبة أعلاه لحسابه."
      }
     },
     {
@@ -196,6 +204,8 @@ footer a{color:var(--ink);font-weight:600;text-decoration:none}
 .res td,.res th{padding:8px 10px}
 .res td.num{text-align:end}
 #sc-bm{display:none}#sc-bc{display:none}
+.newpill{font-size:11px;font-weight:800;letter-spacing:.06em;color:#fff;background:#047857;border-radius:999px;padding:2px 7px;margin-inline-start:4px}
+[hidden]{display:none!important}
 </style>
 <style>.social{display:flex;flex-wrap:wrap;align-items:center;gap:10px 12px;width:100%;margin-bottom:6px}.social .sl{font-weight:700;color:var(--ink,#0d1a33);margin-inline-end:4px}.social a.sb{display:inline-flex;align-items:center;gap:9px;padding:10px 16px;border-radius:999px;color:#fff!important;font-weight:700;font-size:15px;text-decoration:none;transition:transform .2s,box-shadow .2s}.social a.sb:hover{transform:translateY(-2px);box-shadow:0 10px 22px -10px rgba(13,26,51,.5)}.social a.sb svg{width:18px;height:18px;fill:#fff;flex:none}.intro .social .sl{flex-basis:100%}.social .li{background:#0a66c2}.social .fb{background:#0866ff}.social .wa{background:#128c4a}</style>
 </head>
@@ -206,23 +216,24 @@ footer a{color:var(--ink);font-weight:600;text-decoration:none}
 </div></div></header>
 <div class="wrap">
 <main><p class="crumbs"><a href="/ar/">الرئيسية</a> › حاسبة الراتب المجانية</p>
-<h1>حاسبة الراتب المجانية للغياب والإجازة بدون أجر وأيام العمل</h1>
+<h1>حاسبة الراتب المجانية للغياب والإجازة بدون أجر وأيام العمل والأجر بالساعة</h1>
 <p class="updated"><span class="free">مجانية</span>بدون تسجيل · تعمل مع أي عملة</p>
-<p class="lead">احسب الأجر اليومي، وخصم أيام الغياب أو الإجازة بدون أجر، أو راتب موظف عمل جزءًا من الشهر فقط. اختر إن كان الحساب على الراتب الكامل، أو الأساسي فقط، أو الأساسي مع بدلات تختارها.</p>
-<form class="calc" id="sc" data-t="{&quot;locale&quot;: &quot;ar-OM-u-nu-latn&quot;, &quot;daysL&quot;: {&quot;abs&quot;: &quot;أيام الغياب أو الإجازة بدون أجر&quot;, &quot;work&quot;: &quot;أيام العمل في هذا الشهر&quot;}, &quot;ckL&quot;: {&quot;abs&quot;: &quot;الخصم من&quot;, &quot;work&quot;: &quot;أجزاء الراتب التي تُحسب بأيام العمل&quot;}, &quot;fill&quot;: &quot;أدخل الراتب وعدد الأيام لعرض النتيجة.&quot;, &quot;over&quot;: &quot;لا يمكن أن تزيد الأيام على {n} يومًا بحسب الأساس المختار، لذا استُخدم {n}.&quot;, &quot;est&quot;: &quot;راتب الشهر&quot;, &quot;full&quot;: &quot;يُدفع كاملًا&quot;, &quot;rate&quot;: &quot;الأجر اليومي: {r} ({a} ÷ {n} يومًا)&quot;, &quot;ded&quot;: &quot;الخصم: {x} عن {n} يوم&quot;, &quot;earn&quot;: &quot;{n} يوم عمل: {x}&quot;, &quot;names&quot;: {&quot;basic&quot;: &quot;الراتب الأساسي&quot;, &quot;housing&quot;: &quot;بدل السكن&quot;, &quot;transport&quot;: &quot;بدل النقل&quot;, &quot;other&quot;: &quot;بدلات أخرى&quot;}, &quot;h&quot;: [&quot;جزء الراتب&quot;, &quot;شهريًا&quot;, &quot;المدفوع&quot;], &quot;total&quot;: &quot;الإجمالي&quot;}" novalidate>
+<p class="lead">احسب الأجر اليومي، وخصم أيام الغياب أو الإجازة بدون أجر، أو راتب موظف عمل جزءًا من الشهر فقط، أو الأجر بالساعة مع الساعات الإضافية. اختر إن كان الحساب على الراتب الكامل، أو الأساسي فقط، أو الأساسي مع بدلات تختارها.</p>
+<form class="calc" id="sc" data-t="{&quot;locale&quot;: &quot;ar-OM-u-nu-latn&quot;, &quot;daysL&quot;: {&quot;abs&quot;: &quot;أيام الغياب أو الإجازة بدون أجر&quot;, &quot;work&quot;: &quot;أيام العمل في هذا الشهر&quot;}, &quot;ckL&quot;: {&quot;abs&quot;: &quot;الخصم من&quot;, &quot;work&quot;: &quot;أجزاء الراتب التي تُحسب بأيام العمل&quot;}, &quot;fill&quot;: &quot;أدخل الراتب وعدد الأيام لعرض النتيجة.&quot;, &quot;over&quot;: &quot;لا يمكن أن تزيد الأيام على {n} يومًا بحسب الأساس المختار، لذا استُخدم {n}.&quot;, &quot;est&quot;: &quot;راتب الشهر&quot;, &quot;full&quot;: &quot;يُدفع كاملًا&quot;, &quot;rate&quot;: &quot;الأجر اليومي: {r} ({a} ÷ {n} يومًا)&quot;, &quot;ded&quot;: &quot;الخصم: {x} عن {n} يوم&quot;, &quot;earn&quot;: &quot;{n} يوم عمل: {x}&quot;, &quot;names&quot;: {&quot;basic&quot;: &quot;الراتب الأساسي&quot;, &quot;housing&quot;: &quot;بدل السكن&quot;, &quot;transport&quot;: &quot;بدل النقل&quot;, &quot;other&quot;: &quot;بدلات أخرى&quot;}, &quot;h&quot;: [&quot;جزء الراتب&quot;, &quot;شهريًا&quot;, &quot;المدفوع&quot;], &quot;total&quot;: &quot;الإجمالي&quot;, &quot;hfill&quot;: &quot;أدخل سعر الساعة أو الراتب الشهري، وساعات العمل، وساعات الشهر القياسية.&quot;, &quot;hest&quot;: &quot;أجر الشهر&quot;, &quot;hreg&quot;: &quot;الساعات العادية: {h} × {r} = {x}&quot;, &quot;hext&quot;: &quot;الساعات الإضافية: {h} × {r} × {p}% = {x}&quot;, &quot;hrate&quot;: &quot;أجر الساعة: {s} ÷ {t} ساعة = {r}&quot;, &quot;hshort&quot;: &quot;نقص {h} ساعة: خصم {x}&quot;, &quot;hfull&quot;: &quot;عمل الساعات القياسية كاملة: الراتب كاملًا&quot;}" novalidate>
 <div class="fld"><label id="sc-m-l">ماذا تريد أن تحسب؟</label>
 <div class="seg" role="radiogroup" aria-labelledby="sc-m-l">
 <label><input type="radio" name="m" value="abs" checked> خصم أيام الغياب أو الإجازة بدون أجر</label>
 <label><input type="radio" name="m" value="work"> الراتب عن أيام العمل</label>
+<label><input type="radio" name="m" value="hr"> الأجر بالساعة <span class="newpill">جديد</span></label>
 </div></div>
 <div class="row">
 <div class="fld"><label for="sc-cur">العملة</label><select id="sc-cur"><option selected>OMR</option><option>AED</option><option>SAR</option><option>QAR</option><option>KWD</option><option>BHD</option><option>USD</option><option>EUR</option><option>GBP</option><option>INR</option><option>PKR</option></select></div>
-<div class="fld"><label for="sc-days" id="sc-days-l"></label><input type="number" id="sc-days" min="0" step="0.5" inputmode="decimal" placeholder="0"></div>
+<div class="fld" id="sc-days-f"><label for="sc-days" id="sc-days-l"></label><input type="number" id="sc-days" min="0" step="0.5" inputmode="decimal" placeholder="0"></div>
 </div>
-<div class="fld"><label>الراتب الشهري · <span id="sc-ck-l"></span></label>
+<div class="fld" id="sc-parts-f"><label>الراتب الشهري · <span id="sc-ck-l"></span></label>
 <div class="presets" role="group" aria-label="اختيار سريع"><button type="button" data-p="full">الراتب الكامل</button><button type="button" data-p="basic">الأساسي فقط</button><button type="button" data-p="bh">الأساسي + السكن</button></div>
 <div class="comp"><label class="ck" for="sc-ck-basic"><input type="checkbox" id="sc-ck-basic" checked> الراتب الأساسي</label><input type="number" id="sc-basic" min="0" step="any" inputmode="decimal" placeholder="0" aria-label="الراتب الأساسي"><label class="ck" for="sc-ck-housing"><input type="checkbox" id="sc-ck-housing" checked> بدل السكن</label><input type="number" id="sc-housing" min="0" step="any" inputmode="decimal" placeholder="0" aria-label="بدل السكن"><label class="ck" for="sc-ck-transport"><input type="checkbox" id="sc-ck-transport" checked> بدل النقل</label><input type="number" id="sc-transport" min="0" step="any" inputmode="decimal" placeholder="0" aria-label="بدل النقل"><label class="ck" for="sc-ck-other"><input type="checkbox" id="sc-ck-other" checked> بدلات أخرى</label><input type="number" id="sc-other" min="0" step="any" inputmode="decimal" placeholder="0" aria-label="بدلات أخرى"></div><p class="hint">الأجزاء غير المحددة تُدفع كاملة.</p></div>
-<div class="fld"><label id="sc-b-l">عدد أيام الشهر</label>
+<div class="fld" id="sc-basis-f"><label id="sc-b-l">عدد أيام الشهر</label>
 <div class="seg" role="radiogroup" aria-labelledby="sc-b-l">
 <label><input type="radio" name="b" value="30" checked> 30 يومًا</label>
 <label><input type="radio" name="b" value="cal"> أيام الشهر الفعلية</label>
@@ -231,17 +242,33 @@ footer a{color:var(--ink);font-weight:600;text-decoration:none}
 <div id="sc-bm" class="fld" style="margin-top:10px"><label for="sc-month">الشهر</label><input type="month" id="sc-month"></div>
 <div id="sc-bc" class="fld" style="margin-top:10px"><label for="sc-wd">أيام العمل في الشهر</label><input type="number" id="sc-wd" min="1" max="31" step="1" value="26"></div>
 </div>
+<div id="sc-hr-f" hidden>
+<div class="fld"><label id="sc-hm-l">كيف يُدفع أجر هذا الموظف؟</label>
+<div class="seg" role="radiogroup" aria-labelledby="sc-hm-l">
+<label><input type="radio" name="hm" value="fixed" checked> سعر ثابت للساعة</label>
+<label><input type="radio" name="hm" value="sal"> الراتب الشهري حسب ساعات العمل</label>
+</div></div>
+<div class="row">
+<div class="fld" id="sc-rate-f"><label for="sc-rate">سعر الساعة</label><input type="number" id="sc-rate" min="0" step="any" inputmode="decimal" placeholder="0"></div>
+<div class="fld" id="sc-msal-f" hidden><label for="sc-msal">الراتب الشهري</label><input type="number" id="sc-msal" min="0" step="any" inputmode="decimal" placeholder="0"></div>
+<div class="fld"><label for="sc-hw">ساعات العمل هذا الشهر</label><input type="number" id="sc-hw" min="0" step="0.25" inputmode="decimal" placeholder="0"></div>
+</div>
+<div class="row">
+<div class="fld"><label for="sc-std">ساعات الشهر القياسية</label><input type="number" id="sc-std" min="1" step="1" value="208"><p class="hint">208 تعني 8 ساعات × 26 يوم عمل. ما يزيد عليها يُحسب ساعات إضافية.</p></div>
+<div class="fld"><label for="sc-pct">أجر الساعات الإضافية (%)</label><input type="number" id="sc-pct" min="0" step="1" value="125"><p class="hint">استخدم 100 لنفس السعر. تختلف نسب العمل الإضافي حسب الدولة والعقد.</p></div>
+</div>
+</div>
 <div class="res" id="sc-out" aria-live="polite"></div>
 <p class="hint">تقدير مجاني. اتبع عقد العمل وسياسة الشركة وقانون العمل المحلي، وهذه ليست استشارة قانونية.</p>
 </form>
 <h2>أمثلة محسوبة</h2>
-<div class='tbl ex' tabindex='0'><table><thead><tr><th scope='col'>الحالة</th><th scope='col'>الراتب</th><th scope='col'>الحساب</th><th scope='col'>راتب الشهر</th></tr></thead><tbody><tr><th scope='row'>الراتب الكامل، 3 أيام بدون أجر</th><td>أساسي 400 + سكن 150 + نقل 50 = 600 ريال عماني</td><td>600 ÷ 30 = 20 يوميًا؛ 20 × 3 = 60</td><td>540 ريالًا</td></tr><tr><th scope='row'>الأساسي فقط، 3 أيام بدون أجر</th><td>الراتب نفسه</td><td>400 ÷ 30 = 13.333 يوميًا؛ × 3 = 40</td><td>560 ريالًا</td></tr><tr><th scope='row'>التحق يوم 11 (20 يوم عمل)</th><td>راتب كامل 600 ريال</td><td>600 ÷ 30 × 20</td><td>400 ريال</td></tr></tbody></table></div>
+<div class='tbl ex' tabindex='0'><table><thead><tr><th scope='col'>الحالة</th><th scope='col'>الراتب</th><th scope='col'>الحساب</th><th scope='col'>راتب الشهر</th></tr></thead><tbody><tr><th scope='row'>الراتب الكامل، 3 أيام بدون أجر</th><td>أساسي 400 + سكن 150 + نقل 50 = 600 ريال عماني</td><td>600 ÷ 30 = 20 يوميًا؛ 20 × 3 = 60</td><td>540 ريالًا</td></tr><tr><th scope='row'>الأساسي فقط، 3 أيام بدون أجر</th><td>الراتب نفسه</td><td>400 ÷ 30 = 13.333 يوميًا؛ × 3 = 40</td><td>560 ريالًا</td></tr><tr><th scope='row'>التحق يوم 11 (20 يوم عمل)</th><td>راتب كامل 600 ريال</td><td>600 ÷ 30 × 20</td><td>400 ريال</td></tr><tr><th scope='row'>بالساعة، سعر ثابت، 220 ساعة</th><td>2.500 ريال للساعة، 208 ساعات قياسية، الإضافي 125%</td><td>208 × 2.5 + 12 × 2.5 × 1.25</td><td>557.500 ريال</td></tr><tr><th scope='row'>بالساعة، الراتب حسب الساعات، 190 ساعة</th><td>راتب 520 ريالًا، 208 ساعات قياسية</td><td>520 − 520 × 18 ÷ 208</td><td>475 ريالًا</td></tr></tbody></table></div>
 <h2>الراتب الكامل أم الأساسي؟</h2>
 <p>لا توجد قاعدة واحدة لكل الشركات. كثير من أصحاب العمل يخصمون الأيام بدون أجر من الراتب الكامل لأن البدلات تُدفع عن الشهر كله، وآخرون يخصمون من الأساسي فقط أو من الأساسي مع السكن. اتبع ما ينص عليه عقد العمل وسياسة الشركة، وطبّقه بالطريقة نفسها على جميع الموظفين. حدد أجزاء الراتب أعلاه لتطابق قاعدتك.</p>
 <h2>أي عدد أيام تستخدم</h2>
 <ul class="check"><li><b>30 يومًا:</b> الأكثر استخدامًا في الخليج، والأجر اليومي ثابت كل شهر.</li><li><b>أيام الشهر الفعلية:</b> من 28 إلى 31 يومًا، فيتغير الأجر اليومي كل شهر.</li><li><b>أيام العمل:</b> الأيام التي يُتوقع أن يعمل فيها الموظف فقط، مثل 26 يومًا لأسبوع من ستة أيام.</li></ul>
 <h2>أسئلة شائعة</h2>
-<div class="faq"><details><summary>كيف أحسب الراتب اليومي؟</summary><p>اقسم الراتب الشهري على عدد الأيام الذي تعتمده شركتك: 30 يومًا هو الأكثر استخدامًا في الخليج، وبعض الشركات تستخدم عدد أيام الشهر الفعلي أو أيام العمل فقط (مثل 26 يومًا). اختر الطريقة التي ينص عليها العقد أو سياسة الشركة، واستخدمها بالطريقة نفسها كل شهر.</p></details><details><summary>كيف يُحسب خصم الغياب أو الإجازة بدون أجر؟</summary><p>الأجر اليومي × عدد أيام الغياب أو الإجازة بدون أجر. مثلًا راتب كامل 600 ريال عماني على أساس 30 يومًا يساوي 20 ريالًا يوميًا، فيكون خصم 3 أيام 60 ريالًا.</p></details><details><summary>هل يكون الخصم من الراتب الأساسي أم من الراتب الكامل؟</summary><p>يعتمد ذلك على عقد العمل وسياسة الشركة وقانون العمل المحلي. كثير من أصحاب العمل يخصمون من الراتب الكامل (الأساسي مع البدلات) عن الأيام بدون أجر، وآخرون يخصمون من الأساسي فقط. تتيح لك هذه الحاسبة اختيار أجزاء الراتب التي يشملها الحساب لتطبق قاعدتك.</p></details><details><summary>كيف أحسب راتب موظف التحق أو غادر في منتصف الشهر؟</summary><p>اختر «أيام العمل»، وأدخل عدد الأيام التي عملها الموظف في ذلك الشهر، فتحسب الحاسبة أجزاء الراتب المختارة عن تلك الأيام فقط. أما الأجزاء غير المحددة فتُدفع كاملة.</p></details><details><summary>هل يقوم PayCore بذلك تلقائيًا؟</summary><p>نعم. يتابع PayCore الإجازات والحضور والعمل الإضافي ويحسب خصم الإجازات بدون أجر ضمن الرواتب الشهرية لكل موظف، ثم يُصدر قسائم الرواتب وكشف التحويل البنكي. والترخيص لمرة واحدة بـ 50 دولارًا لعدد غير محدود من الموظفين.</p></details></div>
+<div class="faq"><details><summary>كيف أحسب الراتب اليومي؟</summary><p>اقسم الراتب الشهري على عدد الأيام الذي تعتمده شركتك: 30 يومًا هو الأكثر استخدامًا في الخليج، وبعض الشركات تستخدم عدد أيام الشهر الفعلي أو أيام العمل فقط (مثل 26 يومًا). اختر الطريقة التي ينص عليها العقد أو سياسة الشركة، واستخدمها بالطريقة نفسها كل شهر.</p></details><details><summary>كيف يُحسب خصم الغياب أو الإجازة بدون أجر؟</summary><p>الأجر اليومي × عدد أيام الغياب أو الإجازة بدون أجر. مثلًا راتب كامل 600 ريال عماني على أساس 30 يومًا يساوي 20 ريالًا يوميًا، فيكون خصم 3 أيام 60 ريالًا.</p></details><details><summary>هل يكون الخصم من الراتب الأساسي أم من الراتب الكامل؟</summary><p>يعتمد ذلك على عقد العمل وسياسة الشركة وقانون العمل المحلي. كثير من أصحاب العمل يخصمون من الراتب الكامل (الأساسي مع البدلات) عن الأيام بدون أجر، وآخرون يخصمون من الأساسي فقط. تتيح لك هذه الحاسبة اختيار أجزاء الراتب التي يشملها الحساب لتطبق قاعدتك.</p></details><details><summary>كيف أحسب راتب موظف التحق أو غادر في منتصف الشهر؟</summary><p>اختر «أيام العمل»، وأدخل عدد الأيام التي عملها الموظف في ذلك الشهر، فتحسب الحاسبة أجزاء الراتب المختارة عن تلك الأيام فقط. أما الأجزاء غير المحددة فتُدفع كاملة.</p></details><details><summary>كيف أحسب أجر الموظف بالساعة؟</summary><p>مع سعر ثابت للساعة، اضرب السعر في ساعات العمل، وتُدفع الساعات التي تزيد على ساعات الشهر القياسية (مثل 208) بنسبة الساعات الإضافية، مثل 125%. وإذا كان للموظف راتب شهري يُحسب بالساعات، فأجر الساعة هو الراتب مقسومًا على الساعات القياسية: الساعات الأقل تُنقص الراتب والساعات الإضافية تزيده. اختر «الأجر بالساعة» في الحاسبة أعلاه لحسابه.</p></details><details><summary>هل يقوم PayCore بذلك تلقائيًا؟</summary><p>نعم. يتابع PayCore الإجازات والحضور والعمل الإضافي ويحسب خصم الإجازات بدون أجر ضمن الرواتب الشهرية لكل موظف، ثم يُصدر قسائم الرواتب وكشف التحويل البنكي. والترخيص لمرة واحدة بـ 50 دولارًا لعدد غير محدود من الموظفين.</p></details></div>
 <p class="also">أداة مجانية أخرى: <a href="/ar/gratuity-calculator/">حاسبة مكافأة نهاية الخدمة في عمان والإمارات والسعودية</a>.</p>
 <div class="cta"><p><strong>دع PayCore يقوم بذلك كل شهر</strong>يتابع PayCore الإجازات والحضور ويحسب الخصومات والرواتب والسلف وقسائم الرواتب لجميع موظفيك على جهازك. 50 دولارًا لمرة واحدة، لعدد غير محدود من الموظفين.</p><a href="/ar/#download">احصل على PayCore</a></div></main>
 <footer><div class="social"><span class="sl">تابعوا PayCore Salary System</span><a class="sb li" href="https://www.linkedin.com/company/paycoresalarysystem/" target="_blank" rel="noopener" aria-label="PayCore Salary System on LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>LinkedIn</a><a class="sb fb" href="https://www.facebook.com/paycoresalarysystem" target="_blank" rel="noopener" aria-label="PayCore Salary System on Facebook"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9.101 23.691v-7.98H6.627v-3.667h2.474v-1.58c0-4.085 1.848-5.978 5.858-5.978.401 0 .955.042 1.468.103a8.68 8.68 0 0 1 1.141.195v3.325a8.623 8.623 0 0 0-.653-.036 26.805 26.805 0 0 0-.733-.009c-.707 0-1.259.096-1.675.309a1.686 1.686 0 0 0-.679.622c-.258.42-.374.995-.374 1.752v1.297h3.919l-.386 2.103-.287 1.564h-3.246v8.245C19.396 23.238 24 18.179 24 12.044c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.628 3.874 10.35 9.101 11.647Z"/></svg>Facebook</a><a class="sb wa" href="https://wa.me/96890959084" target="_blank" rel="noopener" aria-label="PayCore Salary System on واتساب"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>واتساب</a></div><span>© 2026 PayCore.</span><span><a href="/ar/">الرئيسية</a> · <a href="/ar/gratuity-calculator/">حاسبة مكافأة نهاية الخدمة المجانية</a> · <a href="/ar/salary-software-guide/">دليل اختيار برنامج الرواتب</a> · <a href="/salary-calculator/" hreflang="en" lang="en">English</a> · <a href="/privacy.html">سياسة الخصوصية</a> · <a href="/terms.html">شروط الاستخدام</a></span></footer>
@@ -268,6 +295,9 @@ footer a{color:var(--ink);font-weight:600;text-decoration:none}
   marks();
   var cur=$('sc-cur').value, d=DEC[cur]===undefined?2:DEC[cur], out=$('sc-out'), mode=val('m'), basis=val('b');
   $('sc-bm').style.display=basis==='cal'?'block':'none'; $('sc-bc').style.display=basis==='cus'?'block':'none';
+  var hr=mode==='hr';
+  ['sc-days-f','sc-parts-f','sc-basis-f'].forEach(function(id){$(id).hidden=hr}); $('sc-hr-f').hidden=!hr;
+  if(hr){hourly(cur,d,out);return}
   $('sc-days-l').textContent=T.daysL[mode]; $('sc-ck-l').textContent=T.ckL[mode];
   var div=30;
   if(basis==='cal'){var m=$('sc-month').value; if(m){var p=m.split('-');div=new Date(Date.UTC(+p[0],+p[1],0)).getUTCDate()}}
@@ -289,6 +319,26 @@ footer a{color:var(--ink);font-weight:600;text-decoration:none}
   out.innerHTML=warn+'<div class="lbl">'+T.est+'</div><div class="big">'+cur+' '+fmt(pay,d)+'</div><ul>'+lines.map(function(l){return '<li>'+l+'</li>'}).join('')+'</ul>'
    +'<div class="tbl"><table><thead><tr><th scope="col">'+T.h[0]+'</th><th scope="col">'+T.h[1]+'</th><th scope="col">'+T.h[2]+'</th></tr></thead><tbody>'+rows
    +'<tr><th scope="row">'+T.total+'</th><td class="num"><b>'+fmt(total,d)+'</b></td><td class="num"><b>'+fmt(pay,d)+'</b></td></tr></tbody></table></div>';
+ }
+ function hourly(cur,d,out){
+  var m=val('hm'), fixed=m==='fixed';
+  $('sc-rate-f').hidden=!fixed; $('sc-msal-f').hidden=fixed;
+  var Tt=parseFloat($('sc-std').value), H=parseFloat($('sc-hw').value), P=(parseFloat($('sc-pct').value)||0)/100;
+  var R=parseFloat($('sc-rate').value), S=parseFloat($('sc-msal').value);
+  if(!(Tt>0)||isNaN(H)||H<0||(fixed?!(R>0):!(S>0))){out.innerHTML='<p class="hint">'+T.hfill+'</p>';return}
+  var c=function(v){return cur+' '+fmt(v,d)}, fh=function(v){return v.toLocaleString(T.locale,{maximumFractionDigits:2})}, lines=[], pay;
+  var reg=Math.min(H,Tt), ext=Math.max(0,H-Tt);
+  if(fixed){
+   pay=R*reg+R*ext*P;
+   lines.push(T.hreg.replace('{h}',fh(reg)).replace('{r}',c(R)).replace('{x}',c(R*reg)));
+   if(ext>0) lines.push(T.hext.replace('{h}',fh(ext)).replace('{r}',c(R)).replace('{p}',Math.round(P*100)).replace('{x}',c(R*ext*P)));
+  } else {
+   var rate=S/Tt; lines.push(T.hrate.replace('{s}',c(S)).replace('{t}',fh(Tt)).replace('{r}',c(rate)));
+   if(H<Tt){var ded=S*(Tt-H)/Tt; pay=S-ded; lines.push(T.hshort.replace('{h}',fh(Tt-H)).replace('{x}',c(ded)));}
+   else if(H>Tt){var ex=S*(H-Tt)/Tt*P; pay=S+ex; lines.push(T.hext.replace('{h}',fh(ext)).replace('{r}',c(rate)).replace('{p}',Math.round(P*100)).replace('{x}',c(ex)));}
+   else {pay=S; lines.push(T.hfull);}
+  }
+  out.innerHTML='<div class="lbl">'+T.hest+'</div><div class="big">'+c(pay)+'</div><ul>'+lines.map(function(l){return '<li>'+l+'</li>'}).join('')+'</ul>';
  }
  f.addEventListener('input',calc); f.addEventListener('change',calc);
  f.addEventListener('submit',function(e){e.preventDefault();calc()});

@@ -301,7 +301,7 @@ def build(out_dir, site_url, dl_base, setup_name, portable_name, shots_dir, year
 <div class="toolgrid">
 <div class="toolcard rv"><div class="tc-t"><span class="tc-k">مجانية</span><h2>حاسبة مكافأة نهاية الخدمة المجانية</h2><p>احسب مكافأة نهاية الخدمة لأي موظف في عمان أو الإمارات أو السعودية خلال ثوانٍ. بدون تسجيل وبدون تحميل.</p></div>
 <a class="btn btn-primary" href="gratuity-calculator/">افتح حاسبة نهاية الخدمة المجانية</a></div>
-<div class="toolcard rv"><div class="tc-t"><span class="tc-k">مجانية</span><h2>حاسبة الراتب المجانية</h2><p>خصم أيام الغياب والإجازة بدون أجر، أو الراتب عن أيام العمل. على الراتب الكامل أو الأساسي أو بدلات تختارها.</p></div>
+<div class="toolcard rv"><div class="tc-t"><span class="tc-k">مجانية</span><h2>حاسبة الراتب المجانية</h2><p>خصم أيام الغياب والإجازة بدون أجر، والراتب عن أيام العمل، والآن الأجر بالساعة مع الساعات الإضافية.</p></div>
 <a class="btn btn-primary" href="salary-calculator/">افتح حاسبة الراتب المجانية</a></div>
 </div>
 </div></section>
