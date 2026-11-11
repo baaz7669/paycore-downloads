@@ -447,6 +447,7 @@ section{padding-block:100px}
 .cc{position:relative;border-radius:24px;padding:30px;display:grid;gap:12px;align-content:start;min-width:0;overflow:hidden}
 .cc.wa{background:linear-gradient(140deg,#0f9f5a,#22c55e);color:#fff}
 .cc.em{background:linear-gradient(140deg,#1d4ed8,#0ea5e9);color:#fff}
+.cc.pay{grid-column:1/-1;background:linear-gradient(140deg,#0d1a33,#132a63);color:#fff}
 .cc::after{content:"";position:absolute;width:260px;height:260px;border-radius:50%;background:rgba(255,255,255,.12);right:-80px;top:-90px;animation:drift 12s ease-in-out infinite alternate}
 .cc .label{font:600 12px/1 var(--f-mono);letter-spacing:.12em;text-transform:uppercase;opacity:.85}
 .cc .val{font:800 clamp(18px,5.2vw,30px)/1.15 var(--f-display);letter-spacing:-.01em;overflow-wrap:anywhere;user-select:all}
@@ -909,14 +910,14 @@ main,header,footer{position:relative;z-index:1}
     <div class="sec-head rv">
       
       <h2>Get your one-time <span class="grad-text">PayCore license</span></h2>
-      <p class="lede">PayCore licenses are sold directly by our team. Contact us on WhatsApp or by email, and your license key is typically issued the same business day.</p>
+      <p class="lede">Pay online by card through our secure Gumroad checkout, or contact us on WhatsApp or by email. Your license key is emailed within 24 hours, usually the same business day.</p>
       <div class="price-tag"><span class="amt">$50</span><span class="per">USD · one-time</span><span class="inc">Unlimited employees · No monthly fee · No per-employee charges</span></div>
     </div>
 
     <div class="steps" id="steps">
       <div class="rail" aria-hidden="true"><i></i></div>
-      <div class="step rv"><span class="n" style="--d:0s">1</span><h3>Contact sales</h3><p>Send us your name, company name and the email address the license should be registered to.</p></div>
-      <div class="step rv"><span class="n" style="--d:1s">2</span><h3>Complete payment</h3><p>We confirm the payment options with you. One payment, with no renewals or per-employee charges.</p></div>
+      <div class="step rv"><span class="n" style="--d:0s">1</span><h3>Buy or contact us</h3><p>Pay by card online, or send us your name, company name and the email address the license should be registered to.</p></div>
+      <div class="step rv"><span class="n" style="--d:1s">2</span><h3>Get your key</h3><p>Your license key is emailed to your address. One payment, with no renewals or per-employee charges.</p></div>
       <div class="step rv"><span class="n" style="--d:2s">3</span><h3>Activate</h3><p>Enter your email and license key in PayCore. Activation works offline and takes under a minute.</p></div>
     </div>
 
@@ -936,6 +937,14 @@ main,header,footer{position:relative;z-index:1}
         <span class="note">Include the email address the license should be registered to.</span>
         <div class="acts">
           <button class="btn btn-line" type="button" data-copy="info@paycoresalarysystem.com">Copy address</button>
+        </div>
+      </div>
+      <div class="cc pay rv">
+        <span class="label">Pay by card</span>
+        <span class="val">USD 50 · secure checkout</span>
+        <span class="note">Visa, Mastercard and other cards through Gumroad. You get the download links straight away and your license key by email within 24 hours.</span>
+        <div class="acts">
+          <a class="btn btn-white" href="https://paycore.gumroad.com/l/paycore" target="_blank" rel="noopener">Buy now with card</a>
         </div>
       </div>
     </div>
