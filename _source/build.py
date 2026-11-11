@@ -31,6 +31,7 @@ open(os.path.join(ROOT, "preview.html"), "w", encoding="utf-8").write(art)
 # ---------- dist ----------
 dist = os.path.dirname(ROOT)  # repository root
 os.makedirs(os.path.join(dist, "images"), exist_ok=True)
+shutil.copytree(os.path.join(os.path.dirname(os.path.abspath(__file__)), "pay"), os.path.join(dist, "images", "pay"), dirs_exist_ok=True)
 shutil.copy(f"{SHOTS}/dashboard.jpg", os.path.join(dist, "images", "paycore-payroll-dashboard.jpg"))
 shutil.copy(f"{SHOTS}/payroll.jpg", os.path.join(dist, "images", "paycore-monthly-payroll-run.jpg"))
 # WebP copies for the pages themselves (smaller); the .jpg files stay for schema, sitemap and sharing
