@@ -371,7 +371,7 @@ def build(out_dir, site_url, year):
          '"Figtree","Segoe UI",system-ui,sans-serif', '"Bricolage Grotesque","Segoe UI",sans-serif',
          '<a href="/">Home</a> · <a href="/salary-calculator/">Free salary calculator</a> · <a href="/salary-software-guide/">Buyer\'s guide</a> · <a href="/ar/gratuity-calculator/" hreflang="ar" lang="ar">العربية</a> · <a href="/privacy.html">Privacy</a> · <a href="/terms.html">Terms</a>',
          "Free end-of-service gratuity calculator", os.path.join(out_dir, "gratuity-calculator"), FAQ_EN),
-        ("ar", ar_url, en_url, "حاسبة مكافأة نهاية الخدمة المجانية في عمان والإمارات والسعودية (2026) | PayCore",
+        ("ar", ar_url, en_url, "حاسبة مكافأة نهاية الخدمة في عمان والإمارات والسعودية | PayCore",
          "حاسبة مجانية لمكافأة نهاية الخدمة في عمان والإمارات والسعودية. أدخل التواريخ والراتب لمعرفة المبلغ وفق قانون العمل في كل دولة، مع أمثلة محسوبة.",
          AR_BODY, "/ar/", "العودة للرئيسية",
          "https://fonts.googleapis.com/css2?family=Cairo:wght@700;800&family=IBM+Plex+Sans+Arabic:wght@400;600;700&display=swap",

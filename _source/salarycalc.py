@@ -300,7 +300,7 @@ def build(out_dir, site_url, year):
          '"Figtree","Segoe UI",system-ui,sans-serif', '"Bricolage Grotesque","Segoe UI",sans-serif',
          '<a href="/">Home</a> · <a href="/gratuity-calculator/">Free gratuity calculator</a> · <a href="/salary-software-guide/">Buyer\'s guide</a> · <a href="/ar/salary-calculator/" hreflang="ar" lang="ar">العربية</a> · <a href="/privacy.html">Privacy</a> · <a href="/terms.html">Terms</a>',
          "Free salary calculator for absences, unpaid leave, days worked and hourly pay", os.path.join(out_dir, "salary-calculator"), FAQ_EN),
-        ("ar", ar_url, en_url, "حاسبة الراتب والأجر بالساعة المجانية: الغياب وأيام العمل | PayCore",
+        ("ar", ar_url, en_url, "حاسبة الراتب والأجر بالساعة المجانية | PayCore",
          "حاسبة راتب مجانية: احسب الأجر اليومي وخصم أيام الغياب أو الإجازة بدون أجر أو الراتب عن أيام العمل، على الراتب الكامل أو الأساسي أو بدلات تختارها.",
          AR_BODY, "/ar/", "العودة للرئيسية",
          "https://fonts.googleapis.com/css2?family=Cairo:wght@700;800&family=IBM+Plex+Sans+Arabic:wght@400;600;700&display=swap",

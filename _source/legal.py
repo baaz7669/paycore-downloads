@@ -93,7 +93,7 @@ TEMPLATE = """<!doctype html>
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>{title} | PayCore</title>
+<title>{title} | PayCore Salary System</title>
 <meta name="description" content="{desc}">
 <link rel="canonical" href="{url}">
 <meta name="robots" content="index, follow">
